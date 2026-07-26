@@ -1,0 +1,38 @@
+name: Research or benchmark proposal
+description: Propose a source, intervention, metric, adapter, or study
+title: "[Research] "
+labels: ["research"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: State a falsifiable question, not only a feature.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Prior work and gap
+      description: Link primary papers or official sources and explain the gap.
+    validations:
+      required: true
+  - type: textarea
+    id: protocol
+    attributes:
+      label: Proposed protocol and stop/go criterion
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Data, provenance, and licence
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Validity, safety, and gaming risks
+    validations:
+      required: true
+

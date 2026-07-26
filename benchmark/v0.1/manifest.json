@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "name": "FinMirror Synthetic Paired Worlds",
+  "version": "0.1.0",
+  "description": "Paired financial evidence worlds for material sensitivity, distractor invariance, evidence sufficiency, prompt-injection resistance, and cross-language consistency.",
+  "case_count": 126,
+  "pair_group_count": 18,
+  "scenario_count": 6,
+  "languages": [
+    "en",
+    "fr",
+    "zh"
+  ],
+  "transforms": {
+    "distractor": 18,
+    "entity_collision": 18,
+    "evidence_ablation": 18,
+    "injection": 18,
+    "material_value": 18,
+    "period_collision": 18,
+    "reference": 18
+  },
+  "dataset_sha256": "3db16674c7fb5d0f9a45c41389045d001ca8ed8f2d0d55368baec8673de23009",
+  "data_license": "CC-BY-4.0",
+  "synthetic": true,
+  "contains_investment_advice": false
+}

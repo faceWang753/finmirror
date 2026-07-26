@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finmirror.dev/schema/prediction.schema.json",
+  "title": "FinMirror Prediction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "answer",
+    "value",
+    "unit",
+    "citations",
+    "confidence",
+    "abstained"
+  ],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "answer": {"type": "string"},
+    "value": {"type": ["number", "string", "null"]},
+    "unit": {"type": "string"},
+    "citations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^.+#[A-Za-z0-9_.:-]+$"}
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "abstained": {"type": "boolean"},
+    "formula_id": {"type": "string", "default": ""},
+    "operands": {
+      "type": "array",
+      "default": [],
+      "items": {"$ref": "#/$defs/operand"}
+    },
+    "missing_evidence": {
+      "type": "array",
+      "uniqueItems": true,
+      "default": [],
+      "items": {"type": "string"}
+    },
+    "pre_confidence": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "retrieved_document_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "default": [],
+      "items": {"type": "string"}
+    },
+    "latency_ms": {"type": "number", "minimum": 0, "default": 0},
+    "input_tokens": {"type": "integer", "minimum": 0, "default": 0},
+    "output_tokens": {"type": "integer", "minimum": 0, "default": 0},
+    "trace": {
+      "type": "array",
+      "default": [],
+      "items": {"type": "object"}
+    },
+    "metadata": {"type": "object", "default": {}}
+  },
+  "$defs": {
+    "operand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "value", "unit", "evidence"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "value": {"type": "number"},
+        "unit": {"type": "string", "minLength": 1},
+        "evidence": {
+          "type": "string",
+          "pattern": "^.+#[A-Za-z0-9_.:-]+$"
+        }
+      }
+    }
+  }
+}
