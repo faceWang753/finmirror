@@ -1,0 +1,108 @@
+# FinSight-AI reproducibility preflight
+
+| Field | Value |
+|---|---|
+| Project | [`juanjuandog/FinSight-AI`](https://github.com/juanjuandog/FinSight-AI) |
+| Upstream revision | `54ca3ac2ba5178a0c17daa4a773cb9462f274206` |
+| Review date | 2026-07-27 |
+| Reviewer | Mingyang (Ethan) Wang |
+| FinMirror stage | Integration preflight; **not an executed reliability audit** |
+| Upstream contribution | [`juanjuandog/FinSight-AI#14`](https://github.com/juanjuandog/FinSight-AI/pull/14) |
+
+## Conclusion
+
+FinSight-AI exposes a useful answer/evidence/trace contract, but the pinned revision does
+not bind an answer to the exact ordered evidence sent to generation. A trace records only
+`evidenceCount`; equal counts can conceal changes in document identity, content, score,
+or rerank order. That prevents a third party from proving that two reproduced runs used
+the same retrieved context.
+
+PR #14 proposes a focused remedy: a stable SHA-256 `dataSnapshotHash` over the complete
+ordered `EvidenceChunk` list, exposed in `RagTrace` and persisted through a nullable
+database migration. The review explicitly asks the maintainer to correct the chosen
+snapshot boundary if rank or score should not be identity-bearing.
+
+This is a reproducibility finding, not a claim about answer quality, investment quality,
+security, or production safety.
+
+## Evidence inspected
+
+At the pinned revision:
+
+- `AnalysisApplicationService.ask` retrieves, reranks, truncates, and sends at most five
+  `EvidenceChunk` records to answer generation.
+- `RagTrace` records `structuredQuery`, retrieval channels, `evidenceCount`, and latency,
+  but not the identity of that context.
+- `JdbcRagTraceRepository` persists the trace count and latency, but not an evidence
+  digest.
+- `RestAiServiceClient` can fall back independently during reranking or generation.
+  Exact execution-path provenance is therefore a separate follow-up concern; it is not
+  scored here and is deliberately outside the single-concern PR.
+
+Source links:
+
+- [`AnalysisApplicationService.java`](https://github.com/juanjuandog/FinSight-AI/blob/54ca3ac2ba5178a0c17daa4a773cb9462f274206/backend/src/main/java/com/finsight/application/AnalysisApplicationService.java)
+- [`RagTrace.java`](https://github.com/juanjuandog/FinSight-AI/blob/54ca3ac2ba5178a0c17daa4a773cb9462f274206/backend/src/main/java/com/finsight/domain/model/RagTrace.java)
+- [`JdbcRagTraceRepository.java`](https://github.com/juanjuandog/FinSight-AI/blob/54ca3ac2ba5178a0c17daa4a773cb9462f274206/backend/src/main/java/com/finsight/infrastructure/jdbc/JdbcRagTraceRepository.java)
+- [`RestAiServiceClient.java`](https://github.com/juanjuandog/FinSight-AI/blob/54ca3ac2ba5178a0c17daa4a773cb9462f274206/backend/src/main/java/com/finsight/ai/RestAiServiceClient.java)
+
+## Capability map
+
+| FinMirror surface | Pinned support | Preflight treatment |
+|---|---|---|
+| Answer capture | Yes | Mappable |
+| Retrieved evidence capture | Yes | Mappable |
+| Retrieval trace | Partial | Count and channels exist; exact snapshot identity missing |
+| Citation identifiers | Evidence document IDs exist | Mappable as evidence provenance, not yet scored as answer-level citations |
+| Probability confidence | Not exposed | `not_exposed`; calibration is not applicable |
+| Arbitrary frozen corpus injection | Not exposed through the public API | Blocks a fair paired-world execution |
+| Deterministic no-key fallback | Yes | Suitable for harness integration, but must not be described as a hosted-LLM result |
+
+## Why no FinMirror score is published
+
+A paired audit requires the same system configuration to run independently against two
+frozen evidence worlds. The public ingestion path at this revision does not provide an
+arbitrary, test-scoped fixture corpus seam. Substituting live public-market data would
+introduce temporal drift and would not reproduce the authored intervention contract.
+
+Accordingly, this preflight reports the integration blocker and contributes the first
+reproducibility primitive. It does **not** manufacture a score from partial or live data.
+A full audit should begin only after a frozen-corpus seam exists.
+
+## Patch verification
+
+Patch commit:
+[`abb3eb73fb2967f8f350b7e21a548dc1b44477d4`](https://github.com/faceWang753/FinSight-AI/commit/abb3eb73fb2967f8f350b7e21a548dc1b44477d4)
+
+```bash
+git clone https://github.com/juanjuandog/FinSight-AI
+cd FinSight-AI
+git fetch https://github.com/faceWang753/FinSight-AI \
+  rag-evidence-snapshot-hash
+git checkout FETCH_HEAD
+cd backend
+mvn test
+```
+
+Observed verification environment:
+
+- Apache Maven 3.9.16, binary SHA-512 verified against the Apache release checksum;
+- Java 23.0.1 compiling with Maven `release 17`;
+- Docker Desktop 29.6.1 available to Testcontainers;
+- 15 tests discovered, 0 failures, 0 errors, 3 environment-dependent skips.
+
+The added unit tests verify digest stability, sensitivity to changed evidence content,
+and sensitivity to rerank order. The digest encoding uses length-prefixed UTF-8 fields
+and IEEE-754 score bits to avoid delimiter ambiguity.
+
+## Requested maintainer correction
+
+The PR asks one narrow technical question:
+
+> Is the ordered, scored evidence list the intended reproducibility boundary here? If
+> retrieval identity should ignore score or order, please correct that assumption and
+> the hasher will be adjusted.
+
+Maintainer feedback should be recorded before this preflight is promoted into a joint or
+endorsed case study. No affiliation, endorsement, or collaboration is implied.
+

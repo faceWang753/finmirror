@@ -58,6 +58,19 @@ The exact public v0.1 data package is also mirrored on
 manifest and input/output JSON Schemas. The evaluator and scoring contract remain
 versioned in this repository.
 
+## Independent upstream integrations
+
+FinMirror enters other projects through reproducibility contributions, not benchmark
+name-dropping. The public [integration review ledger](audits/README.md) separates
+source-level preflights from executed audits and publishes pinned revisions,
+reproduction commands, capability gaps, upstream PRs, and explicit requests for
+maintainer correction.
+
+The first completed preflight covers
+[FinSight-AI at `54ca3ac`](audits/finsight-ai/preflight-54ca3ac.md). It contributes an
+evidence-snapshot hash in [upstream PR #14](https://github.com/juanjuandog/FinSight-AI/pull/14)
+but deliberately publishes no reliability score until a fair frozen-corpus seam exists.
+
 ## Quickstart
 
 Python 3.10–3.12 is supported. The core has zero runtime dependencies.

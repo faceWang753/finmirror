@@ -9,6 +9,8 @@ All notable changes are documented here.
 - automatic GitHub Pages deployment for the zero-key interactive demo;
 - a CC BY 4.0 Hugging Face dataset release with the v0.1 manifest and JSON Schemas;
 - reproducible discovery submissions to Awesome Agent Evals and Awesome LLM Eval;
+- an independent integration-review ledger and pinned FinSight-AI reproducibility
+  preflight, linked to an upstream evidence-snapshot contribution;
 - five high-relevance 2026 papers on professional, trajectory, deep-research, and
   numerically aware evaluation, bringing the targeted literature scan to 47 papers;
 - complete project URLs and citable author metadata for software indexes.
