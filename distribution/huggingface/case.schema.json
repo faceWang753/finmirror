@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finmirror.dev/schema/case.schema.json",
+  "title": "FinMirror Benchmark Case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "scenario_id",
+    "pair_group_id",
+    "parallel_id",
+    "language",
+    "question",
+    "task_type",
+    "documents",
+    "expected",
+    "relationship"
+  ],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "scenario_id": {"type": "string", "minLength": 1},
+    "pair_group_id": {"type": "string", "minLength": 1},
+    "parallel_id": {"type": "string", "minLength": 1},
+    "language": {"type": "string", "enum": ["en", "fr", "zh"]},
+    "question": {"type": "string", "minLength": 1},
+    "task_type": {"type": "string", "minLength": 1},
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/document"}
+    },
+    "expected": {"$ref": "#/$defs/expected"},
+    "relationship": {"$ref": "#/$defs/relationship"},
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "stakeholder": {"type": "string"},
+    "harm_if_wrong": {"type": "string"}
+  },
+  "$defs": {
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "content"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string"},
+        "content": {"type": "string"},
+        "source_url": {"type": "string"},
+        "media_type": {"type": "string"},
+        "metadata": {"type": "object"}
+      }
+    },
+    "operand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "value", "unit", "evidence"],
+      "properties": {
+        "name": {"type": "string"},
+        "value": {"type": "number"},
+        "unit": {"type": "string"},
+        "evidence": {"type": "string"}
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "answer_type",
+        "value",
+        "unit",
+        "display",
+        "tolerance",
+        "required_evidence"
+      ],
+      "properties": {
+        "answer_type": {"type": "string", "enum": ["number", "text"]},
+        "value": {"type": ["number", "string", "null"]},
+        "unit": {"type": "string"},
+        "display": {"type": "string"},
+        "tolerance": {"type": "number", "minimum": 0},
+        "required_evidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "abstain": {"type": "boolean"},
+        "formula": {"type": "string"},
+        "formula_id": {"type": "string"},
+        "operands": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/operand"}
+        },
+        "missing_evidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "materiality": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference_case_id", "transform", "expectation"],
+      "properties": {
+        "reference_case_id": {"type": ["string", "null"]},
+        "transform": {"type": "string"},
+        "expectation": {
+          "type": "string",
+          "enum": [
+            "reference",
+            "should_change",
+            "should_not_change",
+            "should_abstain"
+          ]
+        },
+        "changed_fields": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

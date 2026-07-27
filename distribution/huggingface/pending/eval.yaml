@@ -1,0 +1,14 @@
+# Do not upload this file until `finmirror` is registered as an evaluation framework
+# and the dataset repository is admitted to Hugging Face's beta allow-list.
+name: FinMirror
+description: >
+  Paired-world reliability evaluation for financial RAG systems and agents. The primary
+  task measures whether answers, citations, calculations, confidence, and abstention
+  change exactly along licensed causal and provenance paths under hidden evidence
+  interventions.
+evaluation_framework: finmirror
+
+tasks:
+  - id: strict_pair_reliability
+    config: default
+    split: test

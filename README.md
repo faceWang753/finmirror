@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="https://facewang753.github.io/finmirror/"><strong>Live demo</strong></a> ·
+  <a href="https://huggingface.co/datasets/mingyang233/FinMirror"><strong>Hugging Face dataset</strong></a> ·
   <a href="#quickstart">Quickstart</a> ·
   <a href="docs/METHODOLOGY.md">Methodology</a> ·
   <a href="docs/LITERATURE_REVIEW.md">47-paper review</a> ·
@@ -51,6 +52,11 @@ These are deterministic harness checks on synthetic v0.1—not claims about any 
 model. Reproduce them with `finmirror demo`.
 
 **[Explore the zero-key interactive demo →](https://facewang753.github.io/finmirror/)**
+
+The exact public v0.1 data package is also mirrored on
+[Hugging Face](https://huggingface.co/datasets/mingyang233/FinMirror), including the
+manifest and input/output JSON Schemas. The evaluator and scoring contract remain
+versioned in this repository.
 
 ## Quickstart
 
