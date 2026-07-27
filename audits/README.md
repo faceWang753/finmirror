@@ -16,7 +16,7 @@ Unsupported capabilities are marked not applicable rather than scored as failure
 |---|---|---|---|
 | [FinSight-AI](finsight-ai/preflight-54ca3ac.md) | `54ca3ac2ba5178a0c17daa4a773cb9462f274206` | Preflight complete; paired execution blocked on a frozen-corpus seam | [PR #14](https://github.com/juanjuandog/FinSight-AI/pull/14) |
 | [ai-hedge-fund](https://github.com/virattt/ai-hedge-fund) | `00d509b06f4e4de473d78ceb24cb840f9b0be735` | Integration work in progress | Pending verification |
-| [TradingAgents](https://github.com/TauricResearch/TradingAgents) | `01477f9afb7a47b849ed4c9259d3a9a4738d9fda` | Integration work in progress | Pending verification |
+| [TradingAgents](tradingagents/preflight-01477f9.md) | `01477f9afb7a47b849ed4c9259d3a9a4738d9fda` | Preflight complete; paired execution blocked on exact live-input receipts and a frozen fixture seam | [PR #1179](https://github.com/TauricResearch/TradingAgents/pull/1179) |
 | [FinRobot](https://github.com/AI4Finance-Foundation/FinRobot) | `a4a7fe6ace8f04b99188c9f6587e12ea86299bc1` | Planned | None |
 
 The standing scope statement is:
@@ -25,4 +25,3 @@ The standing scope statement is:
 > declared FinMirror version, configuration, fixture set, and seed. Results characterize
 > that pinned configuration and transformation suite—not the project in general,
 > investment quality, or production safety.
-
