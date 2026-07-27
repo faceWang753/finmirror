@@ -1,7 +1,8 @@
 # FinMirror Literature Review
 
-**Evidence cut-off:** 26 July 2026  
-**Scope:** a targeted, project-oriented scan of 42 primary research papers. It is **not** a systematic review, a complete census of financial NLP, or evidence of priority by itself.
+**Evidence cut-off:** 27 July 2026
+
+**Scope:** a targeted, project-oriented scan of 47 primary research papers. It is **not** a systematic review, a complete census of financial NLP, or evidence of priority by itself.
 
 ## 1. Review question and publication-status policy
 
@@ -90,15 +91,26 @@ This turns a perturbation into more than a changed-answer test. It asks whether 
 | 41 | [Towards Dependable Retrieval-Augmented Generation Using Factual Confidence Prediction](https://arxiv.org/abs/2605.05244) | 4 May 2026; **arXiv preprint** | Combines factual-confidence prediction with conformal retriever selection; formal guarantees depend on assumptions such as exchangeability. | Add confidence-aware retrieval selection and test calibration under distribution shift. Do not inherit formal guarantees without reproducing their assumptions. |
 | 42 | [ConfidenceBench](https://arxiv.org/abs/2607.20526) | 10 July 2026; **arXiv preprint** | Evaluates verbalized confidence with proper scoring rules and highlights divergence between accuracy and calibration. | Report Brier score and ECE alongside accuracy, with reliability plots and condition slices. A confidence field alone is not evidence of calibrated uncertainty. |
 
+### 27 July update — additional high-relevance work
+
+| # | Tier | Work and original source | Date / venue / status | What it establishes | FinMirror implication |
+|---:|:---:|---|---|---|---|
+| 43 | A | [FinanceComplexQA](https://arxiv.org/abs/2607.19238) | 21 July 2026; **arXiv preprint** | Evaluates agentic reasoning over complex, bilingual, industrial-style financial documents with open-ended deep-research tasks and an agent-as-judge protocol. | Add complex layouts and open-ended workflows, but meta-evaluate any agent judge against experts. FinMirror's deterministic core remains intentionally limited to closed-form verifiable tasks. |
+| 44 | A | [PRBench](https://aclanthology.org/2026.acl-long.1958/) | July 2026; **ACL 2026 Long Paper, peer-reviewed proceedings** | Provides 1,100 expert-authored finance and law tasks with 19,356 expert-curated criteria, contributed by 182 qualified professionals. | External validity requires finance-expert task authoring and independently validated criteria. Synthetic protocol tests cannot substitute for professional workflow evidence. |
+| 45 | B | [Plan-RewardBench](https://aclanthology.org/2026.acl-long.1062/) | July 2026; **ACL 2026 Long Paper, peer-reviewed proceedings** | Tests reward models on preferred versus minimally perturbed tool-using trajectories and finds degradation on long horizons. | Preserve replayable traces and create hard-negative trajectory pairs before using FinMirror reward vectors for agent training or claiming trajectory-level reliability. |
+| 46 | B | [DREAM](https://aclanthology.org/2026.acl-long.448/) | July 2026; **ACL 2026 Long Paper, peer-reviewed proceedings** | Argues for evaluator capability parity and uses tool-calling evaluation to detect factual and temporal decay in deep-research outputs. | Deterministic evaluation is a strength only where the target is fully specified. Open-ended, time-sensitive tracks will need tool-capable evaluators plus independent meta-evaluation. |
+| 47 | B | [NASH](https://aclanthology.org/2026.findings-acl.1119/) | July 2026; **Findings of ACL 2026, peer-reviewed proceedings** | Separates numerical verification from textual semantic similarity and improves sensitivity to number changes on financial evaluation data. | Keep exact numeric replay for closed-form tasks and evaluate numerically aware semantic scoring before accepting free-form equivalents in future open-ended tracks. |
+
 ## 4. Synthesis
 
-Five conclusions follow from the evidence map.
+Six conclusions follow from the evidence map.
 
 1. **Paired and perturbed financial evaluation already exists.** RFC-Bench, FinVerBench, GBFR, FinED-Bench, and FinBalance make a general “first counterfactual finance benchmark” claim untenable.
 2. **Joint outputs matter, but their dependencies must be explicit.** LongCite, FinChain, CALIBER, Abstain-R1, and RAGChecker motivate separate scoring of citation, execution, uncertainty, abstention, retrieval, and answer quality. FinMirror's opportunity is to specify how those outputs should change together under an intervention.
 3. **Determinism is valuable but not sufficient.** Replayable formulas and rule-based metrics improve reproducibility; LGMT and verifier-gaming work show that invariants, adversarially isomorphic cases, and evaluator audits are still necessary.
 4. **Synthetic tests have high internal control and limited external validity.** Current financial benchmarks increasingly use filings, annual reports, spreadsheets, multimodal pages, tools, experts, and deployed workflows. FinMirror v0.1 should be described as a diagnostic unit-test suite, not a proxy for production finance.
 5. **Multilingual and calibrated behavior require validation, not fields in a schema.** Parallel English, French, and Chinese templates plus confidence outputs are useful instrumentation. They do not establish native-language validity or calibration without human review, strong model baselines, confidence analyses, and distribution-shift tests.
+6. **Evaluator capability must match task openness.** PRBench and FinanceComplexQA motivate expert rubrics for realistic professional work; DREAM and Plan-RewardBench show why open-ended reports and long tool trajectories cannot be validated by a static scalar judge alone. FinMirror should retain deterministic checks for fully specified relations and add expert-validated, tool-capable evaluation only for tracks that require it.
 
 ## 5. Novelty boundary
 
@@ -116,7 +128,7 @@ The deterministic oracle and evidence-program responders are **harness sanity ch
 
 ### Safest current contribution statement
 
-> To our knowledge, as of 26 July 2026 and within this targeted 42-paper scan, FinMirror v0.1 is the first open, deterministic harness to score finance QA systems on paired evidence worlds with an explicit expected-change contract over the joint output tuple—answer, citations, executable formula and operand provenance, abstention or clarification, and confidence—while also testing invariance to irrelevant, entity, period, and injection perturbations in English, French, and Chinese.
+> To our knowledge, as of 27 July 2026 and within this targeted 47-paper scan, FinMirror v0.1 is the first open, deterministic harness to score finance QA systems on paired evidence worlds with an explicit expected-change contract over the joint output tuple—answer, citations, executable formula and operand provenance, abstention or clarification, and confidence—while also testing invariance to irrelevant, entity, period, and injection perturbations in English, French, and Chinese.
 
 Mandatory qualifications:
 
@@ -173,4 +185,3 @@ This review should be versioned with the benchmark. Before every public research
 3. append newly discovered work without silently changing the cut-off;
 4. revise the novelty statement or remove “first” whenever a closer predecessor appears; and
 5. archive the exact search date, query set, screening decisions, and reviewer names if the project later claims a systematic review.
-

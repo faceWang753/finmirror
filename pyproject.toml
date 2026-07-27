@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
-authors = [{ name = "Ethan" }]
+authors = [{ name = "Mingyang (Ethan) Wang" }]
 keywords = [
   "ai-evaluation",
   "financial-ai",
@@ -32,6 +32,12 @@ classifiers = [
   "Topic :: Software Development :: Testing",
 ]
 dependencies = []
+
+[project.urls]
+Homepage = "https://facewang753.github.io/finmirror/"
+Repository = "https://github.com/faceWang753/finmirror"
+Issues = "https://github.com/faceWang753/finmirror/issues"
+Changelog = "https://github.com/faceWang753/finmirror/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 cohere = ["cohere>=7.0.8"]

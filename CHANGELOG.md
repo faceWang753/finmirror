@@ -4,6 +4,13 @@ All notable changes are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- automatic GitHub Pages deployment for the zero-key interactive demo;
+- five high-relevance 2026 papers on professional, trajectory, deep-research, and
+  numerically aware evaluation, bringing the targeted literature scan to 47 papers;
+- complete project URLs and citable author metadata for software indexes.
+
 ### Planned
 
 - expert-reviewed real-source pilot;
@@ -23,4 +30,3 @@ All notable changes are documented here.
 - oracle, non-gold evidence program, and evidence-blind negative control;
 - JSONL scoring, preference export, annotation agreement, and HTML reports;
 - integrity manifests, JSON Schemas, tests, research review, and release documentation.
-

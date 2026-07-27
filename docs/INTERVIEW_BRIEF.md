@@ -105,9 +105,8 @@ paired metrics do not reveal failures beyond strong pointwise baselines.
 - Demonstrated that an evidence-blind baseline with 71.4% pointwise accuracy achieves 0%
   strict pair reliability; shipped interactive local reports and a Cohere Command A+ /
   Rerank 4 adapter.
-- Conducted a 42-paper 2024–2026 literature audit to narrow novelty claims and designed an
+- Conducted a 47-paper 2024–2026 literature audit to narrow novelty claims and designed an
   expert-reviewed, contamination-limited research roadmap.
 
 Only use these bullets after publishing the repository and keeping the reproduced
 artifacts intact.
-

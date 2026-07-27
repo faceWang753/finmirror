@@ -3,9 +3,10 @@
 </p>
 
 <p align="center">
+  <a href="https://facewang753.github.io/finmirror/"><strong>Live demo</strong></a> ·
   <a href="#quickstart">Quickstart</a> ·
   <a href="docs/METHODOLOGY.md">Methodology</a> ·
-  <a href="docs/LITERATURE_REVIEW.md">42-paper review</a> ·
+  <a href="docs/LITERATURE_REVIEW.md">47-paper review</a> ·
   <a href="docs/DATA_CARD.md">Data card</a> ·
   <a href="CONTRIBUTING.md">Contribute</a>
 </p>
@@ -48,6 +49,8 @@ material evidence, replay a formula, ground operands, or abstain after evidence 
 
 These are deterministic harness checks on synthetic v0.1—not claims about any hosted
 model. Reproduce them with `finmirror demo`.
+
+**[Explore the zero-key interactive demo →](https://facewang753.github.io/finmirror/)**
 
 ## Quickstart
 
@@ -156,7 +159,7 @@ FinMirror is informed by—not a relabeling of—recent work:
 | [Soft-SVeRL](https://arxiv.org/abs/2605.28561) (Cohere, 2026) | Soft, checklist-based verifiable rewards | Deterministic hard gates plus exportable reward vectors |
 | [FinRAG-12B](https://aclanthology.org/2026.acl-industry.92/) (ACL 2026) | Production answer/citation/refusal training | Differential tests that pointwise production KPIs can miss |
 
-The complete [literature review](docs/LITERATURE_REVIEW.md) covers 42 papers and marks
+The complete [literature review](docs/LITERATURE_REVIEW.md) covers 47 papers and marks
 preprints separately from peer-reviewed proceedings. We do **not** claim the first
 financial counterfactual, multilingual finance, visual-citation RAG, financial agent, or
 verifiable-finance benchmark.
@@ -206,4 +209,3 @@ program, a minimal paired-world template, or a verifier adversarial test. Read
 
 Code is Apache-2.0. The authored synthetic benchmark is CC BY 4.0; see
 [DATA_LICENSE.md](DATA_LICENSE.md). Please cite the project with [CITATION.cff](CITATION.cff).
-

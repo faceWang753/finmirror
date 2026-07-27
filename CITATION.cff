@@ -3,7 +3,9 @@ message: "If you use FinMirror, please cite this software artifact."
 title: "FinMirror: Paired Counterfactual Evaluation for Financial AI Agents"
 type: software
 authors:
-  - name: "Ethan"
+  - given-names: "Mingyang"
+    family-names: "Wang"
+    alias: "Ethan"
 version: 0.1.0
 date-released: 2026-07-26
 license: Apache-2.0
@@ -17,4 +19,3 @@ abstract: >-
   FinMirror independently evaluates financial systems in paired evidence worlds
   and deterministically verifies licensed changes in answers, citations,
   calculations, confidence, abstention, and reported retrieval.
-
