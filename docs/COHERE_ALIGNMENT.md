@@ -101,7 +101,7 @@ Report the complete metric vector and per-variant slices, not one composite scor
 
 A concise, defensible narrative:
 
-> Financial QA systems can keep the right-looking answer while ignoring changed evidence, or change the answer without migrating its citations, operands, uncertainty, and refusal behavior. I built FinMirror to make those dependencies executable. Each source world has controlled variants and a declared contract specifying what should change and what should stay invariant. The harness replays calculations, checks operand provenance and citation migration, scores confidence and missing-evidence behavior, and emits decomposed preference records. I then bounded the claim against 42 current papers and made the gaps—real filings, expert validation, model baselines, agents, and field evaluation—part of the experimental roadmap.
+> Financial QA systems can keep the right-looking answer while ignoring changed evidence, or change the answer without migrating its citations, operands, uncertainty, and refusal behavior. I built FinMirror to make those dependencies executable. Each source world has controlled variants and a declared contract specifying what should change and what should stay invariant. The harness replays calculations, checks operand provenance and citation migration, scores confidence and missing-evidence behavior, and emits decomposed preference records. I then bounded the claim against 47 current papers and made the gaps—real filings, expert validation, model baselines, agents, and field evaluation—part of the experimental roadmap.
 
 Useful live demonstrations:
 
@@ -139,4 +139,3 @@ These are not cosmetic disclaimers. They define the next experiments.
 6. **CIRCLE-style field protocol:** stakeholder goals, deployment context, harm hypotheses, monitoring measures, incident review, and retirement criteria before any customer pilot.
 
 If these deliverables produce negative results, they still strengthen the work: a benchmark becomes useful when it reveals where its own assumptions and the tested systems fail.
-
