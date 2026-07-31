@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "manifest_id": "finmirror-v0.2-claim-boundary",
+  "ledger_sha256": "2176b48b595ef1f48fcc35d4a7933f02e66d8775c13fdef2677689129709c8a8",
+  "artifacts": [
+    {
+      "schema_version": "1.0",
+      "artifact_id": "synthetic-v0.1-cases",
+      "kind": "synthetic",
+      "content_sha256": "a553470f626ef2d0e474944532257f81158b5c21c0e749bbe4c1dbf96cd295c2",
+      "content_bytes": 255082,
+      "media_type": "application/x-ndjson",
+      "storage": "repository",
+      "path": "benchmark/v0.1/cases.jsonl",
+      "receipt_id": null,
+      "parent_artifact_id": null,
+      "process_id": null,
+      "process_sha256": null,
+      "transform": null,
+      "disclosure": null
+    }
+  ]
+}

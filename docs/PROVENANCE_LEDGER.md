@@ -11,6 +11,10 @@ that a candidate is benchmark-ready.
 - `src/finmirror/sources.py` — dependency-free runtime validation, hashing, and drift
   checks;
 - `sources/v0.2/ledger.jsonl` — current candidate records;
+- `schema/evidence-manifest.schema.json` — strict artifact-lineage schema;
+- `src/finmirror/lineage.py` — byte verification, lineage-graph validation, and
+  fail-closed evidence claim tiers;
+- `sources/v0.2/evidence-manifest.json` — current hash-bound claim boundary;
 - `docs/V0.2_PROTOCOL.md` — curation and release protocol.
 
 ## Receipt fields
@@ -82,6 +86,42 @@ print(ledger_digest(receipts))
 
 The committed ledger is expected to fail this check today because both rows are
 candidate records without captured bytes or completed rights review. This is deliberate.
+
+## Evidence lineage and claim tiers
+
+A source receipt is necessary but insufficient: it says which provider bytes were
+captured, not what evidence the evaluator actually saw. The evidence manifest closes
+that gap with four non-interchangeable artifact kinds:
+
+| Kind | Meaning | Required parentage |
+|---|---|---|
+| `synthetic` | Fully authored benchmark material | No source receipt or parent |
+| `provider_capture` | Byte-exact content bound to a captured receipt | Source receipt; hash and size must match |
+| `source_derived` | Deterministic extract or render | Provider capture plus process hash and disclosure |
+| `evaluator_counterfactual` | Evaluator-authored transformed evidence | Source-derived parent plus transform, process hash, and disclosure |
+
+Repository paths are relative and byte-verified. `fetch_only` artifacts have no
+repository path. A provider capture cannot be stored in the repository unless its
+receipt has an explicit `redistribute` decision. Counterfactuals must descend from a
+source-derived artifact, so an edited value cannot be confused with an authentic
+government publication.
+
+```bash
+finmirror evidence-status
+```
+
+The committed manifest binds `benchmark/v0.1/cases.jsonl` and reports
+`SYNTHETIC_ONLY`. Candidate URLs in the ledger do not raise that tier. The possible
+machine-derived tiers are:
+
+1. `synthetic_only`;
+2. `candidate_source_material`;
+3. `captured_source_only`;
+4. `release_ready_source_material`.
+
+Only the fourth tier can satisfy `--require-real-source`, and only when a release-ready
+receipt reaches evaluator-visible derived evidence. No tier asserts expert validation,
+representativeness, safety, or production readiness.
 
 ## Drift semantics
 

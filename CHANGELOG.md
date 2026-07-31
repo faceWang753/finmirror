@@ -9,6 +9,10 @@ All notable changes are documented here.
 - fail-closed v0.2 source-receipt schema, exact-byte hashing, drift checks, candidate
   ledger, and calibration/provenance protocol; these artifacts are infrastructure only
   and do not claim expert validation or release approval;
+- a hash-bound evidence-lineage manifest and `evidence-status` gate that distinguishes
+  synthetic data, provider captures, deterministic source-derived renders, and
+  evaluator-authored counterfactuals; the committed state is machine-verified as
+  `synthetic_only` and cannot claim a real-source pilot;
 - automatic GitHub Pages deployment for the zero-key interactive demo;
 - a CC BY 4.0 Hugging Face dataset release with the v0.1 manifest and JSON Schemas;
 - a reproducible discovery submission to Awesome LLM Eval, currently under review;

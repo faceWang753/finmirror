@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finmirror.dev/schema/evidence-manifest.schema.json",
+  "title": "FinMirror Evidence Lineage Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "manifest_id", "ledger_sha256", "artifacts"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "manifest_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"
+    },
+    "ledger_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/artifact"}
+    }
+  },
+  "$defs": {
+    "nullableString": {"type": ["string", "null"], "minLength": 1},
+    "nullableSha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "artifact_id",
+        "kind",
+        "content_sha256",
+        "content_bytes",
+        "media_type",
+        "storage",
+        "path",
+        "receipt_id",
+        "parent_artifact_id",
+        "process_id",
+        "process_sha256",
+        "transform",
+        "disclosure"
+      ],
+      "properties": {
+        "schema_version": {"const": "1.0"},
+        "artifact_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "synthetic",
+            "provider_capture",
+            "source_derived",
+            "evaluator_counterfactual"
+          ]
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "content_bytes": {"type": "integer", "minimum": 1},
+        "media_type": {"type": "string", "pattern": "^[^\\s/]+/[^\\s/]+$"},
+        "storage": {"type": "string", "enum": ["repository", "fetch_only"]},
+        "path": {"$ref": "#/$defs/nullableString"},
+        "receipt_id": {"$ref": "#/$defs/nullableString"},
+        "parent_artifact_id": {"$ref": "#/$defs/nullableString"},
+        "process_id": {"$ref": "#/$defs/nullableString"},
+        "process_sha256": {"$ref": "#/$defs/nullableSha256"},
+        "transform": {"$ref": "#/$defs/nullableString"},
+        "disclosure": {"$ref": "#/$defs/nullableString"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"storage": {"const": "repository"}}},
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+              }
+            }
+          },
+          "else": {"properties": {"path": {"type": "null"}}}
+        },
+        {
+          "if": {"properties": {"kind": {"const": "synthetic"}}},
+          "then": {
+            "properties": {
+              "receipt_id": {"type": "null"},
+              "parent_artifact_id": {"type": "null"},
+              "process_id": {"type": "null"},
+              "process_sha256": {"type": "null"},
+              "transform": {"type": "null"},
+              "disclosure": {"type": "null"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"kind": {"const": "provider_capture"}}},
+          "then": {
+            "properties": {
+              "receipt_id": {"type": "string", "minLength": 1},
+              "parent_artifact_id": {"type": "null"},
+              "process_id": {"type": "null"},
+              "process_sha256": {"type": "null"},
+              "transform": {"type": "null"},
+              "disclosure": {"type": "null"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"kind": {"const": "source_derived"}}},
+          "then": {
+            "properties": {
+              "receipt_id": {"type": "string", "minLength": 1},
+              "parent_artifact_id": {"type": "string", "minLength": 1},
+              "process_id": {"type": "string", "minLength": 1},
+              "process_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "transform": {"type": "null"},
+              "disclosure": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"kind": {"const": "evaluator_counterfactual"}}
+          },
+          "then": {
+            "properties": {
+              "receipt_id": {"type": "string", "minLength": 1},
+              "parent_artifact_id": {"type": "string", "minLength": 1},
+              "process_id": {"type": "string", "minLength": 1},
+              "process_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "transform": {"type": "string", "minLength": 1},
+              "disclosure": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -229,6 +229,21 @@ committed rows are **candidates**, not released benchmark data: they have no cap
 content hashes or completed rights review and are deliberately rejected by the release
 gate. Synthetic v0.1 remains the only scored dataset.
 
+The hash-bound [evidence manifest](sources/v0.2/evidence-manifest.json) also makes that
+claim boundary executable. It distinguishes synthetic artifacts, byte-exact provider
+captures, deterministic source-derived renders, and evaluator-authored counterfactuals.
+Run:
+
+```bash
+finmirror evidence-status
+finmirror evidence-status --require-real-source  # deliberately fails today
+```
+
+The first command verifies the committed artifact bytes and reports `SYNTHETIC_ONLY`.
+The second is a fail-closed release gate: it cannot pass until a rights-reviewed source
+receipt reaches an evaluator-visible derived artifact. Even then, the result would
+establish source lineage only, not expert validation or real-world representativeness.
+
 ## Contributing
 
 The fastest high-impact contributions are a provider adapter, a new auditable finance

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 from finmirror.cli import main
 from finmirror.generator import generate_benchmark
@@ -170,4 +171,43 @@ def test_cli_reports_invalid_filter_without_traceback(tmp_path, capsys) -> None:
     captured = capsys.readouterr()
     assert status == 1
     assert "Filters selected zero cases" in captured.err
+    assert "Traceback" not in captured.err
+
+
+def test_evidence_status_reports_current_claim_boundary(capsys) -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    status = main(
+        [
+            "evidence-status",
+            "--ledger",
+            str(project_root / "sources" / "v0.2" / "ledger.jsonl"),
+            "--manifest",
+            str(project_root / "sources" / "v0.2" / "evidence-manifest.json"),
+            "--root",
+            str(project_root),
+        ]
+    )
+    captured = capsys.readouterr()
+    assert status == 0
+    assert "SYNTHETIC_ONLY" in captured.out
+    assert '"synthetic": 1' in captured.out
+
+
+def test_evidence_status_blocks_unearned_real_source_claim(capsys) -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    status = main(
+        [
+            "evidence-status",
+            "--ledger",
+            str(project_root / "sources" / "v0.2" / "ledger.jsonl"),
+            "--manifest",
+            str(project_root / "sources" / "v0.2" / "evidence-manifest.json"),
+            "--root",
+            str(project_root),
+            "--require-real-source",
+        ]
+    )
+    captured = capsys.readouterr()
+    assert status == 1
+    assert "real-source claim blocked: evidence tier is synthetic_only" in captured.err
     assert "Traceback" not in captured.err

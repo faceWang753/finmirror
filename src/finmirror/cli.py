@@ -18,7 +18,15 @@ from finmirror.annotations import annotation_agreement
 from finmirror.dataset import dataset_digest, load_cases
 from finmirror.evaluator import evaluate
 from finmirror.generator import generate_benchmark
+from finmirror.lineage import (
+    evidence_claim_tier,
+    load_evidence_manifest,
+    require_real_source_material,
+    validate_lineage,
+    verify_repository_artifacts,
+)
 from finmirror.report import render_comparison, render_report
+from finmirror.sources import ledger_digest, load_ledger
 from finmirror.training import (
     export_preferences,
     load_predictions,
@@ -158,6 +166,31 @@ def build_parser() -> argparse.ArgumentParser:
         help="Comma-separated categorical fields",
     )
     agreement.add_argument("--out")
+
+    evidence_status = subparsers.add_parser(
+        "evidence-status",
+        help="Verify evidence lineage and report the strongest justified source claim",
+    )
+    evidence_status.add_argument(
+        "--ledger",
+        default="sources/v0.2/ledger.jsonl",
+        help="Source receipt ledger in JSONL format",
+    )
+    evidence_status.add_argument(
+        "--manifest",
+        default="sources/v0.2/evidence-manifest.json",
+        help="Hash-bound evidence lineage manifest",
+    )
+    evidence_status.add_argument(
+        "--root",
+        default=".",
+        help="Repository root used to verify committed artifact bytes",
+    )
+    evidence_status.add_argument(
+        "--require-real-source",
+        action="store_true",
+        help="Fail unless release-ready provider material reaches rendered evidence",
+    )
     return parser
 
 
@@ -266,6 +299,30 @@ def main(argv: list[str] | None = None) -> int:
             if args.out:
                 Path(args.out).write_text(rendered + "\n", encoding="utf-8", newline="\n")
             print(rendered)
+            return 0
+
+        if args.command == "evidence-status":
+            receipts = load_ledger(args.ledger)
+            manifest = load_evidence_manifest(args.manifest)
+            validate_lineage(manifest, receipts)
+            verify_repository_artifacts(manifest, args.root)
+            tier = evidence_claim_tier(manifest, receipts)
+            if args.require_real_source:
+                require_real_source_material(manifest, receipts)
+            counts = {
+                kind: sum(artifact.kind == kind for artifact in manifest.artifacts)
+                for kind in (
+                    "synthetic",
+                    "provider_capture",
+                    "source_derived",
+                    "evaluator_counterfactual",
+                )
+            }
+            print(
+                f"{tier.upper()} · {len(manifest.artifacts)} artifacts · "
+                f"{json.dumps(counts, sort_keys=True)} · "
+                f"ledger sha256 {ledger_digest(receipts)}"
+            )
             return 0
     except (FileNotFoundError, RuntimeError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
