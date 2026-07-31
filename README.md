@@ -220,6 +220,15 @@ research release is designed around:
 
 See the [research roadmap](docs/RESEARCH_ROADMAP.md) for milestones and stop/go criteria.
 
+### Experimental v0.2 source controls
+
+The repository now includes a fail-closed
+[source provenance ledger](docs/PROVENANCE_LEDGER.md) and
+[calibration-slice protocol](docs/V0.2_PROTOCOL.md) for future real-source work. The
+committed rows are **candidates**, not released benchmark data: they have no captured
+content hashes or completed rights review and are deliberately rejected by the release
+gate. Synthetic v0.1 remains the only scored dataset.
+
 ## Contributing
 
 The fastest high-impact contributions are a provider adapter, a new auditable finance

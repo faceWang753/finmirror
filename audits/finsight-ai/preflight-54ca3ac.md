@@ -4,7 +4,7 @@
 |---|---|
 | Project | [`juanjuandog/FinSight-AI`](https://github.com/juanjuandog/FinSight-AI) |
 | Upstream revision | `54ca3ac2ba5178a0c17daa4a773cb9462f274206` |
-| Review date | 2026-07-27 |
+| Review date | 2026-07-27; maintainer feedback incorporated 2026-07-31 |
 | Reviewer | Mingyang (Ethan) Wang |
 | FinMirror stage | Integration preflight; **not an executed reliability audit** |
 | Upstream contribution | [`juanjuandog/FinSight-AI#14`](https://github.com/juanjuandog/FinSight-AI/pull/14) |
@@ -19,8 +19,10 @@ the same retrieved context.
 
 PR #14 proposes a focused remedy: a stable SHA-256 `dataSnapshotHash` over the complete
 ordered `EvidenceChunk` list, exposed in `RagTrace` and persisted through a nullable
-database migration. The review explicitly asks the maintainer to correct the chosen
-snapshot boundary if rank or score should not be identity-bearing.
+database migration. After maintainer review, the boundary is the ordered content sent
+to answer generation: document ID, title, document type, publication date, section, and
+text. Retrieval score is deliberately excluded because the current generation prompt
+does not consume it; a score-only change therefore does not alter the model context.
 
 This is a reproducibility finding, not a claim about answer quality, investment quality,
 security, or production safety.
@@ -71,8 +73,8 @@ A full audit should begin only after a frozen-corpus seam exists.
 
 ## Patch verification
 
-Patch commit:
-[`abb3eb73fb2967f8f350b7e21a548dc1b44477d4`](https://github.com/faceWang753/FinSight-AI/commit/abb3eb73fb2967f8f350b7e21a548dc1b44477d4)
+Current patch commit:
+[`41291521c041dd970d6670c509f9f709d837420f`](https://github.com/faceWang753/FinSight-AI/commit/41291521c041dd970d6670c509f9f709d837420f)
 
 ```bash
 git clone https://github.com/juanjuandog/FinSight-AI
@@ -89,20 +91,30 @@ Observed verification environment:
 - Apache Maven 3.9.16, binary SHA-512 verified against the Apache release checksum;
 - Java 23.0.1 compiling with Maven `release 17`;
 - Docker Desktop 29.6.1 available to Testcontainers;
-- 15 tests discovered, 0 failures, 0 errors, 3 environment-dependent skips.
+- 18 tests discovered, 0 failures, 0 errors, 3 environment-dependent skips.
 
-The added unit tests verify digest stability, sensitivity to changed evidence content,
-and sensitivity to rerank order. The digest encoding uses length-prefixed UTF-8 fields
-and IEEE-754 score bits to avoid delimiter ambiguity.
+Six hasher tests verify digest stability, sensitivity to changed evidence content,
+sensitivity to rerank order, a nullable publication date, a distinct encoding for null
+versus empty text, and invariance to score-only changes. Each nullable value receives a
+presence marker before its length-prefixed UTF-8 payload, so null cannot collide with an
+empty string and no nullable field can crash hashing.
 
-## Requested maintainer correction
+The upstream Actions run is awaiting first-time-contributor approval. That state is not
+reported as a passing hosted CI result; the complete local Maven result is reported
+above.
 
-The PR asks one narrow technical question:
+## Maintainer feedback and resolution
 
-> Is the ordered, scored evidence list the intended reproducibility boundary here? If
-> retrieval identity should ignore score or order, please correct that assumption and
-> the hasher will be adjusted.
+The maintainer agreed that the direction fits FinSight-AI's reproducibility goals and
+requested three concrete corrections:
+
+- encode nullable fields deterministically and keep null distinct from an empty string;
+- add a regression test with `publishedAt = null`;
+- define whether order and retrieval score are identity-bearing.
+
+Commit `4129152` implements those corrections and documents the resolved boundary.
+Order remains significant because it is sent to generation. Score is excluded for the
+current path because it is not sent to generation.
 
 Maintainer feedback should be recorded before this preflight is promoted into a joint or
 endorsed case study. No affiliation, endorsement, or collaboration is implied.
-
