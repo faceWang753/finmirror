@@ -14,7 +14,7 @@ Unsupported capabilities are marked not applicable rather than scored as failure
 
 | Project | Pinned revision | Stage | Public contribution |
 |---|---|---|---|
-| [FinSight-AI](finsight-ai/preflight-54ca3ac.md) | `54ca3ac2ba5178a0c17daa4a773cb9462f274206` | Preflight complete; paired execution blocked on a frozen-corpus seam | [PR #14](https://github.com/juanjuandog/FinSight-AI/pull/14) |
+| [FinSight-AI](finsight-ai/preflight-54ca3ac.md) | `54ca3ac2ba5178a0c17daa4a773cb9462f274206` | Preflight complete; paired execution blocked on a frozen-corpus seam | [PR #14 merged](https://github.com/juanjuandog/FinSight-AI/pull/14) as [`d2b9b60`](https://github.com/juanjuandog/FinSight-AI/commit/d2b9b6043135e6863eaf8b84457b2cdec71539e6) |
 | [ai-hedge-fund](https://github.com/virattt/ai-hedge-fund) | `00d509b06f4e4de473d78ceb24cb840f9b0be735` | Integration work in progress | Pending verification |
 | [TradingAgents](tradingagents/preflight-01477f9.md) | `01477f9afb7a47b849ed4c9259d3a9a4738d9fda` | Preflight complete; paired execution blocked on exact live-input receipts and a frozen fixture seam | [PR #1179](https://github.com/TauricResearch/TradingAgents/pull/1179) |
 | [FinRobot](https://github.com/AI4Finance-Foundation/FinRobot) | `a4a7fe6ace8f04b99188c9f6587e12ea86299bc1` | Planned | None |

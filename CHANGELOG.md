@@ -30,7 +30,10 @@ All notable changes are documented here.
 - updated the FinSight-AI preflight after maintainer review: nullable evidence fields
   are presence-marked, null and empty values are distinct, retrieval score is excluded
   from the current generation-context fingerprint, and the full local backend suite
-  passes 18 tests with 3 infrastructure-dependent skips.
+  passes 18 tests with 3 infrastructure-dependent skips;
+- recorded that FinSight-AI merged the evidence-snapshot contribution in upstream PR #14
+  as commit `d2b9b60`, while preserving the distinction between merged infrastructure and
+  an executed reliability audit.
 
 ### Planned
 

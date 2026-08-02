@@ -67,9 +67,11 @@ reproduction commands, capability gaps, upstream PRs, and explicit requests for
 maintainer correction.
 
 The first completed preflight covers
-[FinSight-AI at `54ca3ac`](audits/finsight-ai/preflight-54ca3ac.md). It contributes an
-evidence-snapshot hash in [upstream PR #14](https://github.com/juanjuandog/FinSight-AI/pull/14)
-but deliberately publishes no reliability score until a fair frozen-corpus seam exists.
+[FinSight-AI at `54ca3ac`](audits/finsight-ai/preflight-54ca3ac.md). Its ordered
+evidence-snapshot hash was [merged upstream in PR #14](https://github.com/juanjuandog/FinSight-AI/pull/14)
+as commit [`d2b9b60`](https://github.com/juanjuandog/FinSight-AI/commit/d2b9b6043135e6863eaf8b84457b2cdec71539e6).
+The preflight still publishes no reliability score because the project does not yet expose
+a fair frozen-corpus seam; a merged reproducibility primitive is not a reliability endorsement.
 
 ## Quickstart
 

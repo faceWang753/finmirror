@@ -4,10 +4,10 @@
 |---|---|
 | Project | [`juanjuandog/FinSight-AI`](https://github.com/juanjuandog/FinSight-AI) |
 | Upstream revision | `54ca3ac2ba5178a0c17daa4a773cb9462f274206` |
-| Review date | 2026-07-27; maintainer feedback incorporated 2026-07-31 |
+| Review date | 2026-07-27; maintainer feedback incorporated 2026-07-31; upstream merge verified 2026-08-02 |
 | Reviewer | Mingyang (Ethan) Wang |
 | FinMirror stage | Integration preflight; **not an executed reliability audit** |
-| Upstream contribution | [`juanjuandog/FinSight-AI#14`](https://github.com/juanjuandog/FinSight-AI/pull/14) |
+| Upstream contribution | [PR #14](https://github.com/juanjuandog/FinSight-AI/pull/14), merged as [`d2b9b60`](https://github.com/juanjuandog/FinSight-AI/commit/d2b9b6043135e6863eaf8b84457b2cdec71539e6) |
 
 ## Conclusion
 
@@ -17,7 +17,7 @@ not bind an answer to the exact ordered evidence sent to generation. A trace rec
 or rerank order. That prevents a third party from proving that two reproduced runs used
 the same retrieved context.
 
-PR #14 proposes a focused remedy: a stable SHA-256 `dataSnapshotHash` over the complete
+The merged PR #14 adds a focused remedy: a stable SHA-256 `dataSnapshotHash` over the complete
 ordered `EvidenceChunk` list, exposed in `RagTrace` and persisted through a nullable
 database migration. After maintainer review, the boundary is the ordered content sent
 to answer generation: document ID, title, document type, publication date, section, and
@@ -73,15 +73,16 @@ A full audit should begin only after a frozen-corpus seam exists.
 
 ## Patch verification
 
-Current patch commit:
+Reviewed fork patch commit:
 [`41291521c041dd970d6670c509f9f709d837420f`](https://github.com/faceWang753/FinSight-AI/commit/41291521c041dd970d6670c509f9f709d837420f)
+
+Upstream merge commit:
+[`d2b9b6043135e6863eaf8b84457b2cdec71539e6`](https://github.com/juanjuandog/FinSight-AI/commit/d2b9b6043135e6863eaf8b84457b2cdec71539e6)
 
 ```bash
 git clone https://github.com/juanjuandog/FinSight-AI
 cd FinSight-AI
-git fetch https://github.com/faceWang753/FinSight-AI \
-  rag-evidence-snapshot-hash
-git checkout FETCH_HEAD
+git checkout d2b9b6043135e6863eaf8b84457b2cdec71539e6
 cd backend
 mvn test
 ```
@@ -99,9 +100,8 @@ versus empty text, and invariance to score-only changes. Each nullable value rec
 presence marker before its length-prefixed UTF-8 payload, so null cannot collide with an
 empty string and no nullable field can crash hashing.
 
-The upstream Actions run is awaiting first-time-contributor approval. That state is not
-reported as a passing hosted CI result; the complete local Maven result is reported
-above.
+The contribution was subsequently merged upstream. The verification result above is the
+recorded local Maven run; merge status is not presented as a substitute for that test evidence.
 
 ## Maintainer feedback and resolution
 
@@ -116,5 +116,5 @@ Commit `4129152` implements those corrections and documents the resolved boundar
 Order remains significant because it is sent to generation. Score is excluded for the
 current path because it is not sent to generation.
 
-Maintainer feedback should be recorded before this preflight is promoted into a joint or
-endorsed case study. No affiliation, endorsement, or collaboration is implied.
+The contribution is merged, but this remains an independent preflight rather than a joint
+or endorsed case study. No affiliation, endorsement, or collaboration is implied.
