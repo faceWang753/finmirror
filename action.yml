@@ -1,0 +1,85 @@
+name: FinMirror reliability gate
+description: Score financial AI predictions with deterministic paired-world reliability checks.
+author: Mingyang (Ethan) Wang
+
+branding:
+  icon: check-circle
+  color: green
+
+inputs:
+  predictions:
+    description: Path to a FinMirror prediction-contract JSONL file.
+    required: true
+  system:
+    description: Human-readable name of the evaluated system.
+    required: true
+  system_version:
+    description: Optional version, model, or commit identifier.
+    required: false
+    default: ""
+  dataset:
+    description: Optional benchmark directory or cases.jsonl path; defaults to bundled v0.1.
+    required: false
+    default: ""
+  output:
+    description: Directory for report.json, report.html, and summary.md.
+    required: false
+    default: finmirror-results
+
+outputs:
+  gate:
+    description: PASS or BLOCKED.
+    value: ${{ steps.summary.outputs.gate }}
+  audit_score:
+    description: FinMirror audit score from 0 to 100.
+    value: ${{ steps.summary.outputs.audit_score }}
+  pair_reliability:
+    description: Strict pair reliability from 0 to 1.
+    value: ${{ steps.summary.outputs.pair_reliability }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v7
+      with:
+        python-version: "3.12"
+
+    - name: Install FinMirror
+      shell: bash
+      run: python -m pip install "${{ github.action_path }}"
+
+    - name: Score paired-world reliability
+      shell: bash
+      env:
+        FINMIRROR_DATASET: ${{ inputs.dataset }}
+        FINMIRROR_PREDICTIONS: ${{ inputs.predictions }}
+        FINMIRROR_SYSTEM: ${{ inputs.system }}
+        FINMIRROR_SYSTEM_VERSION: ${{ inputs.system_version }}
+        FINMIRROR_OUTPUT: ${{ inputs.output }}
+      run: |
+        dataset="$FINMIRROR_DATASET"
+        if [ -z "$dataset" ]; then
+          dataset="${{ github.action_path }}/benchmark/v0.1"
+        fi
+        finmirror score \
+          --dataset "$dataset" \
+          --predictions "$FINMIRROR_PREDICTIONS" \
+          --system "$FINMIRROR_SYSTEM" \
+          --system-version "$FINMIRROR_SYSTEM_VERSION" \
+          --out "$FINMIRROR_OUTPUT"
+
+    - name: Publish reliability summary
+      id: summary
+      if: always()
+      shell: bash
+      env:
+        FINMIRROR_OUTPUT: ${{ inputs.output }}
+      run: |
+        if [ -f "$FINMIRROR_OUTPUT/report.json" ]; then
+          finmirror ci-summary \
+            --report "$FINMIRROR_OUTPUT/report.json" \
+            --summary-out "$FINMIRROR_OUTPUT/summary.md" \
+            --github-output "$GITHUB_OUTPUT"
+          cat "$FINMIRROR_OUTPUT/summary.md" >> "$GITHUB_STEP_SUMMARY"
+        fi

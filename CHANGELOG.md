@@ -4,7 +4,19 @@ All notable changes are documented here.
 
 ## [Unreleased]
 
+### Planned
+
+- expert-reviewed real-source pilot;
+- sealed isomorphic intervention track;
+- visual and agent-trajectory evaluation.
+
+## [0.1.1] — 2026-08-04
+
 ### Added
+
+- a reusable GitHub Actions gate that scores prediction-contract JSONL, fails blocked
+  paired-world evaluations, publishes a bounded Markdown job summary, preserves
+  standalone reports, and exposes gate, audit-score, and pair-reliability outputs;
 
 - fail-closed v0.2 source-receipt schema, exact-byte hashing, drift checks, candidate
   ledger, and calibration/provenance protocol; these artifacts are infrastructure only
@@ -34,12 +46,6 @@ All notable changes are documented here.
 - recorded that FinSight-AI merged the evidence-snapshot contribution in upstream PR #14
   as commit `d2b9b60`, while preserving the distinction between merged infrastructure and
   an executed reliability audit.
-
-### Planned
-
-- expert-reviewed real-source pilot;
-- sealed isomorphic intervention track;
-- visual and agent-trajectory evaluation.
 
 ## [0.1.0] — 2026-07-26
 

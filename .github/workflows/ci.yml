@@ -37,3 +37,24 @@ jobs:
       - run: python -m build
       - run: python -m pip install --force-reinstall dist/*.whl
       - run: finmirror --version
+
+  action-smoke:
+    name: Composite action smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - id: finmirror
+        uses: ./
+        with:
+          predictions: artifacts/demo/evidence-program/predictions.jsonl
+          system: action-smoke-test
+          system_version: ${{ github.sha }}
+      - name: Verify action outputs
+        env:
+          FINMIRROR_GATE: ${{ steps.finmirror.outputs.gate }}
+          FINMIRROR_SCORE: ${{ steps.finmirror.outputs.audit_score }}
+          FINMIRROR_PAIR_RELIABILITY: ${{ steps.finmirror.outputs.pair_reliability }}
+        run: |
+          test "$FINMIRROR_GATE" = "PASS"
+          test "$FINMIRROR_SCORE" = "100.0"
+          test "$FINMIRROR_PAIR_RELIABILITY" = "1.000000"

@@ -118,6 +118,24 @@ FinMirror embeds evidence into the structured-output prompt because Cohere struc
 JSON and the `documents` parameter are not combined in this adapter. API calls cost
 money; no hosted-model result is bundled or implied.
 
+### Use FinMirror as a pull-request gate
+
+Systems that emit the prediction contract can run the strict paired-world gate directly
+in GitHub Actions:
+
+```yaml
+- uses: faceWang753/finmirror@v0.1.1
+  with:
+    predictions: predictions.jsonl
+    system: my-finance-agent
+    system_version: ${{ github.sha }}
+```
+
+The action fails blocked evaluations, preserves JSON and standalone HTML reports, and
+writes case accuracy, strict pair reliability, citation migration, operand provenance,
+confidence behavior, evidence ablation, and the leading failures to the job summary.
+See the complete [GitHub Actions guide](docs/GITHUB_ACTION.md).
+
 ## The paired-world contract
 
 ```mermaid

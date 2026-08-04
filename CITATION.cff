@@ -6,8 +6,8 @@ authors:
   - given-names: "Mingyang"
     family-names: "Wang"
     alias: "Ethan"
-version: 0.1.0
-date-released: 2026-07-26
+version: 0.1.1
+date-released: 2026-08-04
 license: Apache-2.0
 keywords:
   - financial AI

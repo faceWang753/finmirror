@@ -153,6 +153,26 @@ def test_score_and_rerender_existing_oracle_submission(
     assert rerendered.exists()
     assert "Wrote" in capsys.readouterr().out
 
+    summary = tmp_path / "finmirror-summary.md"
+    github_output = tmp_path / "github-output.txt"
+    assert (
+        main(
+            [
+                "ci-summary",
+                "--report",
+                str(output / "report.json"),
+                "--summary-out",
+                str(summary),
+                "--github-output",
+                str(github_output),
+            ]
+        )
+        == 0
+    )
+    assert "FinMirror gate: PASS" in summary.read_text(encoding="utf-8")
+    assert "gate=PASS" in github_output.read_text(encoding="utf-8")
+    assert "Wrote CI summary" in capsys.readouterr().out
+
 
 def test_cli_reports_invalid_filter_without_traceback(tmp_path, capsys) -> None:
     dataset = tmp_path / "benchmark"

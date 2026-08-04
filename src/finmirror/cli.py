@@ -15,6 +15,7 @@ from finmirror.adapters.baselines import (
     OracleAdapter,
 )
 from finmirror.annotations import annotation_agreement
+from finmirror.ci import load_report, write_ci_artifacts
 from finmirror.dataset import dataset_digest, load_cases
 from finmirror.evaluator import evaluate
 from finmirror.generator import generate_benchmark
@@ -106,7 +107,7 @@ def build_parser() -> argparse.ArgumentParser:
         prog="finmirror",
         description="Paired counterfactual evaluation for financial AI agents.",
     )
-    parser.add_argument("--version", action="version", version="finmirror 0.1.0")
+    parser.add_argument("--version", action="version", version="finmirror 0.1.1")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     generate = subparsers.add_parser("generate", help="Generate the synthetic v0.1 benchmark")
@@ -144,6 +145,17 @@ def build_parser() -> argparse.ArgumentParser:
     report = subparsers.add_parser("report", help="Re-render an HTML report")
     report.add_argument("report_json")
     report.add_argument("--out", default="report.html")
+
+    ci_summary = subparsers.add_parser(
+        "ci-summary",
+        help="Write a Markdown CI summary and optional GitHub step outputs",
+    )
+    ci_summary.add_argument("--report", required=True, help="FinMirror report.json path")
+    ci_summary.add_argument("--summary-out", required=True, help="Markdown summary path")
+    ci_summary.add_argument(
+        "--github-output",
+        help="Optional path supplied by GitHub Actions through GITHUB_OUTPUT",
+    )
 
     preferences = subparsers.add_parser(
         "export-preferences",
@@ -273,6 +285,16 @@ def main(argv: list[str] | None = None) -> int:
             report_value = json.loads(Path(args.report_json).read_text(encoding="utf-8"))
             render_report(report_value, args.out)
             print(f"Wrote {Path(args.out).resolve()}")
+            return 0
+
+        if args.command == "ci-summary":
+            report_value = load_report(args.report)
+            write_ci_artifacts(
+                report_value,
+                summary_path=args.summary_out,
+                outputs_path=args.github_output,
+            )
+            print(f"Wrote CI summary {Path(args.summary_out).resolve()}")
             return 0
 
         if args.command == "export-preferences":
