@@ -244,10 +244,10 @@ See the [research roadmap](docs/RESEARCH_ROADMAP.md) for milestones and stop/go 
 
 The repository now includes a fail-closed
 [source provenance ledger](docs/PROVENANCE_LEDGER.md) and
-[calibration-slice protocol](docs/V0.2_PROTOCOL.md) for future real-source work. The
-committed rows are **candidates**, not released benchmark data: they have no captured
-content hashes or completed rights review and are deliberately rejected by the release
-gate. Synthetic v0.1 remains the only scored dataset.
+[calibration-slice protocol](docs/V0.2_PROTOCOL.md). One Statistics Canada source is now
+captured, rights-reviewed, and connected to a one-group calibration artifact; the Bank
+of Canada row remains a blocked candidate. The calibration gold is provisional and has
+not been independently reviewed. Synthetic v0.1 remains the only scored dataset.
 
 The hash-bound [evidence manifest](sources/v0.2/evidence-manifest.json) also makes that
 claim boundary executable. It distinguishes synthetic artifacts, byte-exact provider
@@ -256,13 +256,18 @@ Run:
 
 ```bash
 finmirror evidence-status
-finmirror evidence-status --require-real-source  # deliberately fails today
+finmirror evidence-status --require-real-source
+finmirror review-status
+finmirror review-status --require-expert-validated  # deliberately fails today
 ```
 
-The first command verifies the committed artifact bytes and reports `SYNTHETIC_ONLY`.
-The second is a fail-closed release gate: it cannot pass until a rights-reviewed source
-receipt reaches an evaluator-visible derived artifact. Even then, the result would
-establish source lineage only, not expert validation or real-world representativeness.
+The evidence commands verify the committed bytes and report
+`RELEASE_READY_SOURCE_MATERIAL`: a rights-reviewed provider capture reaches a
+source-derived reference and visibly disclosed counterfactuals. This establishes source
+lineage only. The separate review command reports `PENDING_EXTERNAL_REVIEW`, and its
+strict form blocks model runs or benchmark submissions until two independent
+finance-capable annotations, blinded adjudication, agreement thresholds, and a matching
+dataset digest are recorded.
 
 ## Contributing
 

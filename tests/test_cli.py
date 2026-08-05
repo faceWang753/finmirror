@@ -194,7 +194,7 @@ def test_cli_reports_invalid_filter_without_traceback(tmp_path, capsys) -> None:
     assert "Traceback" not in captured.err
 
 
-def test_evidence_status_reports_current_claim_boundary(capsys) -> None:
+def test_evidence_status_reports_release_ready_source_material(capsys) -> None:
     project_root = Path(__file__).resolve().parents[1]
     status = main(
         [
@@ -209,11 +209,12 @@ def test_evidence_status_reports_current_claim_boundary(capsys) -> None:
     )
     captured = capsys.readouterr()
     assert status == 0
-    assert "SYNTHETIC_ONLY" in captured.out
+    assert "RELEASE_READY_SOURCE_MATERIAL" in captured.out
     assert '"synthetic": 1' in captured.out
+    assert '"source_derived": 2' in captured.out
 
 
-def test_evidence_status_blocks_unearned_real_source_claim(capsys) -> None:
+def test_evidence_status_accepts_hash_bound_real_source_material(capsys) -> None:
     project_root = Path(__file__).resolve().parents[1]
     status = main(
         [
@@ -228,6 +229,36 @@ def test_evidence_status_blocks_unearned_real_source_claim(capsys) -> None:
         ]
     )
     captured = capsys.readouterr()
-    assert status == 1
-    assert "real-source claim blocked: evidence tier is synthetic_only" in captured.err
+    assert status == 0
+    assert "RELEASE_READY_SOURCE_MATERIAL" in captured.out
+    assert captured.err == ""
+
+
+def test_review_status_reports_and_blocks_pending_external_review(capsys) -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    status_path = (
+        project_root
+        / "sources"
+        / "v0.2"
+        / "calibration"
+        / "statcan-gdp-2025q2-q3"
+        / "review-status.json"
+    )
+    status = main(["review-status", "--status", str(status_path)])
+    captured = capsys.readouterr()
+    assert status == 0
+    assert "PENDING_EXTERNAL_REVIEW" in captured.out
+    assert "7 cases" in captured.out
+
+    blocked = main(
+        [
+            "review-status",
+            "--status",
+            str(status_path),
+            "--require-expert-validated",
+        ]
+    )
+    captured = capsys.readouterr()
+    assert blocked == 1
+    assert "expert-validation claim blocked" in captured.err
     assert "Traceback" not in captured.err

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "manifest_id": "finmirror-v0.2-claim-boundary",
-  "ledger_sha256": "2176b48b595ef1f48fcc35d4a7933f02e66d8775c13fdef2677689129709c8a8",
+  "ledger_sha256": "6c0418a004538a8e49eb549b32a2455aa93c47c13ae4ade8bc9bef568664ce3f",
   "artifacts": [
     {
       "schema_version": "1.0",
@@ -18,6 +18,70 @@
       "process_sha256": null,
       "transform": null,
       "disclosure": null
+    },
+    {
+      "schema_version": "1.0",
+      "artifact_id": "statcan-3610010401-eng-capture",
+      "kind": "provider_capture",
+      "content_sha256": "9a5e3ffe478f1ccb69724147c246818e98786adfafee6818605a298c48626dcd",
+      "content_bytes": 961751,
+      "media_type": "application/zip",
+      "storage": "fetch_only",
+      "path": null,
+      "receipt_id": "statcan-3610010401-gdp-quarterly",
+      "parent_artifact_id": null,
+      "process_id": null,
+      "process_sha256": null,
+      "transform": null,
+      "disclosure": null
+    },
+    {
+      "schema_version": "1.0",
+      "artifact_id": "statcan-gdp-2025q2-q3-source",
+      "kind": "source_derived",
+      "content_sha256": "a20d4f8e897b6b6793974336431a1529ff452db392264a3f3d58a07f920e1734",
+      "content_bytes": 3274,
+      "media_type": "application/json",
+      "storage": "repository",
+      "path": "sources/v0.2/calibration/statcan-gdp-2025q2-q3/source.json",
+      "receipt_id": "statcan-3610010401-gdp-quarterly",
+      "parent_artifact_id": "statcan-3610010401-eng-capture",
+      "process_id": "curate-statcan-gdp-pilot-v1",
+      "process_sha256": "35ed7d653c7eb256b1bc9f821bcb641bdfc2648c52288e6dd054aff682fc5e96",
+      "transform": null,
+      "disclosure": "Five disclosed observations selected deterministically from the hash-pinned Statistics Canada capture."
+    },
+    {
+      "schema_version": "1.0",
+      "artifact_id": "statcan-gdp-2025q2-q3-reference",
+      "kind": "source_derived",
+      "content_sha256": "f90304a5169ebb90205f44f31fc136cf43600323b136642704662f576c025167",
+      "content_bytes": 2656,
+      "media_type": "application/x-ndjson",
+      "storage": "repository",
+      "path": "sources/v0.2/calibration/statcan-gdp-2025q2-q3/reference.jsonl",
+      "receipt_id": "statcan-3610010401-gdp-quarterly",
+      "parent_artifact_id": "statcan-3610010401-eng-capture",
+      "process_id": "curate-statcan-gdp-pilot-v1",
+      "process_sha256": "35ed7d653c7eb256b1bc9f821bcb641bdfc2648c52288e6dd054aff682fc5e96",
+      "transform": null,
+      "disclosure": "Source-derived reference case with provisional machine-derived gold pending independent finance review."
+    },
+    {
+      "schema_version": "1.0",
+      "artifact_id": "statcan-gdp-2025q2-q3-counterfactuals",
+      "kind": "evaluator_counterfactual",
+      "content_sha256": "d8d028a3dccaa5690b72846b121bc31f4ef13791f6f65c88772e71582447ceeb",
+      "content_bytes": 17061,
+      "media_type": "application/x-ndjson",
+      "storage": "repository",
+      "path": "sources/v0.2/calibration/statcan-gdp-2025q2-q3/counterfactuals.jsonl",
+      "receipt_id": "statcan-3610010401-gdp-quarterly",
+      "parent_artifact_id": "statcan-gdp-2025q2-q3-reference",
+      "process_id": "curate-statcan-gdp-pilot-v1",
+      "process_sha256": "35ed7d653c7eb256b1bc9f821bcb641bdfc2648c52288e6dd054aff682fc5e96",
+      "transform": "six atomic paired-world interventions",
+      "disclosure": "Evaluator-authored transformed worlds, visibly labeled as non-official and pending independent expert review."
     }
   ]
 }

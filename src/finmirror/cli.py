@@ -27,6 +27,7 @@ from finmirror.lineage import (
     verify_repository_artifacts,
 )
 from finmirror.report import render_comparison, render_report
+from finmirror.review import load_expert_review_status, require_expert_validated
 from finmirror.sources import ledger_digest, load_ledger
 from finmirror.training import (
     export_preferences,
@@ -203,6 +204,25 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Fail unless release-ready provider material reaches rendered evidence",
     )
+
+    review_status = subparsers.add_parser(
+        "review-status",
+        help="Report whether a real-source pilot has earned expert-validated gold status",
+    )
+    review_status.add_argument(
+        "--status",
+        default=("sources/v0.2/calibration/statcan-gdp-2025q2-q3/review-status.json"),
+        help="Machine-readable expert review status record",
+    )
+    review_status.add_argument(
+        "--dataset-sha256",
+        help="Optional dataset digest that the review status must bind",
+    )
+    review_status.add_argument(
+        "--require-expert-validated",
+        action="store_true",
+        help="Fail unless independent annotation and adjudication gates pass",
+    )
     return parser
 
 
@@ -344,6 +364,21 @@ def main(argv: list[str] | None = None) -> int:
                 f"{tier.upper()} · {len(manifest.artifacts)} artifacts · "
                 f"{json.dumps(counts, sort_keys=True)} · "
                 f"ledger sha256 {ledger_digest(receipts)}"
+            )
+            return 0
+
+        if args.command == "review-status":
+            status = load_expert_review_status(args.status)
+            blockers = status.validation_blockers()
+            if args.require_expert_validated:
+                require_expert_validated(
+                    status,
+                    dataset_sha256=args.dataset_sha256,
+                )
+            print(
+                f"{status.review_state.upper()} · {len(status.case_ids)} cases · "
+                f"gold {status.gold_status} · {len(blockers)} blockers · "
+                f"dataset sha256 {status.dataset_sha256}"
             )
             return 0
     except (FileNotFoundError, RuntimeError, ValueError) as exc:

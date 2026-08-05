@@ -252,15 +252,18 @@ def test_load_ledger_reports_line_and_object_errors(tmp_path: Path) -> None:
         load_ledger(non_object)
 
 
-def test_committed_v02_ledger_is_explicitly_candidate_only() -> None:
+def test_committed_v02_ledger_separates_captured_and_candidate_sources() -> None:
     receipts = load_ledger(PROJECT_ROOT / "sources" / "v0.2" / "ledger.jsonl")
     assert {receipt.provider for receipt in receipts} == {
         "Bank of Canada",
         "Statistics Canada",
     }
     assert {receipt.resource_id for receipt in receipts} == {"36-10-0104-01", "V39079"}
-    assert all(receipt.record_state == "candidate" for receipt in receipts)
-    assert all(not receipt.release_ready for receipt in receipts)
+    by_provider = {receipt.provider: receipt for receipt in receipts}
+    assert by_provider["Statistics Canada"].record_state == "captured"
+    assert by_provider["Statistics Canada"].release_ready is True
+    assert by_provider["Bank of Canada"].record_state == "candidate"
+    assert by_provider["Bank of Canada"].release_ready is False
     with pytest.raises(SourceReceiptError, match="not release-ready"):
         load_ledger(
             PROJECT_ROOT / "sources" / "v0.2" / "ledger.jsonl",

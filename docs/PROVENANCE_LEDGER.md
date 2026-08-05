@@ -139,13 +139,17 @@ A matching digest establishes only byte identity. It does not prove that:
 
 Those properties require the independent gates in the v0.2 protocol.
 
-## Current candidates
+## Current source states
 
-The initial ledger identifies two official candidate families:
+The ledger identifies two official source families:
 
-- Statistics Canada Table 36-10-0104-01, quarterly expenditure-based GDP;
-- Bank of Canada series V39079, target for the overnight rate, with a fixed date range.
+- Statistics Canada Table 36-10-0104-01 is captured as an exact English full-table ZIP,
+  covered by the Statistics Canada Open Licence, and connected to a reproducible
+  one-group calibration artifact;
+- Bank of Canada series V39079 remains a candidate with unresolved record-level rights
+  and no captured content.
 
-Neither row is approved for release. The Bank of Canada candidate explicitly excludes
-exchange-rate data and other third-party series from its scope. Record-level terms and
-third-party review must be completed before either source is used.
+The Statistics Canada lineage can pass the real-source material gate, but the separate
+expert-review gate remains blocked. The Bank of Canada candidate explicitly excludes
+exchange-rate data and other third-party series from its scope and cannot enter a
+release until its terms and third-party review are complete.

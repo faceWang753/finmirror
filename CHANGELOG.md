@@ -4,6 +4,15 @@ All notable changes are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- a hash-pinned Statistics Canada GDP calibration group with one source-derived
+  reference, six visibly disclosed atomic interventions, reproducible curation code,
+  exact licence/capture receipts, and no model results;
+- a strict expert-review status schema and CLI gate that blocks benchmark claims until
+  two independent annotations, blinded adjudication, agreement thresholds, and the
+  exact dataset digest are recorded.
+
 ### Planned
 
 - expert-reviewed real-source pilot;

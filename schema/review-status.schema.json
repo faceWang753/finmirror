@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finmirror.dev/schema/review-status.schema.json",
+  "title": "FinMirror Expert Review Status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "pilot_id",
+    "case_ids",
+    "dataset_sha256",
+    "review_state",
+    "gold_status",
+    "independent_annotators_required",
+    "independent_annotators_completed",
+    "adjudicators_required",
+    "adjudicators_completed",
+    "raw_agreement",
+    "cohen_kappa",
+    "disagreements_total",
+    "disagreements_adjudicated",
+    "model_outputs_hidden",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "pilot_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"},
+    "case_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "dataset_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "review_state": {
+      "enum": ["pending_external_review", "expert_validated", "blocked"]
+    },
+    "gold_status": {
+      "enum": ["provisional_machine_derived", "adjudicated_expert_gold"]
+    },
+    "independent_annotators_required": {"type": "integer", "minimum": 2},
+    "independent_annotators_completed": {"type": "integer", "minimum": 0},
+    "adjudicators_required": {"type": "integer", "minimum": 1},
+    "adjudicators_completed": {"type": "integer", "minimum": 0},
+    "raw_agreement": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "cohen_kappa": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "disagreements_total": {"type": ["integer", "null"], "minimum": 0},
+    "disagreements_adjudicated": {"type": ["integer", "null"], "minimum": 0},
+    "model_outputs_hidden": {"type": "boolean"},
+    "notes": {"type": "string", "minLength": 1}
+  }
+}

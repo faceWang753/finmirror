@@ -170,16 +170,15 @@ def test_committed_schema_and_runtime_require_the_same_fields() -> None:
     assert len(schema["$defs"]["artifact"]["allOf"]) == 5
 
 
-def test_committed_manifest_proves_current_release_is_synthetic_only() -> None:
+def test_committed_manifest_proves_release_ready_source_lineage() -> None:
     receipts = load_ledger(PROJECT_ROOT / "sources" / "v0.2" / "ledger.jsonl")
     manifest = load_evidence_manifest(
         PROJECT_ROOT / "sources" / "v0.2" / "evidence-manifest.json"
     )
     validate_lineage(manifest, receipts)
     verify_repository_artifacts(manifest, PROJECT_ROOT)
-    assert evidence_claim_tier(manifest, receipts) == "synthetic_only"
-    with pytest.raises(EvidenceLineageError, match="synthetic_only"):
-        require_real_source_material(manifest, receipts)
+    assert evidence_claim_tier(manifest, receipts) == "release_ready_source_material"
+    require_real_source_material(manifest, receipts)
 
 
 def test_release_ready_source_chain_reaches_evaluator_visible_material() -> None:

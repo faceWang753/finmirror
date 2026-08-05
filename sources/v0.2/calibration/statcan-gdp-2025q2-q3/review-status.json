@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "pilot_id": "statcan-gdp-2025q2-q3",
+  "case_ids": [
+    "fm-real-statcan-gdp-growth-en-distractor",
+    "fm-real-statcan-gdp-growth-en-entity_collision",
+    "fm-real-statcan-gdp-growth-en-evidence_ablation",
+    "fm-real-statcan-gdp-growth-en-injection",
+    "fm-real-statcan-gdp-growth-en-material_value",
+    "fm-real-statcan-gdp-growth-en-period_collision",
+    "fm-real-statcan-gdp-growth-en-reference"
+  ],
+  "dataset_sha256": "85a721fa022ec344f0770c51dc8bced2f3f28af58b3cd63b8b06b510620164f3",
+  "review_state": "pending_external_review",
+  "gold_status": "provisional_machine_derived",
+  "independent_annotators_required": 2,
+  "independent_annotators_completed": 0,
+  "adjudicators_required": 1,
+  "adjudicators_completed": 0,
+  "raw_agreement": null,
+  "cohen_kappa": null,
+  "disagreements_total": null,
+  "disagreements_adjudicated": null,
+  "model_outputs_hidden": true,
+  "notes": "The source bytes and provisional calculations are reproducible, but no independent finance expert has reviewed the cases. Model evaluation and benchmark claims remain blocked."
+}
