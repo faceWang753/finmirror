@@ -63,9 +63,17 @@ Open an issue before large dataset work. Include a short protocol, proposed sour
 licences, annotation expertise, evaluation plan, and stop/go criterion. Training data and
 sealed benchmark data must remain disjoint.
 
+## Expert review contributions
+
+The Statistics Canada calibration group is seeking two independent finance-capable
+annotators and one blinded adjudicator. Read `docs/EXPERT_REVIEW_PACKET.md` before
+volunteering through the expert review issue form. Reviewers must keep model outputs and
+other reviewers' labels hidden, disclose conflicts or prior gold exposure, and record
+uncertainty rather than forcing agreement. Public acknowledgement is opt-in; review
+participation never implies endorsement.
+
 ## Reporting problems
 
 Use a public issue for ordinary bugs or benchmark errors. Follow `SECURITY.md` for
 vulnerabilities or accidental data exposure. Corrections are documented; benchmark
 errors are never silently rewritten.
-

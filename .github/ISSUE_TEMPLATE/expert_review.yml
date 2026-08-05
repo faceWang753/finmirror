@@ -1,0 +1,57 @@
+name: Volunteer for expert pilot review
+description: Help independently review the real-source Statistics Canada calibration group
+title: "[Expert review] "
+labels: ["expert-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for considering an independent review. The current seven-case pilot is small, public, and explicitly **not yet expert-validated**. Please do not post employer-confidential information, client data, identity documents, or private credentials in this issue.
+  - type: dropdown
+    id: role
+    attributes:
+      label: Preferred review role
+      options:
+        - Independent finance annotator
+        - Blinded adjudicator
+        - Methodology or licensing reviewer
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: Relevant experience
+      description: Briefly describe finance, economics, accounting, audit, data, or evaluation experience. Public links are optional.
+    validations:
+      required: true
+  - type: checkboxes
+    id: language
+    attributes:
+      label: Review languages
+      options:
+        - label: English
+        - label: French
+  - type: textarea
+    id: conflicts
+    attributes:
+      label: Conflicts or prior exposure
+      description: Disclose prior access to FinMirror gold labels, model outputs, or other conflicts; write "none known" if applicable.
+    validations:
+      required: true
+  - type: checkboxes
+    id: protocol
+    attributes:
+      label: Protocol commitments
+      options:
+        - label: I will not use or inspect model outputs while authoring or validating gold labels.
+          required: true
+        - label: I will record uncertainty and disagreements instead of forcing agreement.
+          required: true
+        - label: I understand that acknowledgement is opt-in and that contribution credit does not imply endorsement of FinMirror.
+          required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Questions or availability
+      description: The initial packet contains seven cases and is intended to be bounded.
+

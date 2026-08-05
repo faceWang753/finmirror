@@ -269,6 +269,11 @@ strict form blocks model runs or benchmark submissions until two independent
 finance-capable annotations, blinded adjudication, agreement thresholds, and a matching
 dataset digest are recorded.
 
+**Finance reviewers wanted:** the bounded seven-case packet and independence rules are
+in the [expert review guide](docs/EXPERT_REVIEW_PACKET.md). Volunteers can use the
+[structured review form](https://github.com/faceWang753/finmirror/issues/new?template=expert_review.yml)
+without posting private credentials or employer-confidential information.
+
 ## Contributing
 
 The fastest high-impact contributions are a provider adapter, a new auditable finance

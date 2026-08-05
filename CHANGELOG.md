@@ -12,6 +12,8 @@ All notable changes are documented here.
 - a strict expert-review status schema and CLI gate that blocks benchmark claims until
   two independent annotations, blinded adjudication, agreement thresholds, and the
   exact dataset digest are recorded.
+- a bounded expert-review packet and structured volunteer form with independence,
+  conflict-disclosure, privacy, adjudication, and opt-in acknowledgement rules.
 
 ### Planned
 
