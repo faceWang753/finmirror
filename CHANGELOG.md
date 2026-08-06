@@ -14,6 +14,10 @@ All notable changes are documented here.
   exact dataset digest are recorded.
 - a bounded expert-review packet and structured volunteer form with independence,
   conflict-disclosure, privacy, adjudication, and opt-in acknowledgement rules.
+- a zero-backend blind review app that keeps drafts in browser storage, excludes gold and
+  model outputs, and downloads schema-versioned JSONL bound to the exact pilot digest;
+- a `validate-review` CLI and review-submission schema that reject incomplete, unblinded,
+  inconsistent, unknown-field, or wrong-digest expert submissions.
 
 ### Planned
 

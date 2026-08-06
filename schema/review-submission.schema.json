@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finmirror.dev/schema/review-submission.schema.json",
+  "title": "FinMirror blinded review row",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "pilot_id",
+    "dataset_sha256",
+    "reviewer_id",
+    "role",
+    "blinded",
+    "conflict_disclosure",
+    "submitted_at",
+    "case_id",
+    "answerable",
+    "relation",
+    "material",
+    "evidence_complete",
+    "formula_correct",
+    "evidence_anchors",
+    "computed_value",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "pilot_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"},
+    "dataset_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reviewer_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"},
+    "role": {"enum": ["independent_annotator", "adjudicator"]},
+    "blinded": {"type": "boolean"},
+    "conflict_disclosure": {"type": "string", "minLength": 1},
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "case_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"},
+    "answerable": {"enum": ["yes", "no", "uncertain"]},
+    "relation": {"enum": ["reference", "should_change", "should_not_change", "should_abstain", "uncertain"]},
+    "material": {"enum": ["yes", "no", "uncertain"]},
+    "evidence_complete": {"enum": ["yes", "no", "uncertain"]},
+    "formula_correct": {"enum": ["yes", "no", "uncertain"]},
+    "evidence_anchors": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "computed_value": {"type": "string"},
+    "notes": {"type": "string"}
+  }
+}

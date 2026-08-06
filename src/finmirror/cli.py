@@ -28,6 +28,7 @@ from finmirror.lineage import (
 )
 from finmirror.report import render_comparison, render_report
 from finmirror.review import load_expert_review_status, require_expert_validated
+from finmirror.review_submission import load_review_submission
 from finmirror.sources import ledger_digest, load_ledger
 from finmirror.training import (
     export_preferences,
@@ -223,6 +224,17 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Fail unless independent annotation and adjudication gates pass",
     )
+
+    validate_review = subparsers.add_parser(
+        "validate-review",
+        help="Validate a blinded review submission against the exact pending pilot",
+    )
+    validate_review.add_argument("--submission", required=True, help="Reviewer JSONL export")
+    validate_review.add_argument(
+        "--status",
+        default=("sources/v0.2/calibration/statcan-gdp-2025q2-q3/review-status.json"),
+        help="Machine-readable expert review status record",
+    )
     return parser
 
 
@@ -378,6 +390,22 @@ def main(argv: list[str] | None = None) -> int:
             print(
                 f"{status.review_state.upper()} · {len(status.case_ids)} cases · "
                 f"gold {status.gold_status} · {len(blockers)} blockers · "
+                f"dataset sha256 {status.dataset_sha256}"
+            )
+            return 0
+
+        if args.command == "validate-review":
+            status = load_expert_review_status(args.status)
+            rows = load_review_submission(
+                args.submission,
+                expected_case_ids=status.case_ids,
+                pilot_id=status.pilot_id,
+                dataset_sha256=status.dataset_sha256,
+            )
+            first = rows[0]
+            print(
+                f"VALID BLIND REVIEW · {len(rows)} cases · "
+                f"reviewer {first['reviewer_id']} · role {first['role']} · "
                 f"dataset sha256 {status.dataset_sha256}"
             )
             return 0

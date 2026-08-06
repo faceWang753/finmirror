@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A private, browser-only blind review tool for the FinMirror Statistics Canada calibration pilot.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>FinMirror Blind Expert Review</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../">FINMIRROR</a>
+    <span class="status">Pending external review</span>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Real-source calibration · independent annotation</p>
+      <h1 id="page-title">Blind review, without an account.</h1>
+      <p class="lede">Seven bounded cases. No model outputs, scores, gold answers, analytics, or server submission. Your draft stays in this browser until you download it.</p>
+      <div class="trust-grid" aria-label="Review safeguards">
+        <div><strong id="case-count">7</strong><span>cases</span></div>
+        <div><strong>0</strong><span>background network requests after load</span></div>
+        <div><strong>SHA-256</strong><span>dataset-bound export</span></div>
+      </div>
+    </section>
+
+    <section class="panel setup" aria-labelledby="setup-title">
+      <div class="section-heading">
+        <p class="step">01</p>
+        <div>
+          <h2 id="setup-title">Establish independence</h2>
+          <p>Use a stable pseudonym, not an email address. Do not enter confidential employer or client information.</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>Reviewer ID
+          <input id="reviewer-id" required minlength="3" maxlength="128" pattern="[A-Za-z0-9][A-Za-z0-9._:-]{2,127}" placeholder="reviewer-alpha">
+        </label>
+        <label>Conflict disclosure
+          <input id="conflicts" required placeholder="none known">
+        </label>
+      </div>
+      <label class="check-row">
+        <input id="blind-confirmation" type="checkbox" required>
+        <span>I have not inspected FinMirror model outputs, scores, or provisional gold while completing this review.</span>
+      </label>
+    </section>
+
+    <section class="panel review-panel" aria-labelledby="review-title">
+      <div class="section-heading">
+        <p class="step">02</p>
+        <div>
+          <h2 id="review-title">Review each world</h2>
+          <p>Recompute from the visible evidence. Choose “uncertain” instead of forcing agreement.</p>
+        </div>
+      </div>
+      <div class="progress-shell" aria-live="polite">
+        <div class="progress-copy"><span id="progress-label">Case 1 of 7</span><span id="completion-label">0 complete</span></div>
+        <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+      </div>
+
+      <article id="case-card" class="case-card">
+        <div class="case-meta"><span id="case-number"></span><code id="case-id"></code></div>
+        <h3 id="question"></h3>
+        <div id="documents" class="documents"></div>
+        <div class="judgments">
+          <label>Answerable?
+            <select id="answerable" data-field="answerable" required>
+              <option value="">Choose…</option><option>yes</option><option>no</option><option>uncertain</option>
+            </select>
+          </label>
+          <label>Relation to reference
+            <select id="relation" data-field="relation" required>
+              <option value="">Choose…</option><option>reference</option><option>should_change</option><option>should_not_change</option><option>should_abstain</option><option>uncertain</option>
+            </select>
+          </label>
+          <label>Changed information is material?
+            <select id="material" data-field="material" required>
+              <option value="">Choose…</option><option>yes</option><option>no</option><option>uncertain</option>
+            </select>
+          </label>
+          <label>Evidence complete?
+            <select id="evidence-complete" data-field="evidence_complete" required>
+              <option value="">Choose…</option><option>yes</option><option>no</option><option>uncertain</option>
+            </select>
+          </label>
+          <label>Formula correct?
+            <select id="formula-correct" data-field="formula_correct" required>
+              <option value="">Choose…</option><option>yes</option><option>no</option><option>uncertain</option>
+            </select>
+          </label>
+          <label>Computed value
+            <input id="computed-value" data-field="computed_value" placeholder="e.g. 0.4719% or insufficient evidence">
+          </label>
+          <label class="wide">Minimum sufficient evidence anchors
+            <input id="evidence-anchors" data-field="evidence_anchors" placeholder="Comma-separated, e.g. document-id#E1, document-id#E2">
+          </label>
+          <label class="wide">Notes
+            <textarea id="notes" data-field="notes" rows="3" placeholder="Ambiguity, licensing, harm, or reasoning notes"></textarea>
+          </label>
+        </div>
+      </article>
+
+      <div class="navigation">
+        <button id="previous" class="secondary" type="button">Previous</button>
+        <button id="next" type="button">Save &amp; next</button>
+      </div>
+    </section>
+
+    <section class="panel export" aria-labelledby="export-title">
+      <div class="section-heading">
+        <p class="step">03</p>
+        <div>
+          <h2 id="export-title">Freeze your submission</h2>
+          <p>The JSONL export binds every row to this exact dataset digest. Validate it locally before sharing.</p>
+        </div>
+      </div>
+      <div class="digest"><span>Dataset SHA-256</span><code id="dataset-digest"></code></div>
+      <div id="validation-message" class="validation-message" role="status"></div>
+      <div class="export-actions">
+        <button id="download" type="button">Download blinded JSONL</button>
+        <button id="clear" class="danger" type="button">Clear local draft</button>
+      </div>
+      <pre><code>finmirror validate-review --submission your-review.jsonl</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Independent review is evidence, not endorsement. <a href="https://github.com/faceWang753/finmirror/blob/main/docs/EXPERT_REVIEW_PACKET.md">Read the full protocol</a>.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

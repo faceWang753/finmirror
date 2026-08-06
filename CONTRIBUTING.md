@@ -67,10 +67,12 @@ sealed benchmark data must remain disjoint.
 
 The Statistics Canada calibration group is seeking two independent finance-capable
 annotators and one blinded adjudicator. Read `docs/EXPERT_REVIEW_PACKET.md` before
-volunteering through the expert review issue form. Reviewers must keep model outputs and
-other reviewers' labels hidden, disclose conflicts or prior gold exposure, and record
-uncertainty rather than forcing agreement. Public acknowledgement is opt-in; review
-participation never implies endorsement.
+volunteering through the expert review issue form. The account-free review app at
+`https://facewang753.github.io/finmirror/review/` stores drafts only in the browser and
+exports JSONL that must pass `finmirror validate-review`. Reviewers must keep model
+outputs and other reviewers' labels hidden, disclose conflicts or prior gold exposure,
+and record uncertainty rather than forcing agreement. Public acknowledgement is opt-in;
+review participation never implies endorsement.
 
 ## Reporting problems
 

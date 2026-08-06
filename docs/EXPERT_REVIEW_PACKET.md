@@ -53,14 +53,31 @@ Do not copy the provisional answer without recomputing it from the cited operand
 
 ## Submission format
 
-Submit JSONL with one object per `case_id`. At minimum include:
+The fastest route is the
+[browser-only blind review app](https://facewang753.github.io/finmirror/review/). It has
+no account, backend, analytics, or form submission; browser storage holds the draft and
+the final action downloads JSONL. The app contains source evidence but omits provisional
+gold, relationships, predictions, and scores.
+
+Submit JSONL with one object per `case_id`. Each row binds the pilot, reviewer role,
+blinding statement, conflict disclosure, timestamp, and exact dataset SHA-256. The
+judgment fields include:
 
 ```json
-{"case_id":"...","answerable":"yes","relation":"should_not_change","material":"no","evidence_complete":"yes","formula_correct":"yes","notes":""}
+{"case_id":"...","answerable":"yes","relation":"should_not_change","material":"no","evidence_complete":"yes","formula_correct":"yes","evidence_anchors":["...#E1","...#E2"],"computed_value":"0.47%","notes":""}
 ```
 
 Use `uncertain` rather than guessing. The repository's `finmirror agreement` command
 computes raw agreement and Cohen's kappa after both files are frozen.
+
+Validate a downloaded file before sharing it:
+
+```bash
+finmirror validate-review --submission reviewer-alpha.jsonl
+```
+
+The validator rejects missing cases, duplicate IDs, changed metadata, unknown fields,
+unblinded independent reviews, and submissions bound to another pilot digest.
 
 ## Release decision
 
@@ -82,4 +99,3 @@ their outputs.
 Use the [expert review issue form](https://github.com/faceWang753/finmirror/issues/new?template=expert_review.yml).
 Opening the form expresses interest only; it does not publish credentials beyond what
 the volunteer chooses to write.
-

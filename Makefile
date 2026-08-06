@@ -1,10 +1,13 @@
-.PHONY: generate demo test lint typecheck build verify
+.PHONY: generate demo review-app test lint typecheck build verify
 
 generate:
 	finmirror generate
 
 demo:
 	finmirror demo
+
+review-app:
+	python scripts/build_review_app.py
 
 test:
 	python -m pytest
@@ -19,5 +22,4 @@ typecheck:
 build:
 	python -m build
 
-verify: generate test lint typecheck build
-
+verify: generate review-app test lint typecheck build

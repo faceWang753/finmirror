@@ -262,3 +262,57 @@ def test_review_status_reports_and_blocks_pending_external_review(capsys) -> Non
     assert blocked == 1
     assert "expert-validation claim blocked" in captured.err
     assert "Traceback" not in captured.err
+
+
+def test_validate_review_cli_accepts_a_complete_digest_bound_export(tmp_path, capsys) -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    status_path = (
+        project_root
+        / "sources"
+        / "v0.2"
+        / "calibration"
+        / "statcan-gdp-2025q2-q3"
+        / "review-status.json"
+    )
+    review_status = json.loads(status_path.read_text(encoding="utf-8"))
+    rows = []
+    for case_id in review_status["case_ids"]:
+        rows.append(
+            {
+                "schema_version": "1.0",
+                "pilot_id": review_status["pilot_id"],
+                "dataset_sha256": review_status["dataset_sha256"],
+                "reviewer_id": "reviewer-alpha",
+                "role": "independent_annotator",
+                "blinded": True,
+                "conflict_disclosure": "none known",
+                "submitted_at": "2026-08-06T12:34:56.789Z",
+                "case_id": case_id,
+                "answerable": "uncertain",
+                "relation": "uncertain",
+                "material": "uncertain",
+                "evidence_complete": "uncertain",
+                "formula_correct": "uncertain",
+                "evidence_anchors": [],
+                "computed_value": "",
+                "notes": "test fixture",
+            }
+        )
+    submission = tmp_path / "review.jsonl"
+    submission.write_text(
+        "\n".join(json.dumps(row) for row in rows) + "\n",
+        encoding="utf-8",
+    )
+    result = main(
+        [
+            "validate-review",
+            "--submission",
+            str(submission),
+            "--status",
+            str(status_path),
+        ]
+    )
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "VALID BLIND REVIEW" in captured.out
+    assert "7 cases" in captured.out

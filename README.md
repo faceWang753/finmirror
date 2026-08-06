@@ -258,6 +258,7 @@ Run:
 finmirror evidence-status
 finmirror evidence-status --require-real-source
 finmirror review-status
+finmirror validate-review --submission reviewer-alpha.jsonl
 finmirror review-status --require-expert-validated  # deliberately fails today
 ```
 
@@ -270,7 +271,10 @@ finance-capable annotations, blinded adjudication, agreement thresholds, and a m
 dataset digest are recorded.
 
 **Finance reviewers wanted:** the bounded seven-case packet and independence rules are
-in the [expert review guide](docs/EXPERT_REVIEW_PACKET.md). Volunteers can use the
+in the [expert review guide](docs/EXPERT_REVIEW_PACKET.md). The
+[account-free blind review app](https://facewang753.github.io/finmirror/review/) keeps
+drafts in the reviewer's browser, loads no model output or provisional gold, and exports
+digest-bound JSONL for local validation. Volunteers can use the
 [structured review form](https://github.com/faceWang753/finmirror/issues/new?template=expert_review.yml)
 without posting private credentials or employer-confidential information.
 

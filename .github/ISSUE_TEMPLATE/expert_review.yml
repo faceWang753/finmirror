@@ -7,6 +7,8 @@ body:
     attributes:
       value: |
         Thank you for considering an independent review. The current seven-case pilot is small, public, and explicitly **not yet expert-validated**. Please do not post employer-confidential information, client data, identity documents, or private credentials in this issue.
+
+        You can inspect the workflow first in the [account-free blind review app](https://facewang753.github.io/finmirror/review/). It stores drafts only in your browser and downloads a dataset-bound JSONL file; nothing is submitted automatically.
   - type: dropdown
     id: role
     attributes:
@@ -54,4 +56,3 @@ body:
     attributes:
       label: Questions or availability
       description: The initial packet contains seven cases and is intended to be bounded.
-
