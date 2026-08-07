@@ -73,9 +73,19 @@ def _select_adapter(args: argparse.Namespace, cases: list[Any]) -> Adapter:
         from finmirror.adapters.cohere import CohereAdapter
 
         return CohereAdapter(
-            model=args.model,
+            model=args.model or "command-a-plus-05-2026",
             rerank_model=args.rerank_model,
             top_n=args.top_n,
+            measure_pre_confidence=args.measure_pre_confidence,
+        )
+    if args.adapter == "openai":
+        from finmirror.adapters.openai_compatible import OpenAICompatibleAdapter
+
+        return OpenAICompatibleAdapter(
+            model=args.model,
+            base_url=args.base_url,
+            timeout=args.request_timeout,
+            max_retries=args.max_retries,
             measure_pre_confidence=args.measure_pre_confidence,
         )
     raise ValueError(f"Unknown adapter: {args.adapter}")
@@ -94,7 +104,7 @@ def _run_and_write(
         system_version=adapter.version,
         run_metadata={
             "adapter_uses_gold": adapter.uses_gold,
-            "offline": adapter.name != "cohere",
+            "offline": adapter.offline,
         },
     )
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -126,12 +136,18 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--dataset", default="benchmark/v0.1")
     run.add_argument(
         "--adapter",
-        choices=["evidence", "memorized", "oracle", "cohere"],
+        choices=["evidence", "memorized", "oracle", "cohere", "openai"],
         required=True,
     )
-    run.add_argument("--model", default="command-a-plus-05-2026")
+    run.add_argument("--model")
     run.add_argument("--rerank-model", default=None)
     run.add_argument("--top-n", type=int, default=5)
+    run.add_argument(
+        "--base-url",
+        help="OpenAI-compatible base URL; defaults to OPENAI_BASE_URL",
+    )
+    run.add_argument("--request-timeout", type=float, default=120.0)
+    run.add_argument("--max-retries", type=int, default=2)
     run.add_argument("--measure-pre-confidence", action="store_true")
     run.add_argument("--languages", help="Comma-separated language codes")
     run.add_argument("--scenarios", help="Comma-separated scenario IDs")

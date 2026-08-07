@@ -41,6 +41,7 @@ Changelog = "https://github.com/faceWang753/finmirror/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 cohere = ["cohere>=7.0.8"]
+openai = ["openai>=1.68"]
 dev = [
   "build>=1.2",
   "mypy>=1.11",

@@ -6,11 +6,13 @@ from finmirror.adapters.baselines import (
     MemorizedBaseline,
     OracleAdapter,
 )
+from finmirror.adapters.openai_compatible import OpenAICompatibleAdapter
 
 __all__ = [
     "Adapter",
     "EvidenceProgramBaseline",
     "MemorizedBaseline",
+    "OpenAICompatibleAdapter",
     "OracleAdapter",
     "run_adapter",
 ]

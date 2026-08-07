@@ -15,6 +15,7 @@ class Adapter(ABC):
     name: str
     version: str = ""
     uses_gold: bool = False
+    offline: bool = True
 
     @abstractmethod
     def generate(self, case: PromptCase) -> Prediction:

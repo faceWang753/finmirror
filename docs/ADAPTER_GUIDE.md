@@ -61,6 +61,40 @@ Never pass a `BenchmarkCase` into the system; it contains hidden gold.
 
 FinMirror executes these internally and never evaluates arbitrary generated code.
 
+## OpenAI-compatible endpoints
+
+Install the optional client:
+
+```bash
+python -m pip install -e ".[openai]"
+```
+
+For a local chat-completions server, supply its model ID and base URL. Loopback URLs are
+classified as offline and do not require a key:
+
+```bash
+finmirror run \
+  --adapter openai \
+  --model "<served-model-id>" \
+  --base-url "http://127.0.0.1:8000/v1" \
+  --languages en \
+  --out runs/local-compatible
+```
+
+For a remote compatible endpoint, set `OPENAI_API_KEY`; `OPENAI_MODEL` and
+`OPENAI_BASE_URL` may replace the corresponding flags. Configure request behavior with
+`--request-timeout` and `--max-retries`. Credentials, raw prompts, raw responses, base
+URLs, and provider exception messages are never written to prediction metadata or
+FinMirror errors. Safe trace records contain only provider, model, response ID, finish
+reason, and whether the endpoint was local or remote.
+
+Compatibility boundary: the endpoint must implement chat completions and strict JSON
+Schema via `response_format.type=json_schema`. Some servers advertise OpenAI
+compatibility while supporting only JSON-object mode or ignoring schema constraints;
+FinMirror fails closed instead of silently accepting those responses. API calls to
+hosted endpoints may cost money. Publish no model score without the exact endpoint,
+model revision, prompt/adapter commit, dataset digest, run date, and prediction JSONL.
+
 ## Reproducible model cards
 
 Record:
@@ -76,4 +110,3 @@ Record:
 - dataset SHA-256;
 - number of independent runs;
 - raw prediction JSONL and report JSON.
-

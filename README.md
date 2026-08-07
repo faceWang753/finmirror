@@ -118,6 +118,26 @@ FinMirror embeds evidence into the structured-output prompt because Cohere struc
 JSON and the `documents` parameter are not combined in this adapter. API calls cost
 money; no hosted-model result is bundled or implied.
 
+Run the same contract against an OpenAI-compatible chat-completions endpoint:
+
+```bash
+python -m pip install -e ".[openai]"
+export OPENAI_BASE_URL="http://127.0.0.1:8000/v1"
+
+finmirror run \
+  --adapter openai \
+  --model "<served-model-id>" \
+  --base-url "$OPENAI_BASE_URL" \
+  --out runs/local-compatible
+```
+
+Loopback endpoints can run without an API key. Remote endpoints require
+`OPENAI_API_KEY`. The adapter uses strict JSON Schema through chat completions, records
+bounded response metadata without raw prompts or secrets, and supports optional
+pre-evidence confidence. Compatibility depends on the endpoint implementing
+`response_format.type=json_schema`; no hosted-model result or performance claim is
+bundled. See the [adapter guide](docs/ADAPTER_GUIDE.md#openai-compatible-endpoints).
+
 ### Use FinMirror as a pull-request gate
 
 Systems that emit the prediction contract can run the strict paired-world gate directly

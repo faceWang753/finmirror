@@ -6,6 +6,11 @@ All notable changes are documented here.
 
 ### Added
 
+- an OpenAI-compatible chat-completions adapter for hosted or local endpoints, with a
+  shared strict JSON contract, optional pre-evidence confidence, bounded safe traces,
+  loopback no-key support, configurable timeouts/retries, and zero-network fake-client
+  tests for success, abstention, malformed output, and provider errors;
+
 - a hash-pinned Statistics Canada GDP calibration group with one source-derived
   reference, six visibly disclosed atomic interventions, reproducible curation code,
   exact licence/capture receipts, and no model results;
