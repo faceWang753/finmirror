@@ -15,6 +15,7 @@ from finmirror.adapters.baselines import (
     OracleAdapter,
 )
 from finmirror.annotations import annotation_agreement
+from finmirror.assurance import run_evaluator_assurance
 from finmirror.ci import load_report, write_ci_artifacts
 from finmirror.dataset import dataset_digest, load_cases
 from finmirror.evaluator import evaluate
@@ -127,6 +128,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     validate = subparsers.add_parser("validate", help="Validate schema and dataset integrity")
     validate.add_argument("dataset", nargs="?", default="benchmark/v0.1")
+
+    assurance = subparsers.add_parser(
+        "assure-evaluator",
+        help="Run deterministic one-field mutation assurance for the evaluator",
+    )
+    assurance.add_argument("--dataset", default="benchmark/v0.1")
+    assurance.add_argument("--out", default="artifacts/evaluator-assurance.json")
 
     demo = subparsers.add_parser("demo", help="Run the zero-key oracle and evidence-blind demo")
     demo.add_argument("--dataset", default="benchmark/v0.1")
@@ -274,6 +282,16 @@ def main(argv: list[str] | None = None) -> int:
                 f"sha256 {dataset_digest(cases)}"
             )
             return 0
+
+        if args.command == "assure-evaluator":
+            assurance_report = run_evaluator_assurance(load_cases(args.dataset))
+            _write_json(assurance_report, Path(args.out))
+            print(
+                f"{'PASS' if assurance_report['passed'] else 'BLOCKED'} · "
+                f"{assurance_report['passed_count']}/{assurance_report['mutation_count']} "
+                f"one-field mutations detected · wrote {Path(args.out).resolve()}"
+            )
+            return 0 if assurance_report["passed"] else 2
 
         if args.command == "demo":
             dataset_path = Path(args.dataset)

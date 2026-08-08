@@ -1,8 +1,8 @@
 # FinMirror Literature Review
 
-**Evidence cut-off:** 27 July 2026
+**Evidence cut-off:** 8 August 2026
 
-**Scope:** a targeted, project-oriented scan of 47 primary research papers. It is **not** a systematic review, a complete census of financial NLP, or evidence of priority by itself.
+**Scope:** a targeted, project-oriented scan of 52 primary research papers. It is **not** a systematic review, a complete census of financial NLP, or evidence of priority by itself.
 
 ## 1. Review question and publication-status policy
 
@@ -101,6 +101,16 @@ This turns a perturbation into more than a changed-answer test. It asks whether 
 | 46 | B | [DREAM](https://aclanthology.org/2026.acl-long.448/) | July 2026; **ACL 2026 Long Paper, peer-reviewed proceedings** | Argues for evaluator capability parity and uses tool-calling evaluation to detect factual and temporal decay in deep-research outputs. | Deterministic evaluation is a strength only where the target is fully specified. Open-ended, time-sensitive tracks will need tool-capable evaluators plus independent meta-evaluation. |
 | 47 | B | [NASH](https://aclanthology.org/2026.findings-acl.1119/) | July 2026; **Findings of ACL 2026, peer-reviewed proceedings** | Separates numerical verification from textual semantic similarity and improves sensitivity to number changes on financial evaluation data. | Keep exact numeric replay for closed-form tasks and evaluate numerically aware semantic scoring before accepting free-form equivalents in future open-ended tracks. |
 
+### 8 August update — failure localization and evaluator assurance
+
+| # | Tier | Work and original source | Date / venue / status | What it establishes | FinMirror implication |
+|---:|:---:|---|---|---|---|
+| 48 | B | [AgentRx](https://arxiv.org/abs/2602.02475) | 2 February 2026; **arXiv preprint** | Uses constraint-validation logs to localize critical failure steps in 115 annotated agent trajectories. | Emit exact, inspectable validation records and distinguish local failure attribution from end-task success. FinMirror's closed-form mutation runner does not reproduce its LLM-based trajectory diagnosis. |
+| 49 | B | [AgenticRAGTracer](https://aclanthology.org/2026.findings-acl.66/) | July 2026; **Findings of ACL 2026, peer-reviewed proceedings** | Adds hop-level questions and step-by-step validation to diagnose collapsed or over-extended multi-hop retrieval chains. | Future agentic RAG tracks need typed intermediate retrieval states; v0.1 assurance should stay at the fully specified case/pair level. |
+| 50 | B | [Toward Scalable Verifiable Reward: Proxy State-Based Evaluation for Multi-turn Tool-Calling LLM Agents](https://aclanthology.org/2026.acl-industry.87/) | July 2026; **ACL 2026 Industry Track, peer-reviewed proceedings** | Evaluates multi-turn tool agents against expected proxy states and behavior constraints, with reported human–LLM judge agreement above 90%. | Preserve expected state and behavior separately when FinMirror adds tools; learned state tracking will require independent human agreement evidence. |
+| 51 | B | [Agentic CLEAR](https://aclanthology.org/2026.acl-demo.74/) | July 2026; **ACL 2026 System Demonstrations, peer-reviewed proceedings** | Provides multi-level, data-driven agent failure analysis and reports alignment with human-annotated errors. | Prefer decomposed failure attribution and meta-evaluate any learned diagnostic layer; deterministic checks remain appropriate only for fully specified targets. |
+| 52 | B | [A Survey on Evaluation of LLM-based Agents](https://aclanthology.org/2026.findings-acl.1330/) | July 2026; **Findings of ACL 2026, peer-reviewed proceedings** | Synthesizes capability, application, generalist, benchmark-dimension, and developer-tool perspectives; identifies cost-efficiency, safety, robustness, and fine-grained scalable evaluation as gaps. | Keep cost, safety, robustness, and trajectory evaluation explicit roadmap axes rather than inferring them from answer accuracy. |
+
 ## 4. Synthesis
 
 Six conclusions follow from the evidence map.
@@ -128,7 +138,7 @@ The deterministic oracle and evidence-program responders are **harness sanity ch
 
 ### Safest current contribution statement
 
-> To our knowledge, as of 27 July 2026 and within this targeted 47-paper scan, FinMirror v0.1 is the first open, deterministic harness to score finance QA systems on paired evidence worlds with an explicit expected-change contract over the joint output tuple—answer, citations, executable formula and operand provenance, abstention or clarification, and confidence—while also testing invariance to irrelevant, entity, period, and injection perturbations in English, French, and Chinese.
+> To our knowledge, as of 8 August 2026 and within this targeted 52-paper scan, FinMirror v0.1 is the first open, deterministic harness to score finance QA systems on paired evidence worlds with an explicit expected-change contract over the joint output tuple—answer, citations, executable formula and operand provenance, abstention or clarification, and confidence—while also testing invariance to irrelevant, entity, period, and injection perturbations in English, French, and Chinese.
 
 Mandatory qualifications:
 
@@ -148,7 +158,7 @@ For most public materials, prefer the lower-risk wording:
 | Financial scope | Six authored financial calculation scenarios | Broader accounting, valuation, risk, controls, and workflow coverage; formula AST and compositional generation |
 | Languages | Parallel English, French, and Chinese renderings | Native expert authoring, locale-specific finance concepts, translation audits, and per-language reliability |
 | Outputs | Structured answer, citation, formula, operands, missing-evidence behavior, and confidence contract | Richer typed proof states, tool and agent trajectories, spreadsheet artifacts, visual citations |
-| Evaluation | Deterministic answer correctness, answer-change behavior, citation migration, formula replay, operand provenance, abstention, clarification, Brier/ECE, cross-language checks, and hard gates | Bootstrap confidence intervals, human/expert agreement, evaluator mutation tests, external judge validation, statistical power analysis |
+| Evaluation | Deterministic answer correctness, answer-change behavior, citation migration, formula replay, operand provenance, abstention, clarification, Brier/ECE, cross-language checks, hard gates, group-clustered bootstrap intervals, and 15-class one-field mutation assurance | Human/expert agreement, positive equivalence-class assurance, external judge validation, and statistical power analysis |
 | Retrieval | Optional retrieval-behavior metrics and Cohere Rerank integration | Controlled retriever baselines, compression studies, confidence-aware selection, long-document retrieval |
 | Training artifact | DPO-style open-weight preference export with decomposed deterministic reward vector; records marked not human-reviewed | Human preference collection, open-weight SFT/DPO/RL experiments, verifier-gaming stress tests, ablations, stability studies |
 | Models | Deterministic sanity checks and a Cohere inference adapter | Reproducible runs across Command A+ and strong open/proprietary baselines, with cost, latency, variance, and prompt disclosure |
@@ -156,7 +166,7 @@ For most public materials, prefer the lower-risk wording:
 
 ## 7. Recommended research sequence
 
-1. **Lock the contract.** Publish a versioned schema and machine-readable metamorphic relations for every variant. Add mutation tests showing that each evaluator catches the defect it claims to catch.
+1. **Maintain the locked contract.** Version schemas and machine-readable metamorphic relations, run the committed one-field mutation assurance in CI, and add positive equivalence classes without silently changing public metrics.
 2. **Run real model baselines.** Evaluate Command A+ and multiple current open and proprietary models with repeated runs, disclosed prompts, decoding settings, cost, latency, and confidence reliability diagrams.
 3. **Validate the evaluator.** Commission blinded finance-expert review of a stratified sample; report inter-annotator agreement, deterministic-score disagreement, and failure taxonomy.
 4. **Test causal specificity.** Add isomorphic variants, paraphrases, unit/scale changes, formula-equivalent forms, and balanced clean negatives to rule out template and verifier shortcuts.

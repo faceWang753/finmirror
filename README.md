@@ -7,7 +7,7 @@
   <a href="https://huggingface.co/datasets/mingyang233/FinMirror"><strong>Hugging Face dataset</strong></a> ·
   <a href="#quickstart">Quickstart</a> ·
   <a href="docs/METHODOLOGY.md">Methodology</a> ·
-  <a href="docs/LITERATURE_REVIEW.md">47-paper review</a> ·
+  <a href="docs/LITERATURE_REVIEW.md">52-paper review</a> ·
   <a href="docs/DATA_CARD.md">Data card</a> ·
   <a href="CONTRIBUTING.md">Contribute</a>
 </p>
@@ -73,6 +73,25 @@ as commit [`d2b9b60`](https://github.com/juanjuandog/FinSight-AI/commit/d2b9b604
 The preflight still publishes no reliability score because the project does not yet expose
 a fair frozen-corpus seam; a merged reproducibility primitive is not a reliability endorsement.
 
+## Evaluator assurance
+
+A deterministic scorer is useful only if its own failures are inspectable. FinMirror now
+runs a [15-class one-field mutation matrix](docs/EVALUATOR_ASSURANCE.md) against the
+non-gold evidence-program baseline. It independently corrupts answer value, unit,
+citations, formula, operand semantics/value/unit/provenance, confidence, abstention,
+missing evidence, reported retrieval, and within-tolerance cross-language semantics.
+
+```bash
+finmirror assure-evaluator
+```
+
+The command fails closed unless every mutation produces its exact declared case-level
+failure, pair-component failure, and cross-language effect. The committed
+[machine-readable result](artifacts/evaluator-assurance.json) is bound to the dataset
+digest and its [JSON Schema](schema/evaluator-assurance.schema.json). Passing this suite
+is regression evidence for these declared mutations—not formal verification, expert
+validation, or evidence that every scorer defect has been found.
+
 ## Quickstart
 
 Python 3.10–3.12 is supported. The core has zero runtime dependencies.
@@ -85,6 +104,7 @@ python -m pip install -e ".[dev]"
 
 finmirror generate
 finmirror validate
+finmirror assure-evaluator
 finmirror demo
 ```
 
@@ -199,6 +219,7 @@ reported retrieval miss.
 - optional retrieval IDs and preserved execution traces
 - deterministic reward vectors and DPO-style preference export
 - annotation agreement and Cohen’s κ utilities
+- 15-class one-field evaluator mutation assurance with exact local failure attribution
 - Cohere Command A+ / Rerank 4 adapter
 - standalone interactive reliability cards
 
@@ -218,7 +239,7 @@ FinMirror is informed by—not a relabeling of—recent work:
 | [Soft-SVeRL](https://arxiv.org/abs/2605.28561) (Cohere, 2026) | Soft, checklist-based verifiable rewards | Deterministic hard gates plus exportable reward vectors |
 | [FinRAG-12B](https://aclanthology.org/2026.acl-industry.92/) (ACL 2026) | Production answer/citation/refusal training | Differential tests that pointwise production KPIs can miss |
 
-The complete [literature review](docs/LITERATURE_REVIEW.md) covers 47 papers and marks
+The complete [literature review](docs/LITERATURE_REVIEW.md) covers 52 papers and marks
 preprints separately from peer-reviewed proceedings. We do **not** claim the first
 financial counterfactual, multilingual finance, visual-citation RAG, financial agent, or
 verifiable-finance benchmark.
@@ -238,9 +259,9 @@ literature immediately before any paper submission.
 ```text
 benchmark/v0.1/       Reproducible synthetic paired worlds + manifest
 src/finmirror/        Contracts, verifier, adapters, CLI, reports, exports
-tests/                Unit, integration, tamper, and regression tests
-artifacts/demo/       Reproducible offline reliability cards
-schema/               JSON Schemas for cases and predictions
+tests/                Unit, integration, mutation, tamper, and regression tests
+artifacts/             Offline reliability cards + evaluator-assurance evidence
+schema/                JSON Schemas for cases, predictions, and assurance reports
 docs/                 Methodology, data card, literature, roadmap, launch kit
 ```
 

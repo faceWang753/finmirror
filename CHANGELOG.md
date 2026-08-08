@@ -6,6 +6,10 @@ All notable changes are documented here.
 
 ### Added
 
+- a zero-network, non-gold evaluator-assurance command with 15 one-field mutation
+  classes, exact case and pair-component attribution, coupled cross-language checks, a
+  digest-bound machine-readable report, and a strict JSON Schema; this is regression
+  evidence, not formal verification;
 - an OpenAI-compatible chat-completions adapter for hosted or local endpoints, with a
   shared strict JSON contract, optional pre-evidence confidence, bounded safe traces,
   loopback no-key support, configurable timeouts/retries, and zero-network fake-client

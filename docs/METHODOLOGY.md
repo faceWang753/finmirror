@@ -272,7 +272,43 @@ v0.1 demo scores are exact harness checks. For stochastic or real-world experime
 7. conduct dual annotation plus adjudication and report raw agreement and Cohen’s κ;
 8. meta-evaluate any learned semantic scorer against blinded finance experts.
 
-## 11. Current limitations
+## 11. Evaluator mutation assurance
+
+FinMirror meta-evaluates the deterministic scorer with a fixed, zero-network
+one-field-at-a-time mutation matrix. The clean starting point is the non-gold
+`evidence-program` baseline. Each run changes exactly one declared contract leaf and
+checks the exact case failure labels, the exact conjunctive pair component that fails,
+any coupled cross-language effect, and that unrelated case metrics stay unchanged.
+
+| Mutated field | Required local detection |
+|---|---|
+| Answer value | Wrong answer + invalid replay; answer and formula pair components fail |
+| Answer unit | Wrong unit; answer pair component fails |
+| Citation removed | Insufficient evidence; evidence-migration component fails |
+| Citation added | Citation precision/F1 regression; evidence-migration component fails |
+| Citation from the reference world | Current-world grounding fails; evidence-migration component fails |
+| Formula ID | Invalid formula replay; formula/operand pair component fails |
+| Operand value | Replay and operand provenance fail |
+| Operand semantic name | Allow-listed program input and operand provenance fail |
+| Operand unit | Typed operand provenance and strict formula contract fail |
+| Operand evidence anchor | Operand provenance and strict formula contract fail |
+| Confidence on an invariant pair | Brier loss increases; confidence pair component fails |
+| Abstention flag | Failed-to-abstain label; answer pair component fails |
+| Missing-evidence field | Exact clarification fails; ablation formula/clarification component fails |
+| Reported retrieval IDs | Required-document recall and reported-retrieval component fail |
+| Within-tolerance multilingual value | Cases and pairs remain valid; semantic cross-language check fails |
+
+Run `finmirror assure-evaluator`. The report is deterministic, bound to the dataset
+digest, and validated against `schema/evaluator-assurance.schema.json`. A single local
+mutation need not cross the aggregate release thresholds, so the assurance oracle is
+the affected case, pair component, or parallel-language set—not the aggregate score.
+
+This suite establishes inspectable regression evidence for the declared mutation
+classes. It does not prove evaluator correctness, validate score weights, cover all
+equivalent financial expressions, or replace blinded finance-expert meta-evaluation.
+See [Evaluator assurance](EVALUATOR_ASSURANCE.md) for the complete protocol.
+
+## 12. Current limitations
 
 - v0.1 is small, templated, text-only, and entirely synthetic.
 - Six allow-listed calculations do not represent open-ended financial analysis.

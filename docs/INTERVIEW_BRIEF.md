@@ -8,7 +8,7 @@ paired evidence worlds and verifies whether answers, citations, calculation oper
 confidence, and abstention change only when the financial dependency graph permits. The
 v0.1 release is a fully tested synthetic protocol with a Cohere Command A+ adapter,
 deterministic formula replay, multilingual cases, calibration metrics, and preference
-export. I also mapped 42 recent papers to state exactly what is and is not novel.
+export. I also mapped 52 recent papers to state exactly what is and is not novel.
 
 ## Five-minute technical narrative
 
@@ -105,7 +105,7 @@ paired metrics do not reveal failures beyond strong pointwise baselines.
 - Demonstrated that an evidence-blind baseline with 71.4% pointwise accuracy achieves 0%
   strict pair reliability; shipped interactive local reports and a Cohere Command A+ /
   Rerank 4 adapter.
-- Conducted a 47-paper 2024–2026 literature audit to narrow novelty claims and designed an
+- Conducted a 52-paper 2024–2026 literature audit to narrow novelty claims and designed an
   expert-reviewed, contamination-limited research roadmap.
 
 Only use these bullets after publishing the repository and keeping the reproduced

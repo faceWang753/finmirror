@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finmirror.dev/schema/evaluator-assurance.schema.json",
+  "title": "FinMirror Evaluator Assurance Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "assurance_schema_version",
+    "dataset_sha256",
+    "baseline",
+    "method",
+    "mutation_count",
+    "passed_count",
+    "passed",
+    "mutations",
+    "claim_boundary"
+  ],
+  "properties": {
+    "assurance_schema_version": {"const": "1.0"},
+    "dataset_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "baseline": {"$ref": "#/$defs/baseline"},
+    "method": {"type": "string", "minLength": 1},
+    "mutation_count": {"type": "integer", "minimum": 1},
+    "passed_count": {"type": "integer", "minimum": 0},
+    "passed": {"type": "boolean"},
+    "mutations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/mutation"}
+    },
+    "claim_boundary": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "uses_gold"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "uses_gold": {"const": false}
+      }
+    },
+    "metricChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before", "after", "expected_direction", "matched"],
+      "properties": {
+        "before": {"type": ["number", "boolean", "null"]},
+        "after": {"type": ["number", "boolean", "null"]},
+        "expected_direction": {
+          "enum": ["decrease", "increase", "true_to_false"]
+        },
+        "matched": {"type": "boolean"}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "one_declared_field_changed",
+        "case_failures_exact",
+        "case_metric_changes_match",
+        "unrelated_case_metrics_unchanged",
+        "pair_failures_exact",
+        "pair_gate_before_passed",
+        "pair_gate_after_expected",
+        "cross_language_expected"
+      ],
+      "properties": {
+        "one_declared_field_changed": {"type": "boolean"},
+        "case_failures_exact": {"type": "boolean"},
+        "case_metric_changes_match": {"type": "boolean"},
+        "unrelated_case_metrics_unchanged": {"type": "boolean"},
+        "pair_failures_exact": {"type": "boolean"},
+        "pair_gate_before_passed": {"type": "boolean"},
+        "pair_gate_after_expected": {"type": "boolean"},
+        "cross_language_expected": {"type": "boolean"}
+      }
+    },
+    "mutation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mutation_id",
+        "target_case_id",
+        "field_path",
+        "expected_case_failures",
+        "observed_case_failures",
+        "case_metric_changes",
+        "observed_case_metric_changes",
+        "expected_pair_failures",
+        "observed_pair_failures",
+        "pair_gate_before",
+        "pair_gate_after",
+        "cross_language_before",
+        "cross_language_after",
+        "checks",
+        "passed"
+      ],
+      "properties": {
+        "mutation_id": {"type": "string", "minLength": 1},
+        "target_case_id": {"type": "string", "minLength": 1},
+        "field_path": {"type": "string", "minLength": 1},
+        "expected_case_failures": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "observed_case_failures": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "case_metric_changes": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/metricChange"}
+        },
+        "observed_case_metric_changes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "expected_pair_failures": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "observed_pair_failures": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "pair_gate_before": {"type": "boolean"},
+        "pair_gate_after": {"type": "boolean"},
+        "cross_language_before": {"type": "number", "minimum": 0, "maximum": 1},
+        "cross_language_after": {"type": "number", "minimum": 0, "maximum": 1},
+        "checks": {"$ref": "#/$defs/checks"},
+        "passed": {"type": "boolean"}
+      }
+    }
+  }
+}

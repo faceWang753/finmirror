@@ -51,6 +51,21 @@ def normalize_text(value: float | str | None, answer: str = "") -> str:
     return " ".join(raw.casefold().split())
 
 
+def semantic_prediction_key(
+    case: BenchmarkCase,
+    prediction: Prediction,
+) -> tuple[str, str]:
+    """Canonical semantic output used by cross-language consistency checks."""
+
+    if prediction.abstained:
+        return ("abstain", "")
+    if case.expected.answer_type == "number":
+        value = normalize_number(prediction.value, prediction.answer)
+        if value is not None:
+            return ("number", f"{round(value, 8)}:{prediction.unit.casefold()}")
+    return ("text", normalize_text(prediction.value, prediction.answer))
+
+
 def citation_scores(
     predicted: Iterable[str], expected: Iterable[str]
 ) -> tuple[float, float, float]:

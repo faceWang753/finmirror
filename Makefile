@@ -1,7 +1,10 @@
-.PHONY: generate demo review-app test lint typecheck build verify
+.PHONY: generate assurance demo review-app test lint typecheck build verify
 
 generate:
 	finmirror generate
+
+assurance:
+	finmirror assure-evaluator
 
 demo:
 	finmirror demo
@@ -22,4 +25,4 @@ typecheck:
 build:
 	python -m build
 
-verify: generate review-app test lint typecheck build
+verify: generate assurance review-app test lint typecheck build

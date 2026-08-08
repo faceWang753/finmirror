@@ -11,28 +11,16 @@ from finmirror.dataset import dataset_digest
 from finmirror.models import BenchmarkCase, CaseResult, PairResult, Prediction
 from finmirror.scoring import (
     expected_calibration_error,
-    normalize_number,
-    normalize_text,
     prediction_changed,
     score_case,
     score_pair,
+    semantic_prediction_key,
 )
 from finmirror.uncertainty import clustered_bootstrap
 
 
 def _mean(values: list[float]) -> float:
     return statistics.fmean(values) if values else 0.0
-
-
-def _semantic_key(case: BenchmarkCase, prediction: Prediction) -> tuple[str, str]:
-    if prediction.abstained:
-        return ("abstain", "")
-    if case.expected.answer_type == "number":
-        value = normalize_number(prediction.value, prediction.answer)
-        if value is not None:
-            rounded = round(value, 8)
-            return ("number", f"{rounded}:{prediction.unit.casefold()}")
-    return ("text", normalize_text(prediction.value, prediction.answer))
 
 
 def _behavior_change_metrics(
@@ -154,7 +142,10 @@ def evaluate(
     for members in parallel.values():
         if len({item.language for item in members}) < 2:
             continue
-        keys = {_semantic_key(member, prediction_map[member.case_id]) for member in members}
+        keys = {
+            semantic_prediction_key(member, prediction_map[member.case_id])
+            for member in members
+        }
         all_correct = all(case_results[member.case_id].correct for member in members)
         cross_language_scores.append(1.0 if all_correct and len(keys) == 1 else 0.0)
 

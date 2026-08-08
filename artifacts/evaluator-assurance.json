@@ -1,0 +1,764 @@
+{
+  "assurance_schema_version": "1.0",
+  "dataset_sha256": "3db16674c7fb5d0f9a45c41389045d001ca8ed8f2d0d55368baec8673de23009",
+  "baseline": {
+    "name": "evidence-program",
+    "version": "0.1",
+    "uses_gold": false
+  },
+  "method": "one-field-at-a-time deterministic mutation assurance",
+  "mutation_count": 15,
+  "passed_count": 15,
+  "passed": true,
+  "mutations": [
+    {
+      "mutation_id": "answer_value",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "value",
+      "expected_case_failures": [
+        "invalid_formula_replay",
+        "wrong_answer"
+      ],
+      "observed_case_failures": [
+        "invalid_formula_replay",
+        "wrong_answer"
+      ],
+      "case_metric_changes": {
+        "answer_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "formula_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "correct": {
+          "before": true,
+          "after": false,
+          "expected_direction": "true_to_false",
+          "matched": true
+        },
+        "brier": {
+          "before": 0.0004000000000000007,
+          "after": 0.9603999999999999,
+          "expected_direction": "increase",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "correct",
+        "answer_score",
+        "formula_score",
+        "brier"
+      ],
+      "expected_pair_failures": [
+        "answer_pass",
+        "formula_pass"
+      ],
+      "observed_pair_failures": [
+        "answer_pass",
+        "formula_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 0.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "answer_unit",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "unit",
+      "expected_case_failures": [
+        "wrong_unit"
+      ],
+      "observed_case_failures": [
+        "wrong_unit"
+      ],
+      "case_metric_changes": {
+        "unit_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "correct": {
+          "before": true,
+          "after": false,
+          "expected_direction": "true_to_false",
+          "matched": true
+        },
+        "brier": {
+          "before": 0.0004000000000000007,
+          "after": 0.9603999999999999,
+          "expected_direction": "increase",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "correct",
+        "unit_score",
+        "brier"
+      ],
+      "expected_pair_failures": [
+        "answer_pass"
+      ],
+      "observed_pair_failures": [
+        "answer_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 0.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "citation_removed",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "citations",
+      "expected_case_failures": [
+        "insufficient_evidence"
+      ],
+      "observed_case_failures": [
+        "insufficient_evidence"
+      ],
+      "case_metric_changes": {
+        "citation_recall": {
+          "before": 1.0,
+          "after": 0.5,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "citation_f1": {
+          "before": 1.0,
+          "after": 0.6666666666666666,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "citation_recall",
+        "citation_f1"
+      ],
+      "expected_pair_failures": [
+        "evidence_pass"
+      ],
+      "observed_pair_failures": [
+        "evidence_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "citation_added",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "citations",
+      "expected_case_failures": [
+        "insufficient_evidence"
+      ],
+      "observed_case_failures": [
+        "insufficient_evidence"
+      ],
+      "case_metric_changes": {
+        "citation_precision": {
+          "before": 1.0,
+          "after": 0.6666666666666666,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "citation_f1": {
+          "before": 1.0,
+          "after": 0.8,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "citation_precision",
+        "citation_f1"
+      ],
+      "expected_pair_failures": [
+        "evidence_pass"
+      ],
+      "observed_pair_failures": [
+        "evidence_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "citation_wrong_world",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "citations",
+      "expected_case_failures": [
+        "insufficient_evidence"
+      ],
+      "observed_case_failures": [
+        "insufficient_evidence"
+      ],
+      "case_metric_changes": {
+        "citation_precision": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "citation_recall": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "citation_f1": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "citation_precision",
+        "citation_recall",
+        "citation_f1"
+      ],
+      "expected_pair_failures": [
+        "evidence_pass"
+      ],
+      "observed_pair_failures": [
+        "evidence_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "formula_id",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "formula_id",
+      "expected_case_failures": [
+        "invalid_formula_replay"
+      ],
+      "observed_case_failures": [
+        "invalid_formula_replay"
+      ],
+      "case_metric_changes": {
+        "formula_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "formula_score"
+      ],
+      "expected_pair_failures": [
+        "formula_pass"
+      ],
+      "observed_pair_failures": [
+        "formula_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "operand_value",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "operands[0].value",
+      "expected_case_failures": [
+        "incorrect_operand_provenance",
+        "invalid_formula_replay"
+      ],
+      "observed_case_failures": [
+        "incorrect_operand_provenance",
+        "invalid_formula_replay"
+      ],
+      "case_metric_changes": {
+        "formula_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "operand_score": {
+          "before": 1.0,
+          "after": 0.8333333333333334,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "formula_score",
+        "operand_score"
+      ],
+      "expected_pair_failures": [
+        "formula_pass"
+      ],
+      "observed_pair_failures": [
+        "formula_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "operand_semantic_name",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "operands[0].name",
+      "expected_case_failures": [
+        "incorrect_operand_provenance",
+        "invalid_formula_replay"
+      ],
+      "observed_case_failures": [
+        "incorrect_operand_provenance",
+        "invalid_formula_replay"
+      ],
+      "case_metric_changes": {
+        "formula_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "operand_score": {
+          "before": 1.0,
+          "after": 0.5,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "formula_score",
+        "operand_score"
+      ],
+      "expected_pair_failures": [
+        "formula_pass"
+      ],
+      "observed_pair_failures": [
+        "formula_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "operand_unit",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "operands[0].unit",
+      "expected_case_failures": [
+        "incorrect_operand_provenance",
+        "invalid_formula_replay"
+      ],
+      "observed_case_failures": [
+        "incorrect_operand_provenance",
+        "invalid_formula_replay"
+      ],
+      "case_metric_changes": {
+        "formula_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "operand_score": {
+          "before": 1.0,
+          "after": 0.8333333333333334,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "formula_score",
+        "operand_score"
+      ],
+      "expected_pair_failures": [
+        "formula_pass"
+      ],
+      "observed_pair_failures": [
+        "formula_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "operand_evidence",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "operands[0].evidence",
+      "expected_case_failures": [
+        "incorrect_operand_provenance",
+        "invalid_formula_replay"
+      ],
+      "observed_case_failures": [
+        "incorrect_operand_provenance",
+        "invalid_formula_replay"
+      ],
+      "case_metric_changes": {
+        "formula_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "operand_score": {
+          "before": 1.0,
+          "after": 0.8333333333333334,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "formula_score",
+        "operand_score"
+      ],
+      "expected_pair_failures": [
+        "formula_pass"
+      ],
+      "observed_pair_failures": [
+        "formula_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "confidence_invariant_drift",
+      "target_case_id": "fm-revenue_growth-en-distractor",
+      "field_path": "confidence",
+      "expected_case_failures": [],
+      "observed_case_failures": [],
+      "case_metric_changes": {
+        "brier": {
+          "before": 0.0004000000000000007,
+          "after": 0.09000000000000002,
+          "expected_direction": "increase",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "brier"
+      ],
+      "expected_pair_failures": [
+        "confidence_pass"
+      ],
+      "observed_pair_failures": [
+        "confidence_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "abstention_flag",
+      "target_case_id": "fm-revenue_growth-en-evidence_ablation",
+      "field_path": "abstained",
+      "expected_case_failures": [
+        "failed_to_abstain"
+      ],
+      "observed_case_failures": [
+        "failed_to_abstain"
+      ],
+      "case_metric_changes": {
+        "answer_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "unit_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "abstention_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        },
+        "correct": {
+          "before": true,
+          "after": false,
+          "expected_direction": "true_to_false",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "correct",
+        "answer_score",
+        "unit_score",
+        "abstention_score"
+      ],
+      "expected_pair_failures": [
+        "answer_pass"
+      ],
+      "observed_pair_failures": [
+        "answer_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 0.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "missing_evidence",
+      "target_case_id": "fm-revenue_growth-en-evidence_ablation",
+      "field_path": "missing_evidence",
+      "expected_case_failures": [
+        "missing_requirement_not_identified"
+      ],
+      "observed_case_failures": [
+        "missing_requirement_not_identified"
+      ],
+      "case_metric_changes": {
+        "clarification_score": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "clarification_score"
+      ],
+      "expected_pair_failures": [
+        "formula_pass"
+      ],
+      "observed_pair_failures": [
+        "formula_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "reported_retrieval_ids",
+      "target_case_id": "fm-revenue_growth-en-material",
+      "field_path": "retrieved_document_ids",
+      "expected_case_failures": [
+        "missed_required_document"
+      ],
+      "observed_case_failures": [
+        "missed_required_document"
+      ],
+      "case_metric_changes": {
+        "retrieval_recall": {
+          "before": 1.0,
+          "after": 0.0,
+          "expected_direction": "decrease",
+          "matched": true
+        }
+      },
+      "observed_case_metric_changes": [
+        "retrieval_recall"
+      ],
+      "expected_pair_failures": [
+        "retrieval_pass"
+      ],
+      "observed_pair_failures": [
+        "retrieval_pass"
+      ],
+      "pair_gate_before": true,
+      "pair_gate_after": false,
+      "cross_language_before": 1.0,
+      "cross_language_after": 1.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    },
+    {
+      "mutation_id": "cross_language_semantic_value",
+      "target_case_id": "fm-revenue_growth-zh-material",
+      "field_path": "value",
+      "expected_case_failures": [],
+      "observed_case_failures": [],
+      "case_metric_changes": {},
+      "observed_case_metric_changes": [],
+      "expected_pair_failures": [],
+      "observed_pair_failures": [],
+      "pair_gate_before": true,
+      "pair_gate_after": true,
+      "cross_language_before": 1.0,
+      "cross_language_after": 0.0,
+      "checks": {
+        "one_declared_field_changed": true,
+        "case_failures_exact": true,
+        "case_metric_changes_match": true,
+        "unrelated_case_metrics_unchanged": true,
+        "pair_failures_exact": true,
+        "pair_gate_before_passed": true,
+        "pair_gate_after_expected": true,
+        "cross_language_expected": true
+      },
+      "passed": true
+    }
+  ],
+  "claim_boundary": "Passing provides inspectable regression evidence for declared mutations; it is not formal verification or proof that the evaluator is correct."
+}
