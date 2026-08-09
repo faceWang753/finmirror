@@ -7,6 +7,7 @@
   <a href="https://huggingface.co/datasets/mingyang233/FinMirror"><strong>Hugging Face dataset</strong></a> ·
   <a href="#quickstart">Quickstart</a> ·
   <a href="docs/METHODOLOGY.md">Methodology</a> ·
+  <a href="docs/EVERY_EVAL_EVER.md">EEE export</a> ·
   <a href="docs/LITERATURE_REVIEW.md">52-paper review</a> ·
   <a href="docs/DATA_CARD.md">Data card</a> ·
   <a href="CONTRIBUTING.md">Contribute</a>
@@ -91,6 +92,37 @@ failure, pair-component failure, and cross-language effect. The committed
 digest and its [JSON Schema](schema/evaluator-assurance.schema.json). Passing this suite
 is regression evidence for these declared mutations—not formal verification, expert
 validation, or evidence that every scorer defect has been found.
+
+## Every Eval Ever interoperability
+
+FinMirror can export scored runs to the
+[Every Eval Ever](https://github.com/mlcommons/every_eval_ever) 0.3.0 aggregate and
+instance-level contracts. The exporter emits one JSONL row per sample and metric,
+computes the required canonical sample hashes, binds the sidecar checksum into the
+aggregate record, uses the datastore directory convention, and validates provenance
+before writing anything.
+
+```bash
+finmirror export-eee \
+  --dataset benchmark/v0.1 \
+  --report runs/my-agent/report.json \
+  --predictions runs/my-agent/predictions.jsonl \
+  --model-id "<registry-verified-developer/model>" \
+  --model-name "<reported model name>" \
+  --developer "<registry-verified-developer>" \
+  --evaluator-relationship third_party \
+  --deployment-type externally_managed \
+  --model-availability closed_weights \
+  --inference-platform "<actual provider>" \
+  --source-revision "<exact dataset revision>" \
+  --out artifacts/eee
+```
+
+The command deliberately rejects oracle/gold-aware runs, dataset or prediction
+mismatches, ambiguous model paths, non-finite scores, and overwrites. It marks model
+IDs unverified because registry resolution is a separate upstream review step; do not
+submit an export until that ID and the declared deployment facts have been checked.
+See the [EEE interoperability guide](docs/EVERY_EVAL_EVER.md).
 
 ## Quickstart
 
@@ -218,6 +250,7 @@ reported retrieval miss.
 - Brier score, ECE, optional pre/post confidence, and pairwise confidence deltas
 - optional retrieval IDs and preserved execution traces
 - deterministic reward vectors and DPO-style preference export
+- strict Every Eval Ever 0.3.0 aggregate and instance-level export
 - annotation agreement and Cohen’s κ utilities
 - 15-class one-field evaluator mutation assurance with exact local failure attribution
 - Cohere Command A+ / Rerank 4 adapter

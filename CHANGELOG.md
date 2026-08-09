@@ -6,6 +6,11 @@ All notable changes are documented here.
 
 ### Added
 
+- a strict Every Eval Ever 0.3.0 exporter with the exact upstream schemas pinned at
+  commit `252f796`, sample-per-metric JSONL, canonical hashes, checksum-bound aggregate
+  records, datastore-safe paths, atomic no-overwrite publication, and hard rejection of
+  gold-aware or identity-ambiguous runs;
+
 - a zero-network, non-gold evaluator-assurance command with 15 one-field mutation
   classes, exact case and pair-component attribution, coupled cross-language checks, a
   digest-bound machine-readable report, and a strict JSON Schema; this is regression

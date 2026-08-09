@@ -18,6 +18,7 @@ from finmirror.annotations import annotation_agreement
 from finmirror.assurance import run_evaluator_assurance
 from finmirror.ci import load_report, write_ci_artifacts
 from finmirror.dataset import dataset_digest, load_cases
+from finmirror.eee import EEEModelSpec, export_eee
 from finmirror.evaluator import evaluate
 from finmirror.generator import generate_benchmark
 from finmirror.lineage import (
@@ -259,6 +260,43 @@ def build_parser() -> argparse.ArgumentParser:
         default=("sources/v0.2/calibration/statcan-gdp-2025q2-q3/review-status.json"),
         help="Machine-readable expert review status record",
     )
+
+    eee = subparsers.add_parser(
+        "export-eee",
+        help="Export a scored run using the Every Eval Ever 0.3.0 contract",
+    )
+    eee.add_argument("--dataset", default="benchmark/v0.1")
+    eee.add_argument("--report", required=True, help="FinMirror report.json path")
+    eee.add_argument("--predictions", required=True, help="Matching predictions JSONL")
+    eee.add_argument("--model-id", required=True, help="Canonical developer/model identity")
+    eee.add_argument("--model-name", required=True, help="Model display name from the run")
+    eee.add_argument("--developer", required=True, help="Model developer; must match ID prefix")
+    eee.add_argument(
+        "--evaluator-relationship",
+        required=True,
+        choices=["first_party", "third_party", "collaborative", "other"],
+    )
+    eee.add_argument(
+        "--deployment-type",
+        required=True,
+        choices=["self_deployed", "externally_managed", "unknown"],
+    )
+    eee.add_argument(
+        "--model-availability",
+        required=True,
+        choices=["open_weights", "closed_weights", "unknown"],
+    )
+    eee.add_argument("--inference-platform", default="")
+    eee.add_argument("--inference-engine", default="")
+    eee.add_argument("--inference-engine-version", default="")
+    eee.add_argument(
+        "--source-url",
+        default="https://huggingface.co/datasets/mingyang233/FinMirror",
+    )
+    eee.add_argument("--source-revision", default="")
+    eee.add_argument("--file-uuid", help="Optional UUIDv4 for reproducible conversion tests")
+    eee.add_argument("--retrieved-timestamp", help="Optional epoch/ISO retrieval time")
+    eee.add_argument("--out", default="artifacts/eee")
     return parser
 
 
@@ -443,7 +481,38 @@ def main(argv: list[str] | None = None) -> int:
                 f"dataset sha256 {status.dataset_sha256}"
             )
             return 0
-    except (FileNotFoundError, RuntimeError, ValueError) as exc:
+
+        if args.command == "export-eee":
+            report_value = json.loads(Path(args.report).read_text(encoding="utf-8"))
+            if not isinstance(report_value, dict):
+                raise ValueError("report JSON must contain an object")
+            exported = export_eee(
+                report=report_value,
+                cases=load_cases(args.dataset),
+                predictions=load_predictions(args.predictions),
+                model=EEEModelSpec(
+                    model_id=args.model_id,
+                    name=args.model_name,
+                    developer=args.developer,
+                    evaluator_relationship=args.evaluator_relationship,
+                    deployment_type=args.deployment_type,
+                    model_availability=args.model_availability,
+                    inference_platform=args.inference_platform,
+                    inference_engine=args.inference_engine,
+                    inference_engine_version=args.inference_engine_version,
+                ),
+                output_root=args.out,
+                source_url=args.source_url,
+                source_revision=args.source_revision,
+                file_uuid=args.file_uuid,
+                retrieved_timestamp=args.retrieved_timestamp,
+            )
+            print(
+                f"EEE 0.3.0 VALID · {exported.sample_count} sample-metric rows · "
+                f"wrote {exported.aggregate_path.resolve()}"
+            )
+            return 0
+    except (FileExistsError, FileNotFoundError, RuntimeError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
     parser.error("Unhandled command")
