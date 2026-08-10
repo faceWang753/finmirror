@@ -7,9 +7,10 @@
   <a href="https://huggingface.co/datasets/mingyang233/FinMirror"><strong>Hugging Face dataset</strong></a> ·
   <a href="#quickstart">Quickstart</a> ·
   <a href="docs/AGENT_TRACE_AUDIT.md">Agent trace audit</a> ·
+  <a href="docs/JUDGE_ASSURANCE.md">Judge assurance</a> ·
   <a href="docs/METHODOLOGY.md">Methodology</a> ·
   <a href="docs/EVERY_EVAL_EVER.md">EEE export</a> ·
-  <a href="docs/LITERATURE_REVIEW.md">52-paper review</a> ·
+  <a href="docs/LITERATURE_REVIEW.md">53-paper review</a> ·
   <a href="docs/DATA_CARD.md">Data card</a> ·
   <a href="CONTRIBUTING.md">Contribute</a>
 </p>
@@ -82,6 +83,24 @@ The exact public v0.1 data package is also mirrored on
 [Hugging Face](https://huggingface.co/datasets/mingyang233/FinMirror), including the
 manifest and input/output JSON Schemas. The evaluator and scoring contract remain
 versioned in this repository.
+
+## Judge the judge: checklist quality before reward
+
+Checklist-based learned verifiers can produce useful dense signals while hiding two
+different defects: a bad decomposition and an overly permissive judgment. FinMirror's
+zero-network judge assurance separates them, then applies atomic-omission, irrelevant-
+context, and requirement-reorder metamorphic tests.
+
+```bash
+finmirror judge-demo
+```
+
+The bundled controls hold oracle requirement states constant across an atomic calibrated
+verifier, an atomic but permissive verifier, and a collapsed permissive verifier. Only
+the first passes the declared release gate. The audit is inspired by publicly documented
+Soft-SVeRL failure modes; it is an independent engineering extension, not a reproduction
+or an affiliated result. [Open the judge-assurance demo](https://facewang753.github.io/finmirror/judge/)
+or read the [method and threat model](docs/JUDGE_ASSURANCE.md).
 
 ## Independent upstream integrations
 
@@ -163,6 +182,7 @@ finmirror validate
 finmirror assure-evaluator
 finmirror demo
 finmirror trace-demo
+finmirror judge-demo
 ```
 
 Open `artifacts/demo/index.html`. The report is a standalone local HTML file with no

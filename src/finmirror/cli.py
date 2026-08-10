@@ -22,6 +22,12 @@ from finmirror.dataset import dataset_digest, load_cases
 from finmirror.eee import EEEModelSpec, export_eee
 from finmirror.evaluator import evaluate
 from finmirror.generator import generate_benchmark
+from finmirror.judge_audit import (
+    audit_judge_payload,
+    build_judge_demo,
+    dump_demo_inputs,
+    render_judge_comparison,
+)
 from finmirror.lineage import (
     evidence_claim_tier,
     load_evidence_manifest,
@@ -39,6 +45,8 @@ from finmirror.training import (
     load_predictions,
     save_predictions,
 )
+
+_DEMO_ARTIFACT_CREATED_AT = "2026-07-26T00:00:00+00:00"
 
 
 def _write_json(value: Any, path: Path) -> None:
@@ -100,7 +108,9 @@ def _run_and_write(
     cases: list[Any],
     output_dir: Path,
 ) -> dict[str, Any]:
-    predictions = run_adapter(adapter, cases)
+    predictions = [
+        replace(prediction, latency_ms=0.0) for prediction in run_adapter(adapter, cases)
+    ]
     report = evaluate(
         cases,
         predictions,
@@ -111,6 +121,7 @@ def _run_and_write(
             "offline": adapter.offline,
         },
     )
+    report["created_at"] = _DEMO_ARTIFACT_CREATED_AT
     output_dir.mkdir(parents=True, exist_ok=True)
     save_predictions(predictions, output_dir / "predictions.jsonl")
     _write_json(report, output_dir / "report.json")
@@ -158,6 +169,19 @@ def build_parser() -> argparse.ArgumentParser:
     trace_audit.add_argument("--predictions", required=True)
     trace_audit.add_argument("--system", required=True)
     trace_audit.add_argument("--out", default="runs/trace-audit")
+
+    judge_demo = subparsers.add_parser(
+        "judge-demo",
+        help="Audit checklist quality and permissive-verifier reward inflation",
+    )
+    judge_demo.add_argument("--out", default="artifacts/demo/judge")
+
+    judge_audit = subparsers.add_parser(
+        "judge-audit",
+        help="Audit an external checklist-verifier JSON artifact",
+    )
+    judge_audit.add_argument("--input", required=True)
+    judge_audit.add_argument("--out", default="runs/judge-audit")
 
     run = subparsers.add_parser("run", help="Run and score an adapter")
     run.add_argument("--dataset", default="benchmark/v0.1")
@@ -423,6 +447,40 @@ def main(argv: list[str] | None = None) -> int:
                 f"gate {'PASS' if report_value['metrics']['hard_gate_pass'] else 'BLOCKED'}"
             )
             return 0 if report_value["metrics"]["hard_gate_pass"] else 2
+
+        if args.command == "judge-demo":
+            output = Path(args.out)
+            judge_reports = build_judge_demo()
+            for report_value in judge_reports:
+                _write_json(
+                    report_value,
+                    output / report_value["system_name"] / "report.json",
+                )
+            dump_demo_inputs(output / "inputs")
+            render_judge_comparison(judge_reports, output / "index.html")
+            passed = sum(
+                bool(report_value["metrics"]["hard_gate_pass"])
+                for report_value in judge_reports
+            )
+            print(
+                f"Judge assurance complete · {passed}/{len(judge_reports)} controls pass · "
+                f"open {(output / 'index.html').resolve()}"
+            )
+            return 0
+
+        if args.command == "judge-audit":
+            payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+            report_value = audit_judge_payload(payload)
+            output = Path(args.out)
+            _write_json(report_value, output / "report.json")
+            render_judge_comparison((report_value,), output / "report.html")
+            gate = bool(report_value["metrics"]["hard_gate_pass"])
+            print(
+                f"{report_value['system_name']}: {'PASS' if gate else 'BLOCKED'} · "
+                f"{report_value['metrics']['metamorphic_pass_rate']:.0%} paired relations · "
+                f"{report_value['metrics']['false_pass_rate']:.0%} false passes"
+            )
+            return 0 if gate else 2
 
         if args.command == "run":
             cases = load_cases(args.dataset)

@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "system_name": "collapsed-permissive-verifier",
+  "scenarios": [
+    {
+      "scenario_id": "reference",
+      "relation": "reference",
+      "reference_scenario_id": null,
+      "requirements": [
+        {
+          "requirement_id": "correct_answer",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "current_period",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "grounded_citation",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "access_scope",
+          "satisfied": true
+        }
+      ],
+      "checklist": [
+        {
+          "item_id": "overall_quality",
+          "covers": [
+            "correct_answer",
+            "current_period",
+            "grounded_citation",
+            "access_scope"
+          ],
+          "probability": 0.96
+        }
+      ]
+    },
+    {
+      "scenario_id": "citation-omitted",
+      "relation": "atomic_omission",
+      "reference_scenario_id": "reference",
+      "requirements": [
+        {
+          "requirement_id": "correct_answer",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "current_period",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "grounded_citation",
+          "satisfied": false
+        },
+        {
+          "requirement_id": "access_scope",
+          "satisfied": true
+        }
+      ],
+      "checklist": [
+        {
+          "item_id": "overall_quality",
+          "covers": [
+            "correct_answer",
+            "current_period",
+            "grounded_citation",
+            "access_scope"
+          ],
+          "probability": 0.96
+        }
+      ]
+    },
+    {
+      "scenario_id": "irrelevant-context",
+      "relation": "irrelevant_context",
+      "reference_scenario_id": "reference",
+      "requirements": [
+        {
+          "requirement_id": "correct_answer",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "current_period",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "grounded_citation",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "access_scope",
+          "satisfied": true
+        }
+      ],
+      "checklist": [
+        {
+          "item_id": "overall_quality",
+          "covers": [
+            "correct_answer",
+            "current_period",
+            "grounded_citation",
+            "access_scope"
+          ],
+          "probability": 0.96
+        }
+      ]
+    },
+    {
+      "scenario_id": "requirements-reordered",
+      "relation": "reorder",
+      "reference_scenario_id": "reference",
+      "requirements": [
+        {
+          "requirement_id": "access_scope",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "grounded_citation",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "current_period",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "correct_answer",
+          "satisfied": true
+        }
+      ],
+      "checklist": [
+        {
+          "item_id": "overall_quality",
+          "covers": [
+            "access_scope",
+            "grounded_citation",
+            "current_period",
+            "correct_answer"
+          ],
+          "probability": 0.96
+        }
+      ]
+    }
+  ]
+}

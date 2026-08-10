@@ -217,8 +217,7 @@ def export_eee(
     selected_uuid = _require_uuid4(file_uuid or str(uuid.uuid4()))
     evaluation_timestamp = _epoch_timestamp(report["created_at"], "report.created_at")
     retrieved = _epoch_timestamp(
-        retrieved_timestamp
-        or str(int(datetime.now(tz=timezone.utc).timestamp())),
+        retrieved_timestamp or str(int(datetime.now(tz=timezone.utc).timestamp())),
         "retrieved_timestamp",
     )
     model_token = model.model_id.replace("/", "_")
@@ -244,9 +243,9 @@ def export_eee(
         model.model_id,
         evaluation_id,
     )
-    samples_bytes = (
-        "\n".join(_compact_json(item) for item in sample_rows) + "\n"
-    ).encode("utf-8")
+    samples_bytes = ("\n".join(_compact_json(item) for item in sample_rows) + "\n").encode(
+        "utf-8"
+    )
     checksum = hashlib.sha256(samples_bytes).hexdigest()
     aggregate = _aggregate_record(
         report=report,
@@ -277,9 +276,7 @@ def export_eee(
     )
     aggregate_path = destination / filename
     samples_path = destination / samples_filename
-    _publish_atomically(
-        ((samples_path, samples_bytes), (aggregate_path, aggregate_bytes))
-    )
+    _publish_atomically(((samples_path, samples_bytes), (aggregate_path, aggregate_bytes)))
     return EEEExport(
         aggregate_path=aggregate_path,
         samples_path=samples_path,
@@ -637,9 +634,7 @@ def _validate_report(
     if int(report["dataset"]["case_count"]) != len(cases):
         raise ValueError("report case_count does not match benchmark")
     transformed_ids = {
-        item.case_id
-        for item in cases
-        if item.relationship.expectation != "reference"
+        item.case_id for item in cases if item.relationship.expectation != "reference"
     }
     report_pair_ids = {
         str(item.get("transformed_case_id", "")) for item in report.get("pairs", [])
@@ -659,12 +654,8 @@ def _validate_report(
             )
 
 
-def _validate_export_semantics(
-    aggregate: dict[str, Any], rows: list[dict[str, Any]]
-) -> None:
-    result_ids = {
-        str(item["evaluation_result_id"]) for item in aggregate["evaluation_results"]
-    }
+def _validate_export_semantics(aggregate: dict[str, Any], rows: list[dict[str, Any]]) -> None:
+    result_ids = {str(item["evaluation_result_id"]) for item in aggregate["evaluation_results"]}
     if not rows:
         raise ValueError("EEE instance export must not be empty")
     for index, row in enumerate(rows, start=1):

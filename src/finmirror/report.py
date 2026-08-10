@@ -415,13 +415,18 @@ def render_comparison(
 *{{box-sizing:border-box}} body{{margin:0;background:radial-gradient(circle at 85% 0,rgba(57,185,138,.17),transparent 30rem),var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,sans-serif;font-variant-numeric:tabular-nums}}
 main{{width:min(1120px,calc(100% - 32px));margin:auto;padding:72px 0}} .brand{{color:var(--mint);text-transform:uppercase;letter-spacing:.16em;font-size:11px}}
 h1{{font-size:clamp(42px,7vw,76px);line-height:.98;letter-spacing:-.05em;margin:12px 0 20px}} p{{color:var(--muted);max-width:720px;font-size:17px}}
-.table{{margin-top:48px;overflow:auto;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}} table{{width:100%;min-width:900px;border-collapse:collapse}} th,td{{padding:17px 18px;border-bottom:1px solid var(--line);text-align:left}} th{{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}} td:nth-child(2){{font-size:24px;font-weight:800}} a{{color:var(--ink);text-decoration-color:var(--mint);text-underline-offset:4px}} .pass{{color:var(--mint);font-weight:800}} .blocked{{color:var(--coral);font-weight:800}} .note{{margin-top:24px;font-size:12px}}
+.modules{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:32px}} .module{{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(255,255,255,.025)}} .module strong{{display:block;margin-bottom:5px}} .module span{{color:var(--muted);font-size:13px}} .table{{margin-top:48px;overflow:auto;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}} table{{width:100%;min-width:900px;border-collapse:collapse}} th,td{{padding:17px 18px;border-bottom:1px solid var(--line);text-align:left}} th{{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}} td:nth-child(2){{font-size:24px;font-weight:800}} a{{color:var(--ink);text-decoration-color:var(--mint);text-underline-offset:4px}} .pass{{color:var(--mint);font-weight:800}} .blocked{{color:var(--coral);font-weight:800}} .note{{margin-top:24px;font-size:12px}} @media(max-width:760px){{.modules{{grid-template-columns:1fr}}}}
 </style></head><body><main>
 <div class="brand">FinMirror · paired counterfactual evaluation</div>
 <h1>Does the agent change<br>for the right reason?</h1>
 <p>A zero-key offline comparison. The gold-reading oracle validates the harness; the
 non-gold evidence program validates the public contract; and the evidence-blind baseline
 demonstrates why ordinary accuracy misses groundedness failures.</p>
+<nav class="modules" aria-label="FinMirror assurance modules">
+  <a class="module" href="judge/"><strong>Judge assurance</strong><span>Falsify checklist collapse and permissive learned verifiers.</span></a>
+  <a class="module" href="trace/"><strong>Agent trace audit</strong><span>Replay observable evidence paths without hidden chain-of-thought.</span></a>
+  <a class="module" href="review/"><strong>Blind expert review</strong><span>Inspect provisional finance gold without seeing model outputs.</span></a>
+</nav>
 <div class="table"><table><thead><tr><th>System</th><th>Audit score</th><th>Case accuracy</th><th>Pair reliability</th><th>Sensitivity</th><th>Invariance</th><th>Ablation</th><th>Gate</th></tr></thead>
 <tbody>{"".join(rows)}</tbody></table></div>
 <p class="note">Oracle results are harness checks, not model results. Synthetic v0.1 is a

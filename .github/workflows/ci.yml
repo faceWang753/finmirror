@@ -34,6 +34,8 @@ jobs:
       - run: git diff --exit-code artifacts/demo/review/data.js
       - run: finmirror trace-demo
       - run: git diff --exit-code artifacts/demo/trace
+      - run: finmirror judge-demo
+      - run: git diff --exit-code artifacts/demo/judge
       - run: python -m pytest --cov=finmirror --cov-report=term-missing
       - run: ruff check .
       - run: ruff format --check .

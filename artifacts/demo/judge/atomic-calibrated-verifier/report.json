@@ -1,0 +1,358 @@
+{
+  "judge_audit_schema_version": "1.0",
+  "system_name": "atomic-calibrated-verifier",
+  "method": "deterministic checklist and metamorphic verifier audit",
+  "metrics": {
+    "scenario_count": 4,
+    "pair_count": 3,
+    "exact_coverage_rate": 1.0,
+    "overlap_free_rate": 1.0,
+    "atomic_checklist_rate": 1.0,
+    "item_accuracy": 1.0,
+    "item_brier": 0.0009000000000000015,
+    "false_pass_rate": 0.0,
+    "mean_reward_inflation": -0.026250000000000023,
+    "max_reward_inflation": -0.015000000000000013,
+    "metamorphic_pass_rate": 1.0,
+    "hard_gate_pass": true
+  },
+  "hard_gate_checks": {
+    "all_checklists_exact_atomic_nonoverlapping": true,
+    "all_items_classified_correctly": true,
+    "no_false_requirement_passes": true,
+    "item_brier_at_most_0_10": true,
+    "all_metamorphic_relations_pass": true
+  },
+  "scenarios": [
+    {
+      "scenario_id": "reference",
+      "relation": "reference",
+      "reference_scenario_id": null,
+      "requirement_count": 4,
+      "checklist_item_count": 4,
+      "truth_completion": 1.0,
+      "soft_reward": 0.97,
+      "reward_inflation": -0.030000000000000027,
+      "checks": {
+        "unique_requirements": true,
+        "unique_checklist_items": true,
+        "known_coverage": true,
+        "exact_coverage": true,
+        "overlap_free": true,
+        "atomic_checklist": true
+      },
+      "items": [
+        {
+          "item_id": "check_correct_answer",
+          "covers": [
+            "correct_answer"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_current_period",
+          "covers": [
+            "current_period"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_grounded_citation",
+          "covers": [
+            "grounded_citation"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_access_scope",
+          "covers": [
+            "access_scope"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        }
+      ],
+      "structure_pass": true
+    },
+    {
+      "scenario_id": "citation-omitted",
+      "relation": "atomic_omission",
+      "reference_scenario_id": "reference",
+      "requirement_count": 4,
+      "checklist_item_count": 4,
+      "truth_completion": 0.75,
+      "soft_reward": 0.735,
+      "reward_inflation": -0.015000000000000013,
+      "checks": {
+        "unique_requirements": true,
+        "unique_checklist_items": true,
+        "known_coverage": true,
+        "exact_coverage": true,
+        "overlap_free": true,
+        "atomic_checklist": true
+      },
+      "items": [
+        {
+          "item_id": "check_correct_answer",
+          "covers": [
+            "correct_answer"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_current_period",
+          "covers": [
+            "current_period"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_grounded_citation",
+          "covers": [
+            "grounded_citation"
+          ],
+          "truth": false,
+          "probability": 0.03,
+          "predicted_pass": false,
+          "correct": true,
+          "brier": 0.0009
+        },
+        {
+          "item_id": "check_access_scope",
+          "covers": [
+            "access_scope"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        }
+      ],
+      "structure_pass": true
+    },
+    {
+      "scenario_id": "irrelevant-context",
+      "relation": "irrelevant_context",
+      "reference_scenario_id": "reference",
+      "requirement_count": 4,
+      "checklist_item_count": 4,
+      "truth_completion": 1.0,
+      "soft_reward": 0.97,
+      "reward_inflation": -0.030000000000000027,
+      "checks": {
+        "unique_requirements": true,
+        "unique_checklist_items": true,
+        "known_coverage": true,
+        "exact_coverage": true,
+        "overlap_free": true,
+        "atomic_checklist": true
+      },
+      "items": [
+        {
+          "item_id": "check_correct_answer",
+          "covers": [
+            "correct_answer"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_current_period",
+          "covers": [
+            "current_period"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_grounded_citation",
+          "covers": [
+            "grounded_citation"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_access_scope",
+          "covers": [
+            "access_scope"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        }
+      ],
+      "structure_pass": true
+    },
+    {
+      "scenario_id": "requirements-reordered",
+      "relation": "reorder",
+      "reference_scenario_id": "reference",
+      "requirement_count": 4,
+      "checklist_item_count": 4,
+      "truth_completion": 1.0,
+      "soft_reward": 0.97,
+      "reward_inflation": -0.030000000000000027,
+      "checks": {
+        "unique_requirements": true,
+        "unique_checklist_items": true,
+        "known_coverage": true,
+        "exact_coverage": true,
+        "overlap_free": true,
+        "atomic_checklist": true
+      },
+      "items": [
+        {
+          "item_id": "check_access_scope",
+          "covers": [
+            "access_scope"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_grounded_citation",
+          "covers": [
+            "grounded_citation"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_current_period",
+          "covers": [
+            "current_period"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        },
+        {
+          "item_id": "check_correct_answer",
+          "covers": [
+            "correct_answer"
+          ],
+          "truth": true,
+          "probability": 0.97,
+          "predicted_pass": true,
+          "correct": true,
+          "brier": 0.0009000000000000016
+        }
+      ],
+      "structure_pass": true
+    }
+  ],
+  "pairs": [
+    {
+      "reference_scenario_id": "reference",
+      "transformed_scenario_id": "citation-omitted",
+      "relation": "atomic_omission",
+      "changed_requirements": [
+        "grounded_citation"
+      ],
+      "probability_deltas": {
+        "access_scope": 0.0,
+        "correct_answer": 0.0,
+        "current_period": 0.0,
+        "grounded_citation": -0.94
+      },
+      "reward_delta": -0.235,
+      "checks": {
+        "same_requirement_set": true,
+        "atomic_probability_map": true,
+        "one_true_to_false": true,
+        "affected_probability_decreases": true,
+        "unaffected_probabilities_stable": true,
+        "reward_decreases": true
+      },
+      "passed": true
+    },
+    {
+      "reference_scenario_id": "reference",
+      "transformed_scenario_id": "irrelevant-context",
+      "relation": "irrelevant_context",
+      "changed_requirements": [],
+      "probability_deltas": {
+        "access_scope": 0.0,
+        "correct_answer": 0.0,
+        "current_period": 0.0,
+        "grounded_citation": 0.0
+      },
+      "reward_delta": 0.0,
+      "checks": {
+        "same_requirement_set": true,
+        "atomic_probability_map": true,
+        "truth_unchanged": true,
+        "probabilities_stable": true,
+        "reward_stable": true
+      },
+      "passed": true
+    },
+    {
+      "reference_scenario_id": "reference",
+      "transformed_scenario_id": "requirements-reordered",
+      "relation": "reorder",
+      "changed_requirements": [],
+      "probability_deltas": {
+        "access_scope": 0.0,
+        "correct_answer": 0.0,
+        "current_period": 0.0,
+        "grounded_citation": 0.0
+      },
+      "reward_delta": 0.0,
+      "checks": {
+        "same_requirement_set": true,
+        "atomic_probability_map": true,
+        "truth_unchanged": true,
+        "order_changed": true,
+        "probabilities_stable": true,
+        "reward_stable": true
+      },
+      "passed": true
+    }
+  ],
+  "claim_boundary": "This audit detects declared checklist and judgment failures in supplied outputs. It does not prove semantic completeness, model safety, or causal faithfulness of hidden reasoning."
+}

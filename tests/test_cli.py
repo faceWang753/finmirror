@@ -59,6 +59,12 @@ def test_zero_key_demo_writes_both_reports_and_comparison(tmp_path, capsys) -> N
     assert evidence["run_metadata"]["adapter_uses_gold"] is False
     assert memorized["metrics"]["hard_gate_pass"] is False
     assert memorized["by_transform"]["entity_collision"]["pass_rate"] == 0.0
+    assert evidence["created_at"] == "2026-07-26T00:00:00+00:00"
+    assert evidence["metrics"]["mean_latency_ms"] == 0.0
+
+    first_snapshot = {path: path.read_bytes() for path in expected_files}
+    assert main(["demo", "--dataset", str(dataset), "--out", str(output)]) == 0
+    assert {path: path.read_bytes() for path in expected_files} == first_snapshot
 
 
 def test_filtered_oracle_run_keeps_complete_pair_group(tmp_path, capsys) -> None:

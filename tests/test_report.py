@@ -55,5 +55,8 @@ def test_comparison_orders_by_audit_score_and_has_no_external_assets(
     assert document.index("harness-oracle") < document.index("memorized-evidence-blind")
     assert "PASS" in document
     assert "BLOCKED" in document
+    assert 'href="judge/"' in document
+    assert 'href="trace/"' in document
+    assert 'href="review/"' in document
     assert "http://" not in document
     assert "https://" not in document

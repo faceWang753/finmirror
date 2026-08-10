@@ -151,9 +151,7 @@ def test_trace_report_matches_committed_schema(
 ) -> None:
     project_root = Path(__file__).resolve().parents[1]
     schema = json.loads(
-        (project_root / "schema" / "trace-audit-report.schema.json").read_text(
-            encoding="utf-8"
-        )
+        (project_root / "schema" / "trace-audit-report.schema.json").read_text(encoding="utf-8")
     )
     report = audit_trace_run(
         cases,

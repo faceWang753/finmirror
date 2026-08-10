@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0",
+  "system_name": "atomic-calibrated-verifier",
+  "scenarios": [
+    {
+      "scenario_id": "reference",
+      "relation": "reference",
+      "reference_scenario_id": null,
+      "requirements": [
+        {
+          "requirement_id": "correct_answer",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "current_period",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "grounded_citation",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "access_scope",
+          "satisfied": true
+        }
+      ],
+      "checklist": [
+        {
+          "item_id": "check_correct_answer",
+          "covers": [
+            "correct_answer"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_current_period",
+          "covers": [
+            "current_period"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_grounded_citation",
+          "covers": [
+            "grounded_citation"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_access_scope",
+          "covers": [
+            "access_scope"
+          ],
+          "probability": 0.97
+        }
+      ]
+    },
+    {
+      "scenario_id": "citation-omitted",
+      "relation": "atomic_omission",
+      "reference_scenario_id": "reference",
+      "requirements": [
+        {
+          "requirement_id": "correct_answer",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "current_period",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "grounded_citation",
+          "satisfied": false
+        },
+        {
+          "requirement_id": "access_scope",
+          "satisfied": true
+        }
+      ],
+      "checklist": [
+        {
+          "item_id": "check_correct_answer",
+          "covers": [
+            "correct_answer"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_current_period",
+          "covers": [
+            "current_period"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_grounded_citation",
+          "covers": [
+            "grounded_citation"
+          ],
+          "probability": 0.03
+        },
+        {
+          "item_id": "check_access_scope",
+          "covers": [
+            "access_scope"
+          ],
+          "probability": 0.97
+        }
+      ]
+    },
+    {
+      "scenario_id": "irrelevant-context",
+      "relation": "irrelevant_context",
+      "reference_scenario_id": "reference",
+      "requirements": [
+        {
+          "requirement_id": "correct_answer",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "current_period",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "grounded_citation",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "access_scope",
+          "satisfied": true
+        }
+      ],
+      "checklist": [
+        {
+          "item_id": "check_correct_answer",
+          "covers": [
+            "correct_answer"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_current_period",
+          "covers": [
+            "current_period"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_grounded_citation",
+          "covers": [
+            "grounded_citation"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_access_scope",
+          "covers": [
+            "access_scope"
+          ],
+          "probability": 0.97
+        }
+      ]
+    },
+    {
+      "scenario_id": "requirements-reordered",
+      "relation": "reorder",
+      "reference_scenario_id": "reference",
+      "requirements": [
+        {
+          "requirement_id": "access_scope",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "grounded_citation",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "current_period",
+          "satisfied": true
+        },
+        {
+          "requirement_id": "correct_answer",
+          "satisfied": true
+        }
+      ],
+      "checklist": [
+        {
+          "item_id": "check_access_scope",
+          "covers": [
+            "access_scope"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_grounded_citation",
+          "covers": [
+            "grounded_citation"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_current_period",
+          "covers": [
+            "current_period"
+          ],
+          "probability": 0.97
+        },
+        {
+          "item_id": "check_correct_answer",
+          "covers": [
+            "correct_answer"
+          ],
+          "probability": 0.97
+        }
+      ]
+    }
+  ]
+}

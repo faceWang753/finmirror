@@ -247,13 +247,13 @@ def audit_trace_run(
             f"(missing={missing[:5]}, unknown={unknown[:5]})"
         )
 
-    results = [
-        audit_prediction_trace(case, prediction_map[case.case_id]) for case in case_list
-    ]
+    results = [audit_prediction_trace(case, prediction_map[case.case_id]) for case in case_list]
     failure_counts = Counter(label for result in results for label in result.failure_labels)
     passed = sum(result.passed for result in results)
     answer_correct = sum(result.answer_correct for result in results)
-    correct_but_unverified = sum(result.answer_correct and not result.passed for result in results)
+    correct_but_unverified = sum(
+        result.answer_correct and not result.passed for result in results
+    )
     return {
         "schema_version": "1.0",
         "audit_kind": "replayable_evidence_trace",
@@ -294,7 +294,7 @@ def render_trace_comparison(reports: Iterable[dict[str, Any]], output: str | Pat
             f"<td>{100 * float(metrics['answer_accuracy']):.1f}%</td>"
             f"<td>{100 * float(metrics['trace_pass_rate']):.1f}%</td>"
             f"<td>{int(metrics['answer_correct_but_unverified_count'])}</td>"
-            f"<td><span class=\"gate {gate.lower()}\">{gate}</span></td>"
+            f'<td><span class="gate {gate.lower()}">{gate}</span></td>'
             "</tr>"
         )
     embedded = (
@@ -319,7 +319,7 @@ small{{color:var(--muted)}}@media(max-width:700px){{.card{{overflow:auto}}th,td{
 <div class="eyebrow">FinMirror Agent Lab · deterministic replay</div>
 <h1>Did the agent read what it cited?</h1>
 <p class="lede">Final-answer accuracy cannot establish a valid evidence path. FinMirror replays content-addressed document-read receipts, then checks retrieval claims, citations, operands, and the terminal calculation or abstention.</p>
-<section class="card"><table><thead><tr><th>System</th><th>Answer accuracy</th><th>Verified trace</th><th>Correct but unverified</th><th>Gate</th></tr></thead><tbody>{''.join(rows)}</tbody></table></section>
+<section class="card"><table><thead><tr><th>System</th><th>Answer accuracy</th><th>Verified trace</th><th>Correct but unverified</th><th>Gate</th></tr></thead><tbody>{"".join(rows)}</tbody></table></section>
 <section class="callout"><strong>Interpretation boundary.</strong> This audit verifies that an observable trajectory is consistent with the exact evidence world. It does not claim access to hidden chain-of-thought and does not prove that the model lacked another information channel.</section>
 <p><small>Self-contained artifact · no telemetry · embedded machine-readable evidence</small></p>
 <script type="application/json" id="finmirror-trace-reports">{embedded}</script>

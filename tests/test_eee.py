@@ -79,12 +79,12 @@ def test_export_is_schema_valid_and_hash_bound(
     )
     assert aggregate["source_metadata"]["source_type"] == "evaluation_run"
     assert aggregate["detailed_evaluation_results"]["file_path"] == (
-        "data/finmirror-v0.1/finmirror/evidence-program/"
-        f"{FILE_UUID}_samples.jsonl"
+        f"data/finmirror-v0.1/finmirror/evidence-program/{FILE_UUID}_samples.jsonl"
     )
-    assert aggregate["detailed_evaluation_results"]["checksum"] == hashlib.sha256(
-        exported.samples_path.read_bytes()
-    ).hexdigest()
+    assert (
+        aggregate["detailed_evaluation_results"]["checksum"]
+        == hashlib.sha256(exported.samples_path.read_bytes()).hexdigest()
+    )
     assert {row["evaluation_id"] for row in rows} == {exported.evaluation_id}
     assert {row["model_id"] for row in rows} == {"finmirror/evidence-program"}
     assert all(row["input"]["raw"] not in row["output"]["raw"] for row in rows)
@@ -191,9 +191,7 @@ def test_export_eee_cli_publishes_and_reports_overwrite_error(
 ) -> None:
     dataset = tmp_path / "benchmark"
     generate_benchmark(dataset)
-    predictions = save_predictions(
-        evidence_program_predictions, tmp_path / "predictions.jsonl"
-    )
+    predictions = save_predictions(evidence_program_predictions, tmp_path / "predictions.jsonl")
     report = tmp_path / "report.json"
     report.write_text(json.dumps(evidence_program_report), encoding="utf-8")
     output = tmp_path / "eee"

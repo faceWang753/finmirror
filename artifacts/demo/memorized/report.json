@@ -1,6 +1,6 @@
 {
   "report_schema_version": "1.1",
-  "created_at": "2026-07-26T21:19:23.219799+00:00",
+  "created_at": "2026-07-26T00:00:00+00:00",
   "system": {
     "name": "memorized-evidence-blind",
     "version": "0.1"
@@ -49,7 +49,7 @@
     "expected_calibration_error": 0.11666666666666659,
     "calibration_score": 0.8475,
     "contract_validity": 1.0,
-    "mean_latency_ms": 0.0050420630797152486,
+    "mean_latency_ms": 0.0,
     "total_input_tokens": 0,
     "total_output_tokens": 0,
     "pre_confidence_coverage": 1.0,

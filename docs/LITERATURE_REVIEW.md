@@ -1,8 +1,8 @@
 # FinMirror Literature Review
 
-**Evidence cut-off:** 8 August 2026
+**Evidence cut-off:** 10 August 2026
 
-**Scope:** a targeted, project-oriented scan of 52 primary research papers. It is **not** a systematic review, a complete census of financial NLP, or evidence of priority by itself.
+**Scope:** a targeted, project-oriented scan of 53 primary research papers. It is **not** a systematic review, a complete census of financial NLP, or evidence of priority by itself.
 
 ## 1. Review question and publication-status policy
 
@@ -111,6 +111,12 @@ This turns a perturbation into more than a changed-answer test. It asks whether 
 | 51 | B | [Agentic CLEAR](https://aclanthology.org/2026.acl-demo.74/) | July 2026; **ACL 2026 System Demonstrations, peer-reviewed proceedings** | Provides multi-level, data-driven agent failure analysis and reports alignment with human-annotated errors. | Prefer decomposed failure attribution and meta-evaluate any learned diagnostic layer; deterministic checks remain appropriate only for fully specified targets. |
 | 52 | B | [A Survey on Evaluation of LLM-based Agents](https://aclanthology.org/2026.findings-acl.1330/) | July 2026; **Findings of ACL 2026, peer-reviewed proceedings** | Synthesizes capability, application, generalist, benchmark-dimension, and developer-tool perspectives; identifies cost-efficiency, safety, robustness, and fine-grained scalable evaluation as gaps. | Keep cost, safety, robustness, and trajectory evaluation explicit roadmap axes rather than inferring them from answer accuracy. |
 
+### 10 August update — contextual judge calibration
+
+| # | Tier | Work and original source | Date / venue / status | What it establishes | FinMirror implication |
+|---:|:---:|---|---|---|---|
+| 53 | B | [Project Kaleidoscope: Contextual, Human-Aligned Evaluation for Real-World AI Applications](https://arxiv.org/abs/2607.14673) | 16 July 2026; **arXiv preprint** | Separates evaluation-set construction, human calibration labels, and automated judge scores; uses single-metric judge prompts and withholds aggregation when no judge clears a local human-alignment gate. | Keep oracle requirements separate from learned judgments, expose per-item disagreement, and withhold a release gate when local verifier evidence fails. FinMirror's deterministic judge assurance adds metamorphic checklist probes but does not replace human calibration. |
+
 ## 4. Synthesis
 
 Six conclusions follow from the evidence map.
@@ -120,7 +126,7 @@ Six conclusions follow from the evidence map.
 3. **Determinism is valuable but not sufficient.** Replayable formulas and rule-based metrics improve reproducibility; LGMT and verifier-gaming work show that invariants, adversarially isomorphic cases, and evaluator audits are still necessary.
 4. **Synthetic tests have high internal control and limited external validity.** Current financial benchmarks increasingly use filings, annual reports, spreadsheets, multimodal pages, tools, experts, and deployed workflows. FinMirror v0.1 should be described as a diagnostic unit-test suite, not a proxy for production finance.
 5. **Multilingual and calibrated behavior require validation, not fields in a schema.** Parallel English, French, and Chinese templates plus confidence outputs are useful instrumentation. They do not establish native-language validity or calibration without human review, strong model baselines, confidence analyses, and distribution-shift tests.
-6. **Evaluator capability must match task openness.** PRBench and FinanceComplexQA motivate expert rubrics for realistic professional work; DREAM and Plan-RewardBench show why open-ended reports and long tool trajectories cannot be validated by a static scalar judge alone. FinMirror should retain deterministic checks for fully specified relations and add expert-validated, tool-capable evaluation only for tracks that require it.
+6. **Evaluator capability must match task openness.** PRBench and FinanceComplexQA motivate expert rubrics for realistic professional work; DREAM and Plan-RewardBench show why open-ended reports and long tool trajectories cannot be validated by a static scalar judge alone. Project Kaleidoscope further separates human calibration evidence from automated aggregation. FinMirror should retain deterministic checks for fully specified relations and add expert-validated, tool-capable evaluation only for tracks that require it.
 
 ## 5. Novelty boundary
 
@@ -138,7 +144,7 @@ The deterministic oracle and evidence-program responders are **harness sanity ch
 
 ### Safest current contribution statement
 
-> To our knowledge, as of 8 August 2026 and within this targeted 52-paper scan, FinMirror v0.1 is the first open, deterministic harness to score finance QA systems on paired evidence worlds with an explicit expected-change contract over the joint output tuple—answer, citations, executable formula and operand provenance, abstention or clarification, and confidence—while also testing invariance to irrelevant, entity, period, and injection perturbations in English, French, and Chinese.
+> To our knowledge, as of 10 August 2026 and within this targeted 53-paper scan, FinMirror v0.1 is the first open, deterministic harness to score finance QA systems on paired evidence worlds with an explicit expected-change contract over the joint output tuple—answer, citations, executable formula and operand provenance, abstention or clarification, and confidence—while also testing invariance to irrelevant, entity, period, and injection perturbations in English, French, and Chinese.
 
 Mandatory qualifications:
 
@@ -158,7 +164,7 @@ For most public materials, prefer the lower-risk wording:
 | Financial scope | Six authored financial calculation scenarios | Broader accounting, valuation, risk, controls, and workflow coverage; formula AST and compositional generation |
 | Languages | Parallel English, French, and Chinese renderings | Native expert authoring, locale-specific finance concepts, translation audits, and per-language reliability |
 | Outputs | Structured answer, citation, formula, operands, missing-evidence behavior, and confidence contract | Richer typed proof states, tool and agent trajectories, spreadsheet artifacts, visual citations |
-| Evaluation | Deterministic answer correctness, answer-change behavior, citation migration, formula replay, operand provenance, abstention, clarification, Brier/ECE, cross-language checks, hard gates, group-clustered bootstrap intervals, and 15-class one-field mutation assurance | Human/expert agreement, positive equivalence-class assurance, external judge validation, and statistical power analysis |
+| Evaluation | Deterministic answer correctness, answer-change behavior, citation migration, formula replay, operand provenance, abstention, clarification, Brier/ECE, cross-language checks, hard gates, group-clustered bootstrap intervals, 15-class one-field mutation assurance, and checklist-verifier metamorphic assurance | Human/expert agreement, positive equivalence-class assurance, model-generated judge validation, and statistical power analysis |
 | Retrieval | Optional retrieval-behavior metrics and Cohere Rerank integration | Controlled retriever baselines, compression studies, confidence-aware selection, long-document retrieval |
 | Training artifact | DPO-style open-weight preference export with decomposed deterministic reward vector; records marked not human-reviewed | Human preference collection, open-weight SFT/DPO/RL experiments, verifier-gaming stress tests, ablations, stability studies |
 | Models | Deterministic sanity checks and a Cohere inference adapter | Reproducible runs across Command A+ and strong open/proprietary baselines, with cost, latency, variance, and prompt disclosure |

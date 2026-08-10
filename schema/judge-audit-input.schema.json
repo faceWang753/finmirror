@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://facewang753.github.io/finmirror/schema/judge-audit-input.schema.json",
+  "title": "FinMirror checklist-verifier audit input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "system_name", "scenarios"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "system_name": {"type": "string", "minLength": 1},
+    "scenarios": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/scenario"}
+    }
+  },
+  "$defs": {
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirement_id", "satisfied"],
+      "properties": {
+        "requirement_id": {"type": "string", "minLength": 1},
+        "satisfied": {"type": "boolean"}
+      }
+    },
+    "checklist_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["item_id", "covers", "probability"],
+      "properties": {
+        "item_id": {"type": "string", "minLength": 1},
+        "covers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "probability": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenario_id",
+        "relation",
+        "reference_scenario_id",
+        "requirements",
+        "checklist"
+      ],
+      "properties": {
+        "scenario_id": {"type": "string", "minLength": 1},
+        "relation": {
+          "enum": ["reference", "atomic_omission", "irrelevant_context", "reorder"]
+        },
+        "reference_scenario_id": {"type": ["string", "null"]},
+        "requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/requirement"}
+        },
+        "checklist": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/checklist_item"}
+        }
+      }
+    }
+  }
+}

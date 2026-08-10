@@ -6,6 +6,16 @@ All notable changes are documented here.
 
 ### Added
 
+- a zero-network `judge-audit` for checklist-based learned verifiers that separates
+  decomposition defects from permissive-judgment reward inflation, checks exact atomic
+  coverage and item-level Brier score, and applies omission, irrelevant-context, and
+  reorder metamorphic relations;
+- a three-control `judge-demo` with replayable JSON inputs, machine-readable reports,
+  and a standalone HTML comparison that fails collapsed and permissive verifiers for
+  distinct, inspectable reasons;
+- byte-reproducible zero-key demo artifacts with fixed synthetic latency and snapshot
+  metadata, preventing wall-clock timing noise from changing committed reports;
+
 - a deterministic agent-path audit that replays content-addressed document reads and
   fail-closed checks retrieval claims, citations, calculation operands, and terminal
   formula or abstention provenance;
