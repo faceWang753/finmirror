@@ -8,7 +8,9 @@ paired evidence worlds and verifies whether answers, citations, calculation oper
 confidence, and abstention change only when the financial dependency graph permits. The
 v0.1 release is a fully tested synthetic protocol with a Cohere Command A+ adapter,
 deterministic formula replay, multilingual cases, calibration metrics, and preference
-export. I also mapped 52 recent papers to state exactly what is and is not novel.
+export. I also added a replayable agent-path audit: two systems can have identical,
+100%-correct answers while only the one with hash-bound evidence receipts passes the
+trajectory gate. I mapped 52 recent papers to state exactly what is and is not novel.
 
 ## Five-minute technical narrative
 
@@ -22,9 +24,11 @@ export. I also mapped 52 recent papers to state exactly what is and is not novel
    programs, operand provenance, exact citation sets, calibration, and hard gates.
 5. **Negative control:** a memorizer reaches 71.4% case accuracy but 0% strict pair
    reliability.
-6. **Cohere alignment:** model evaluation, multilingual systems, agentic RAG, calibrated
+6. **Agent-path control:** deleting only the evidence receipts from otherwise identical,
+   100%-correct predictions drops verified-path reliability from 100% to 0%.
+7. **Cohere alignment:** model evaluation, multilingual systems, agentic RAG, calibrated
    reasoning, soft verifiable rewards, and real-world stakeholder framing.
-7. **Scientific honesty:** synthetic v0.1 proves the protocol, not production validity.
+8. **Scientific honesty:** synthetic v0.1 proves the protocol, not production validity.
    The roadmap has expert annotation, license audit, real filings, sealed transformations,
    and statistical intervals.
 
@@ -90,6 +94,7 @@ paired metrics do not reveal failures beyond strong pointwise baselines.
 - one material pair and one entity collision;
 - the public `PromptCase` boundary;
 - formula allow-list and replay;
+- one valid and one digest-tampered evidence trace;
 - a failed pair’s component vector;
 - tests that detect dataset tampering;
 - literature “cannot claim” table;
@@ -105,6 +110,9 @@ paired metrics do not reveal failures beyond strong pointwise baselines.
 - Demonstrated that an evidence-blind baseline with 71.4% pointwise accuracy achieves 0%
   strict pair reliability; shipped interactive local reports and a Cohere Command A+ /
   Rerank 4 adapter.
+- Built a judge-free trajectory gate with SHA-256 document-read receipts and fail-closed
+  citation, operand, retrieval, formula, and abstention replay; exposed 126/126 answers
+  that stay correct but become unverifiable when only their receipts are removed.
 - Conducted a 52-paper 2024–2026 literature audit to narrow novelty claims and designed an
   expert-reviewed, contamination-limited research roadmap.
 

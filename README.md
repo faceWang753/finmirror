@@ -6,6 +6,7 @@
   <a href="https://facewang753.github.io/finmirror/"><strong>Live demo</strong></a> ·
   <a href="https://huggingface.co/datasets/mingyang233/FinMirror"><strong>Hugging Face dataset</strong></a> ·
   <a href="#quickstart">Quickstart</a> ·
+  <a href="docs/AGENT_TRACE_AUDIT.md">Agent trace audit</a> ·
   <a href="docs/METHODOLOGY.md">Methodology</a> ·
   <a href="docs/EVERY_EVAL_EVER.md">EEE export</a> ·
   <a href="docs/LITERATURE_REVIEW.md">52-paper review</a> ·
@@ -53,6 +54,29 @@ These are deterministic harness checks on synthetic v0.1—not claims about any 
 model. Reproduce them with `finmirror demo`.
 
 **[Explore the zero-key interactive demo →](https://facewang753.github.io/finmirror/)**
+
+## Agent paths: correct is not yet verifiable
+
+FinMirror v0.2 adds deterministic replay for observable agent evidence paths. A
+canonical `read_document` event binds the exact document observation to a SHA-256
+receipt. The auditor then checks that retrieval claims, citations, operands, and the
+terminal formula or abstention all descend from verified reads.
+
+```bash
+finmirror trace-demo
+```
+
+The zero-key falsification demo keeps all 126 final predictions byte-identical and
+removes only their trace. Both variants retain **100% answer accuracy**; verified-path
+pass rate falls from **100% to 0%**. This demonstrates that path verification is
+orthogonal to answer correctness—it is not a result for any hosted model.
+
+**[Open the live replayable trace demo →](https://facewang753.github.io/finmirror/trace/)**
+
+See the [trace contract, failure taxonomy, and threat model](docs/AGENT_TRACE_AUDIT.md).
+The audit checks observable replay consistency, not hidden chain-of-thought or causal
+attribution, and its receipts are content-addressed rather than tamper-resistant
+signatures.
 
 The exact public v0.1 data package is also mirrored on
 [Hugging Face](https://huggingface.co/datasets/mingyang233/FinMirror), including the
@@ -138,6 +162,7 @@ finmirror generate
 finmirror validate
 finmirror assure-evaluator
 finmirror demo
+finmirror trace-demo
 ```
 
 Open `artifacts/demo/index.html`. The report is a standalone local HTML file with no
@@ -294,7 +319,7 @@ benchmark/v0.1/       Reproducible synthetic paired worlds + manifest
 src/finmirror/        Contracts, verifier, adapters, CLI, reports, exports
 tests/                Unit, integration, mutation, tamper, and regression tests
 artifacts/             Offline reliability cards + evaluator-assurance evidence
-schema/                JSON Schemas for cases, predictions, and assurance reports
+schema/                JSON Schemas for cases, predictions, assurance, and trace reports
 docs/                 Methodology, data card, literature, roadmap, launch kit
 ```
 

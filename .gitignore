@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .coverage
+artifacts/trace-demo/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
@@ -10,4 +11,3 @@ dist/
 build/
 runs/
 .env
-

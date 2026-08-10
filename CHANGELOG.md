@@ -6,6 +6,13 @@ All notable changes are documented here.
 
 ### Added
 
+- a deterministic agent-path audit that replays content-addressed document reads and
+  fail-closed checks retrieval claims, citations, calculation operands, and terminal
+  formula or abstention provenance;
+- a zero-key trace falsification demo where byte-identical, 100%-correct predictions
+  score 100% with replayable evidence paths and 0% after only the receipts are removed,
+  plus a versioned JSON Schema and standalone HTML comparison;
+
 - a strict Every Eval Ever 0.3.0 exporter with the exact upstream schemas pinned at
   commit `252f796`, sample-per-metric JSONL, canonical hashes, checksum-bound aggregate
   records, datastore-safe paths, atomic no-overwrite publication, and hard rejection of
@@ -37,7 +44,7 @@ All notable changes are documented here.
 
 - expert-reviewed real-source pilot;
 - sealed isomorphic intervention track;
-- visual and agent-trajectory evaluation.
+- visual evaluation and harness-minted, stateful tool environments.
 
 ## [0.1.1] — 2026-08-04
 

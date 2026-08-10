@@ -15,6 +15,7 @@ from finmirror.models import (
     PromptCase,
 )
 from finmirror.scoring import execute_formula
+from finmirror.trace_audit import verified_read_event
 
 
 def _display(value: float, unit: str) -> str:
@@ -115,9 +116,7 @@ class EvidenceProgramBaseline(Adapter):
                 extracted[anchor_match.group(1)] = float(numbers[-1])
 
         retrieved = (document.id,)
-        trace: list[dict[str, object]] = [
-            {"step": "retrieve", "document_ids": list(retrieved)},
-        ]
+        trace: list[dict[str, object]] = [verified_read_event(document)]
         if "E2" not in extracted:
             missing = f"{document.id}#E2"
             trace.append({"step": "abstain", "missing_evidence": [missing]})

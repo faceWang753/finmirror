@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "finmirror"
-version = "0.1.1"
+version = "0.2.0"
 description = "Paired counterfactual evaluation for reliable financial AI agents."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -17,6 +17,8 @@ keywords = [
   "llm",
   "rag",
   "counterfactual",
+  "agent-evaluation",
+  "tool-use",
   "cohere",
 ]
 classifiers = [

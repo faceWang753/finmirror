@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -32,6 +33,7 @@ from finmirror.report import render_comparison, render_report
 from finmirror.review import load_expert_review_status, require_expert_validated
 from finmirror.review_submission import load_review_submission
 from finmirror.sources import ledger_digest, load_ledger
+from finmirror.trace_audit import audit_trace_run, render_trace_comparison
 from finmirror.training import (
     export_preferences,
     load_predictions,
@@ -121,7 +123,7 @@ def build_parser() -> argparse.ArgumentParser:
         prog="finmirror",
         description="Paired counterfactual evaluation for financial AI agents.",
     )
-    parser.add_argument("--version", action="version", version="finmirror 0.1.1")
+    parser.add_argument("--version", action="version", version="finmirror 0.2.0")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     generate = subparsers.add_parser("generate", help="Generate the synthetic v0.1 benchmark")
@@ -140,6 +142,22 @@ def build_parser() -> argparse.ArgumentParser:
     demo = subparsers.add_parser("demo", help="Run the zero-key oracle and evidence-blind demo")
     demo.add_argument("--dataset", default="benchmark/v0.1")
     demo.add_argument("--out", default="artifacts/demo")
+
+    trace_demo = subparsers.add_parser(
+        "trace-demo",
+        help="Show why identical correct answers still need replayable evidence paths",
+    )
+    trace_demo.add_argument("--dataset", default="benchmark/v0.1")
+    trace_demo.add_argument("--out", default="artifacts/demo/trace")
+
+    trace_audit = subparsers.add_parser(
+        "trace-audit",
+        help="Replay content-addressed evidence receipts in a prediction JSONL file",
+    )
+    trace_audit.add_argument("--dataset", default="benchmark/v0.1")
+    trace_audit.add_argument("--predictions", required=True)
+    trace_audit.add_argument("--system", required=True)
+    trace_audit.add_argument("--out", default="runs/trace-audit")
 
     run = subparsers.add_parser("run", help="Run and score an adapter")
     run.add_argument("--dataset", default="benchmark/v0.1")
@@ -353,6 +371,58 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(f"Demo complete · open {(output / 'index.html').resolve()}")
             return 0
+
+        if args.command == "trace-demo":
+            dataset_path = Path(args.dataset)
+            if not (dataset_path / "cases.jsonl").exists() and not dataset_path.is_file():
+                generate_benchmark(dataset_path)
+            cases = load_cases(dataset_path)
+            verified_predictions = run_adapter(EvidenceProgramBaseline(), cases)
+            unverified_predictions = [replace(item, trace=()) for item in verified_predictions]
+            output = Path(args.out)
+            trace_reports = (
+                audit_trace_run(
+                    cases,
+                    verified_predictions,
+                    system_name="evidence-program-with-receipts",
+                ),
+                audit_trace_run(
+                    cases,
+                    unverified_predictions,
+                    system_name="identical-output-without-receipts",
+                ),
+            )
+            for name, predictions, report_value in (
+                ("verified", verified_predictions, trace_reports[0]),
+                ("unverified", unverified_predictions, trace_reports[1]),
+            ):
+                directory = output / name
+                save_predictions(predictions, directory / "predictions.jsonl")
+                _write_json(report_value, directory / "trace-report.json")
+            render_trace_comparison(trace_reports, output / "index.html")
+            print(
+                "Trace demo complete · identical answer accuracy, "
+                f"{100 * trace_reports[0]['metrics']['trace_pass_rate']:.1f}% vs "
+                f"{100 * trace_reports[1]['metrics']['trace_pass_rate']:.1f}% verified paths · "
+                f"open {(output / 'index.html').resolve()}"
+            )
+            return 0
+
+        if args.command == "trace-audit":
+            report_value = audit_trace_run(
+                load_cases(args.dataset),
+                load_predictions(args.predictions),
+                system_name=args.system,
+            )
+            output = Path(args.out)
+            _write_json(report_value, output / "trace-report.json")
+            render_trace_comparison((report_value,), output / "trace-report.html")
+            print(
+                f"{args.system}: "
+                f"{100 * report_value['metrics']['trace_pass_rate']:.1f}% verified paths · "
+                f"gate {'PASS' if report_value['metrics']['hard_gate_pass'] else 'BLOCKED'}"
+            )
+            return 0 if report_value["metrics"]["hard_gate_pass"] else 2
 
         if args.command == "run":
             cases = load_cases(args.dataset)

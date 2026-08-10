@@ -1,0 +1,1910 @@
+{
+  "schema_version": "1.0",
+  "audit_kind": "replayable_evidence_trace",
+  "system_name": "evidence-program-with-receipts",
+  "claim_boundary": "Verifies observable trace consistency against the supplied evidence world; does not reveal or prove hidden model reasoning.",
+  "dataset": {
+    "case_count": 126,
+    "sha256": "3db16674c7fb5d0f9a45c41389045d001ca8ed8f2d0d55368baec8673de23009"
+  },
+  "metrics": {
+    "answer_accuracy": 1.0,
+    "trace_pass_rate": 1.0,
+    "mean_trace_score": 100.0,
+    "answer_correct_but_unverified_count": 0,
+    "hard_gate_pass": true
+  },
+  "failure_counts": {},
+  "results": [
+    {
+      "case_id": "fm-cash_runway-en-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-en-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-en-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-en-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-en-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-en-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-en-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-en-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-en-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-en-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-en-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-en-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-en-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-en-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-fr-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-fr-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-fr-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-fr-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-fr-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-fr-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-fr-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-fr-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-fr-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-fr-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-fr-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-fr-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-fr-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-fr-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-zh-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-zh-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-zh-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-zh-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-zh-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-zh-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-zh-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-zh-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-zh-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-zh-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-zh-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-zh-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-cash_runway-zh-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-cash_runway-zh-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-en-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-en-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-en-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-en-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-en-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-en-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-en-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-fr-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-fr-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-fr-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-fr-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-fr-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-fr-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-fr-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-zh-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-zh-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-zh-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-zh-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-zh-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-zh-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-covenant_headroom-zh-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-en-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-en-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-en-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-en-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-en-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-en-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-en-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-fr-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-fr-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-fr-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-fr-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-fr-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-fr-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-fr-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-zh-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-zh-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-zh-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-zh-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-zh-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-zh-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-debt_to_equity-zh-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-en-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-en-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-en-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-en-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-en-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-en-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-en-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-fr-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-fr-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-fr-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-fr-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-fr-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-fr-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-fr-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-zh-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-zh-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-zh-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-zh-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-zh-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-zh-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-free_cash_flow-zh-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-en-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-en-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-en-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-en-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-en-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-en-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-en-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-en-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-en-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-en-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-en-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-en-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-en-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-en-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-fr-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-fr-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-fr-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-fr-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-fr-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-fr-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-fr-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-fr-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-fr-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-fr-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-fr-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-fr-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-fr-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-fr-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-zh-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-zh-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-zh-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-zh-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-zh-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-zh-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-zh-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-zh-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-zh-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-zh-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-zh-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-zh-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-gross_margin-zh-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-gross_margin-zh-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-en-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-en-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-en-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-en-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-en-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-en-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-en-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-en-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-en-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-en-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-en-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-en-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-en-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-en-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-fr-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-fr-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-fr-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-fr-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-fr-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-fr-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-fr-reference:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-distractor",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-zh-distractor:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-entity_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-zh-entity_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-evidence_ablation",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-zh-evidence_ablation:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-injection",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-zh-injection:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-material",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-zh-material:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-period_collision",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-zh-period_collision:primary"
+      ],
+      "failure_labels": []
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-reference",
+      "passed": true,
+      "score": 100.0,
+      "answer_correct": true,
+      "receipt_valid": true,
+      "retrieval_claim_valid": true,
+      "citation_path_valid": true,
+      "operand_path_valid": true,
+      "decision_path_valid": true,
+      "verified_document_ids": [
+        "doc:fm-revenue_growth-zh-reference:primary"
+      ],
+      "failure_labels": []
+    }
+  ]
+}

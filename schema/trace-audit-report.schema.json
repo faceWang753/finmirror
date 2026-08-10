@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://finmirror.dev/schema/trace-audit-report.schema.json",
+  "title": "FinMirror Replayable Evidence Trace Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "audit_kind",
+    "system_name",
+    "claim_boundary",
+    "dataset",
+    "metrics",
+    "failure_counts",
+    "results"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "audit_kind": {"const": "replayable_evidence_trace"},
+    "system_name": {"type": "string", "minLength": 1},
+    "claim_boundary": {"type": "string", "minLength": 1},
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_count", "sha256"],
+      "properties": {
+        "case_count": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "answer_accuracy",
+        "trace_pass_rate",
+        "mean_trace_score",
+        "answer_correct_but_unverified_count",
+        "hard_gate_pass"
+      ],
+      "properties": {
+        "answer_accuracy": {"type": "number", "minimum": 0, "maximum": 1},
+        "trace_pass_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "mean_trace_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "answer_correct_but_unverified_count": {"type": "integer", "minimum": 0},
+        "hard_gate_pass": {"type": "boolean"}
+      }
+    },
+    "failure_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 1}
+    },
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/result"}
+    }
+  },
+  "$defs": {
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "passed",
+        "score",
+        "answer_correct",
+        "receipt_valid",
+        "retrieval_claim_valid",
+        "citation_path_valid",
+        "operand_path_valid",
+        "decision_path_valid",
+        "verified_document_ids",
+        "failure_labels"
+      ],
+      "properties": {
+        "case_id": {"type": "string", "minLength": 1},
+        "passed": {"type": "boolean"},
+        "score": {"type": "number", "minimum": 0, "maximum": 100},
+        "answer_correct": {"type": "boolean"},
+        "receipt_valid": {"type": "boolean"},
+        "retrieval_claim_valid": {"type": "boolean"},
+        "citation_path_valid": {"type": "boolean"},
+        "operand_path_valid": {"type": "boolean"},
+        "decision_path_valid": {"type": "boolean"},
+        "verified_document_ids": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "failure_labels": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}
