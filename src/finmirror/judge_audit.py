@@ -196,12 +196,15 @@ def _scenario_result(scenario: JudgeScenario) -> dict[str, Any]:
                 "probability": item.probability,
                 "predicted_pass": predicted_pass,
                 "correct": predicted_pass == item_truth,
-                "brier": (item.probability - float(item_truth)) ** 2,
+                "brier": round((item.probability - float(item_truth)) ** 2, 12),
             }
         )
 
-    truth_completion = sum(truth.values()) / len(truth) if truth else 0.0
-    soft_reward = sum(item.probability for item in scenario.checklist) / len(scenario.checklist)
+    truth_completion = round(sum(truth.values()) / len(truth), 12) if truth else 0.0
+    soft_reward = round(
+        sum(item.probability for item in scenario.checklist) / len(scenario.checklist),
+        12,
+    )
     return {
         "scenario_id": scenario.scenario_id,
         "relation": scenario.relation,
@@ -210,7 +213,7 @@ def _scenario_result(scenario: JudgeScenario) -> dict[str, Any]:
         "checklist_item_count": len(scenario.checklist),
         "truth_completion": truth_completion,
         "soft_reward": soft_reward,
-        "reward_inflation": soft_reward - truth_completion,
+        "reward_inflation": round(soft_reward - truth_completion, 12),
         "checks": checks,
         "items": item_rows,
         "structure_pass": all(checks.values()),
@@ -255,10 +258,16 @@ def _pair_result(
         assert reference_probabilities is not None
         assert transformed_probabilities is not None
         probability_deltas = {
-            item: transformed_probabilities[item] - reference_probabilities[item]
+            item: round(
+                transformed_probabilities[item] - reference_probabilities[item],
+                12,
+            )
             for item in sorted(reference_probabilities)
         }
-    reward_delta = transformed_result["soft_reward"] - reference_result["soft_reward"]
+    reward_delta = round(
+        transformed_result["soft_reward"] - reference_result["soft_reward"],
+        12,
+    )
 
     checks: dict[str, bool] = {
         "same_requirement_set": same_ids,
@@ -379,6 +388,10 @@ def audit_judge_payload(value: Any) -> dict[str, Any]:
         "max_reward_inflation": max(result["reward_inflation"] for result in scenario_results),
         "metamorphic_pass_rate": sum(result["passed"] for result in pair_results)
         / len(pair_results),
+    }
+    metrics = {
+        key: round(value, 12) if isinstance(value, float) else value
+        for key, value in metrics.items()
     }
     hard_gate_checks = {
         "all_checklists_exact_atomic_nonoverlapping": all(

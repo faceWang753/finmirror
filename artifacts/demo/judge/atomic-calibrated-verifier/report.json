@@ -9,10 +9,10 @@
     "overlap_free_rate": 1.0,
     "atomic_checklist_rate": 1.0,
     "item_accuracy": 1.0,
-    "item_brier": 0.0009000000000000015,
+    "item_brier": 0.0009,
     "false_pass_rate": 0.0,
-    "mean_reward_inflation": -0.026250000000000023,
-    "max_reward_inflation": -0.015000000000000013,
+    "mean_reward_inflation": -0.02625,
+    "max_reward_inflation": -0.015,
     "metamorphic_pass_rate": 1.0,
     "hard_gate_pass": true
   },
@@ -32,7 +32,7 @@
       "checklist_item_count": 4,
       "truth_completion": 1.0,
       "soft_reward": 0.97,
-      "reward_inflation": -0.030000000000000027,
+      "reward_inflation": -0.03,
       "checks": {
         "unique_requirements": true,
         "unique_checklist_items": true,
@@ -51,7 +51,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_current_period",
@@ -62,7 +62,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_grounded_citation",
@@ -73,7 +73,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_access_scope",
@@ -84,7 +84,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         }
       ],
       "structure_pass": true
@@ -97,7 +97,7 @@
       "checklist_item_count": 4,
       "truth_completion": 0.75,
       "soft_reward": 0.735,
-      "reward_inflation": -0.015000000000000013,
+      "reward_inflation": -0.015,
       "checks": {
         "unique_requirements": true,
         "unique_checklist_items": true,
@@ -116,7 +116,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_current_period",
@@ -127,7 +127,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_grounded_citation",
@@ -149,7 +149,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         }
       ],
       "structure_pass": true
@@ -162,7 +162,7 @@
       "checklist_item_count": 4,
       "truth_completion": 1.0,
       "soft_reward": 0.97,
-      "reward_inflation": -0.030000000000000027,
+      "reward_inflation": -0.03,
       "checks": {
         "unique_requirements": true,
         "unique_checklist_items": true,
@@ -181,7 +181,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_current_period",
@@ -192,7 +192,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_grounded_citation",
@@ -203,7 +203,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_access_scope",
@@ -214,7 +214,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         }
       ],
       "structure_pass": true
@@ -227,7 +227,7 @@
       "checklist_item_count": 4,
       "truth_completion": 1.0,
       "soft_reward": 0.97,
-      "reward_inflation": -0.030000000000000027,
+      "reward_inflation": -0.03,
       "checks": {
         "unique_requirements": true,
         "unique_checklist_items": true,
@@ -246,7 +246,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_grounded_citation",
@@ -257,7 +257,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_current_period",
@@ -268,7 +268,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         },
         {
           "item_id": "check_correct_answer",
@@ -279,7 +279,7 @@
           "probability": 0.97,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.0009000000000000016
+          "brier": 0.0009
         }
       ],
       "structure_pass": true

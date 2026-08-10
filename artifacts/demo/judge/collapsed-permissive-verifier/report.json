@@ -11,8 +11,8 @@
     "item_accuracy": 0.75,
     "item_brier": 0.2316,
     "false_pass_rate": 1.0,
-    "mean_reward_inflation": 0.022499999999999964,
-    "max_reward_inflation": 0.20999999999999996,
+    "mean_reward_inflation": 0.0225,
+    "max_reward_inflation": 0.21,
     "metamorphic_pass_rate": 0.0,
     "hard_gate_pass": false
   },
@@ -32,7 +32,7 @@
       "checklist_item_count": 1,
       "truth_completion": 1.0,
       "soft_reward": 0.96,
-      "reward_inflation": -0.040000000000000036,
+      "reward_inflation": -0.04,
       "checks": {
         "unique_requirements": true,
         "unique_checklist_items": true,
@@ -54,7 +54,7 @@
           "probability": 0.96,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.001600000000000003
+          "brier": 0.0016
         }
       ],
       "structure_pass": false
@@ -67,7 +67,7 @@
       "checklist_item_count": 1,
       "truth_completion": 0.75,
       "soft_reward": 0.96,
-      "reward_inflation": 0.20999999999999996,
+      "reward_inflation": 0.21,
       "checks": {
         "unique_requirements": true,
         "unique_checklist_items": true,
@@ -102,7 +102,7 @@
       "checklist_item_count": 1,
       "truth_completion": 1.0,
       "soft_reward": 0.96,
-      "reward_inflation": -0.040000000000000036,
+      "reward_inflation": -0.04,
       "checks": {
         "unique_requirements": true,
         "unique_checklist_items": true,
@@ -124,7 +124,7 @@
           "probability": 0.96,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.001600000000000003
+          "brier": 0.0016
         }
       ],
       "structure_pass": false
@@ -137,7 +137,7 @@
       "checklist_item_count": 1,
       "truth_completion": 1.0,
       "soft_reward": 0.96,
-      "reward_inflation": -0.040000000000000036,
+      "reward_inflation": -0.04,
       "checks": {
         "unique_requirements": true,
         "unique_checklist_items": true,
@@ -159,7 +159,7 @@
           "probability": 0.96,
           "predicted_pass": true,
           "correct": true,
-          "brier": 0.001600000000000003
+          "brier": 0.0016
         }
       ],
       "structure_pass": false
