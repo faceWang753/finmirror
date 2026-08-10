@@ -401,7 +401,10 @@ def main(argv: list[str] | None = None) -> int:
             if not (dataset_path / "cases.jsonl").exists() and not dataset_path.is_file():
                 generate_benchmark(dataset_path)
             cases = load_cases(dataset_path)
-            verified_predictions = run_adapter(EvidenceProgramBaseline(), cases)
+            verified_predictions = [
+                replace(item, latency_ms=0.0)
+                for item in run_adapter(EvidenceProgramBaseline(), cases)
+            ]
             unverified_predictions = [replace(item, trace=()) for item in verified_predictions]
             output = Path(args.out)
             trace_reports = (

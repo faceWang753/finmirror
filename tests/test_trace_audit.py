@@ -121,6 +121,18 @@ def test_trace_demo_cli_writes_reproducible_comparison(
     assert "Did the agent read what it cited?" in page
     assert "identical-output-without-receipts" in page
 
+    snapshot_paths = (
+        output / "index.html",
+        output / "verified" / "predictions.jsonl",
+        output / "verified" / "trace-report.json",
+        output / "unverified" / "predictions.jsonl",
+        output / "unverified" / "trace-report.json",
+    )
+    first_snapshot = {path: path.read_bytes() for path in snapshot_paths}
+
+    assert main(["trace-demo", "--dataset", str(dataset), "--out", str(output)]) == 0
+    assert {path: path.read_bytes() for path in snapshot_paths} == first_snapshot
+
 
 def test_trace_report_escapes_system_names(
     tmp_path: Path,

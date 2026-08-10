@@ -13,7 +13,7 @@ All notable changes are documented here.
 - a three-control `judge-demo` with replayable JSON inputs, machine-readable reports,
   and a standalone HTML comparison that fails collapsed and permissive verifiers for
   distinct, inspectable reasons;
-- byte-reproducible zero-key demo artifacts with fixed synthetic latency and snapshot
+- byte-reproducible zero-key demo and trace artifacts with fixed synthetic latency and snapshot
   metadata, preventing wall-clock timing noise from changing committed reports;
 
 - a deterministic agent-path audit that replays content-addressed document reads and
