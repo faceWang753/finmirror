@@ -40,7 +40,6 @@ jobs:
       - run: git diff --exit-code artifacts/demo/judge
       - run: finmirror assure-equivalence
       - run: git diff --exit-code artifacts/demo/equivalence
-      - run: git diff --exit-code artifacts/demo
       - run: python -m pytest --cov=finmirror --cov-report=term-missing
       - run: ruff check .
       - run: ruff format --check .
