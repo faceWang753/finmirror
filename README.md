@@ -6,11 +6,12 @@
   <a href="https://facewang753.github.io/finmirror/"><strong>Live demo</strong></a> ·
   <a href="https://huggingface.co/datasets/mingyang233/FinMirror"><strong>Hugging Face dataset</strong></a> ·
   <a href="#quickstart">Quickstart</a> ·
+  <a href="docs/EQUIVALENCE_ASSURANCE.md">Equivalence assurance</a> ·
   <a href="docs/AGENT_TRACE_AUDIT.md">Agent trace audit</a> ·
   <a href="docs/JUDGE_ASSURANCE.md">Judge assurance</a> ·
   <a href="docs/METHODOLOGY.md">Methodology</a> ·
   <a href="docs/EVERY_EVAL_EVER.md">EEE export</a> ·
-  <a href="docs/LITERATURE_REVIEW.md">53-paper review</a> ·
+  <a href="docs/LITERATURE_REVIEW.md">56-paper review</a> ·
   <a href="docs/DATA_CARD.md">Data card</a> ·
   <a href="CONTRIBUTING.md">Contribute</a>
 </p>
@@ -135,6 +136,24 @@ failure, pair-component failure, and cross-language effect. The committed
 digest and its [JSON Schema](schema/evaluator-assurance.schema.json). Passing this suite
 is regression evidence for these declared mutations—not formal verification, expert
 validation, or evidence that every scorer defect has been found.
+
+### The dual gate: valid representations must remain valid
+
+Mutation detection alone can reward an evaluator that rejects too much. FinMirror also
+runs a [10-relation positive equivalence matrix](docs/EQUIVALENCE_ASSURANCE.md) over
+citation and operand order, set idempotence, numeric serialization, unit case, display
+whitespace, and irrelevant telemetry.
+
+```bash
+finmirror assure-equivalence
+```
+
+The committed run preserves **3,426/3,426 semantic assertions** across case scores,
+semantic keys, affected pairs, and parallel-language groups. A deliberately brittle raw-
+contract equality control rejects all 10 valid relations, showing that the audit is not
+passing unchanged fixtures. [Open the live assurance card](https://facewang753.github.io/finmirror/equivalence/)
+or inspect its [JSON Schema](schema/equivalence-assurance.schema.json). The allow-list is
+narrow by design; it is not proof of every financially equivalent expression.
 
 ## Every Eval Ever interoperability
 
@@ -298,6 +317,7 @@ reported retrieval miss.
 - strict Every Eval Ever 0.3.0 aggregate and instance-level export
 - annotation agreement and Cohen’s κ utilities
 - 15-class one-field evaluator mutation assurance with exact local failure attribution
+- 10-class positive equivalence assurance with 3,426 invariant-score assertions
 - Cohere Command A+ / Rerank 4 adapter
 - standalone interactive reliability cards
 
@@ -316,8 +336,9 @@ FinMirror is informed by—not a relabeling of—recent work:
 | [CALIBER](https://arxiv.org/abs/2606.24281) (Cohere, 2026) | Confidence before vs. after reasoning | Confidence behavior under controlled evidence interventions |
 | [Soft-SVeRL](https://arxiv.org/abs/2605.28561) (Cohere, 2026) | Soft, checklist-based verifiable rewards | Deterministic hard gates plus exportable reward vectors |
 | [FinRAG-12B](https://aclanthology.org/2026.acl-industry.92/) (ACL 2026) | Production answer/citation/refusal training | Differential tests that pointwise production KPIs can miss |
+| [All Prompts Are Created Equal?](https://aclanthology.org/2026.findings-acl.1929/) (Findings ACL 2026) | Equivalent prompts can expose judge accuracy–robustness gaps | Digest-bound positive equivalence gates for the deterministic finance contract |
 
-The complete [literature review](docs/LITERATURE_REVIEW.md) covers 52 papers and marks
+The complete [literature review](docs/LITERATURE_REVIEW.md) covers 56 papers and marks
 preprints separately from peer-reviewed proceedings. We do **not** claim the first
 financial counterfactual, multilingual finance, visual-citation RAG, financial agent, or
 verifiable-finance benchmark.
@@ -339,7 +360,7 @@ benchmark/v0.1/       Reproducible synthetic paired worlds + manifest
 src/finmirror/        Contracts, verifier, adapters, CLI, reports, exports
 tests/                Unit, integration, mutation, tamper, and regression tests
 artifacts/             Offline reliability cards + evaluator-assurance evidence
-schema/                JSON Schemas for cases, predictions, assurance, and trace reports
+schema/                JSON Schemas for cases, predictions, assurance, equivalence, and traces
 docs/                 Methodology, data card, literature, roadmap, launch kit
 ```
 

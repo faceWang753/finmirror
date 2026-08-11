@@ -1,8 +1,8 @@
 # FinMirror Literature Review
 
-**Evidence cut-off:** 10 August 2026
+**Evidence cut-off:** 11 August 2026
 
-**Scope:** a targeted, project-oriented scan of 53 primary research papers. It is **not** a systematic review, a complete census of financial NLP, or evidence of priority by itself.
+**Scope:** a targeted, project-oriented scan of 56 primary research papers. It is **not** a systematic review, a complete census of financial NLP, or evidence of priority by itself.
 
 ## 1. Review question and publication-status policy
 
@@ -117,6 +117,14 @@ This turns a perturbation into more than a changed-answer test. It asks whether 
 |---:|:---:|---|---|---|---|
 | 53 | B | [Project Kaleidoscope: Contextual, Human-Aligned Evaluation for Real-World AI Applications](https://arxiv.org/abs/2607.14673) | 16 July 2026; **arXiv preprint** | Separates evaluation-set construction, human calibration labels, and automated judge scores; uses single-metric judge prompts and withholds aggregation when no judge clears a local human-alignment gate. | Keep oracle requirements separate from learned judgments, expose per-item disagreement, and withhold a release gate when local verifier evidence fails. FinMirror's deterministic judge assurance adds metamorphic checklist probes but does not replace human calibration. |
 
+### 11 August update — evaluator invariance and judge robustness
+
+| # | Tier | Work and original source | Date / venue / status | What it establishes | FinMirror implication |
+|---:|:---:|---|---|---|---|
+| 54 | S | [All Prompts Are Created Equal? Evaluating Robustness of LLM Judges Against Non-Adversarial Prompt Variations](https://aclanthology.org/2026.findings-acl.1929/) | July 2026; **Findings of ACL 2026, peer-reviewed proceedings** | Tests eight models on four NLG tasks with ten semantically equivalent paraphrases per prompt and identifies an accuracy–robustness gap. | A scorer or judge needs positive equivalence tests in addition to pointwise accuracy. FinMirror applies this lesson only to declared deterministic contract relations; it does not reproduce the learned-judge study. |
+| 55 | B | [MM-JudgeBias: A Benchmark for Evaluating Compositional Biases in MLLM-as-a-Judge](https://aclanthology.org/2026.acl-long.1162/) | July 2026; **ACL 2026 Long Paper, peer-reviewed proceedings** | Uses controlled query, image, and response perturbations and separates sensitivity to meaningful changes from stability under irrelevant ones. | Meta-evaluation should gate both directions: harmful mutations must be detected and semantically irrelevant transformations must preserve verdicts. Current FinMirror equivalence tests are text-contract controls, not multimodal judge evaluation. |
+| 56 | B | [J4R: Learning to Judge with Equivalent Initial State Group Relative Policy Optimization](https://aclanthology.org/2026.acl-long.67/) | July 2026; **ACL 2026 Long Paper, peer-reviewed proceedings** | Uses equivalent initial states to train a reasoning judge against positional bias and introduces ReasoningJudgeBench. | Include an intentionally order-sensitive control and test sequence invariance explicitly. FinMirror does not train a judge or inherit J4R's reported results. |
+
 ## 4. Synthesis
 
 Six conclusions follow from the evidence map.
@@ -144,7 +152,7 @@ The deterministic oracle and evidence-program responders are **harness sanity ch
 
 ### Safest current contribution statement
 
-> To our knowledge, as of 10 August 2026 and within this targeted 53-paper scan, FinMirror v0.1 is the first open, deterministic harness to score finance QA systems on paired evidence worlds with an explicit expected-change contract over the joint output tuple—answer, citations, executable formula and operand provenance, abstention or clarification, and confidence—while also testing invariance to irrelevant, entity, period, and injection perturbations in English, French, and Chinese.
+> To our knowledge, as of 11 August 2026 and within this targeted 56-paper scan, FinMirror v0.1 is the first open, deterministic harness to score finance QA systems on paired evidence worlds with an explicit expected-change contract over the joint output tuple—answer, citations, executable formula and operand provenance, abstention or clarification, and confidence—while also testing invariance to irrelevant, entity, period, and injection perturbations in English, French, and Chinese.
 
 Mandatory qualifications:
 
@@ -164,7 +172,7 @@ For most public materials, prefer the lower-risk wording:
 | Financial scope | Six authored financial calculation scenarios | Broader accounting, valuation, risk, controls, and workflow coverage; formula AST and compositional generation |
 | Languages | Parallel English, French, and Chinese renderings | Native expert authoring, locale-specific finance concepts, translation audits, and per-language reliability |
 | Outputs | Structured answer, citation, formula, operands, missing-evidence behavior, and confidence contract | Richer typed proof states, tool and agent trajectories, spreadsheet artifacts, visual citations |
-| Evaluation | Deterministic answer correctness, answer-change behavior, citation migration, formula replay, operand provenance, abstention, clarification, Brier/ECE, cross-language checks, hard gates, group-clustered bootstrap intervals, 15-class one-field mutation assurance, and checklist-verifier metamorphic assurance | Human/expert agreement, positive equivalence-class assurance, model-generated judge validation, and statistical power analysis |
+| Evaluation | Deterministic answer correctness, answer-change behavior, citation migration, formula replay, operand provenance, abstention, clarification, Brier/ECE, cross-language checks, hard gates, group-clustered bootstrap intervals, 15-class harmful-mutation assurance, 10-class positive-equivalence assurance, and checklist-verifier metamorphic assurance | Human/expert agreement, finance-expert scale/currency/formula equivalence classes, model-generated judge validation, and statistical power analysis |
 | Retrieval | Optional retrieval-behavior metrics and Cohere Rerank integration | Controlled retriever baselines, compression studies, confidence-aware selection, long-document retrieval |
 | Training artifact | DPO-style open-weight preference export with decomposed deterministic reward vector; records marked not human-reviewed | Human preference collection, open-weight SFT/DPO/RL experiments, verifier-gaming stress tests, ablations, stability studies |
 | Models | Deterministic sanity checks and a Cohere inference adapter | Reproducible runs across Command A+ and strong open/proprietary baselines, with cost, latency, variance, and prompt disclosure |
@@ -172,7 +180,7 @@ For most public materials, prefer the lower-risk wording:
 
 ## 7. Recommended research sequence
 
-1. **Maintain the locked contract.** Version schemas and machine-readable metamorphic relations, run the committed one-field mutation assurance in CI, and add positive equivalence classes without silently changing public metrics.
+1. **Maintain the locked contract.** Version schemas and machine-readable metamorphic relations, run both harmful-mutation and positive-equivalence assurance in CI, and require expert review before expanding the equivalence allow-list or changing public metrics.
 2. **Run real model baselines.** Evaluate Command A+ and multiple current open and proprietary models with repeated runs, disclosed prompts, decoding settings, cost, latency, and confidence reliability diagrams.
 3. **Validate the evaluator.** Commission blinded finance-expert review of a stratified sample; report inter-annotator agreement, deterministic-score disagreement, and failure taxonomy.
 4. **Test causal specificity.** Add isomorphic variants, paraphrases, unit/scale changes, formula-equivalent forms, and balanced clean negatives to rule out template and verifier shortcuts.

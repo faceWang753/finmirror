@@ -6,6 +6,12 @@ All notable changes are documented here.
 
 ### Added
 
+- a zero-network positive equivalence assurance gate with ten declared relations,
+  3,426 case/pair/language assertions, a deliberately brittle raw-equality control,
+  strict JSON Schema, standalone public report, and byte-reproducible CI artifacts;
+- citation, operand, numeric-encoding, unit-case, idempotence, display, and telemetry
+  invariance checks that complement the existing harmful one-field mutation suite;
+
 - a zero-network `judge-audit` for checklist-based learned verifiers that separates
   decomposition defects from permissive-judgment reward inflation, checks exact atomic
   coverage and item-level Brier score, and applies omission, irrelevant-context, and

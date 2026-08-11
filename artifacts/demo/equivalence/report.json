@@ -1,0 +1,297 @@
+{
+  "equivalence_schema_version": "1.0",
+  "dataset_sha256": "3db16674c7fb5d0f9a45c41389045d001ca8ed8f2d0d55368baec8673de23009",
+  "baseline": {
+    "name": "evidence-program",
+    "version": "0.1",
+    "uses_gold": false
+  },
+  "method": "positive metamorphic assurance over declared semantic equivalence classes",
+  "relation_count": 10,
+  "semantic_assertion_count": 3426,
+  "passed_count": 10,
+  "passed": true,
+  "negative_control": {
+    "name": "raw-contract-equality",
+    "deliberately_brittle": true,
+    "rejected_relation_count": 10,
+    "rejection_rate": 1.0,
+    "purpose": "Prove each transformation is non-trivial and that byte/sequence equality would falsely reject legitimate representations."
+  },
+  "relations": [
+    {
+      "relation_id": "citation_permutation",
+      "description": "Citation order changes while the cited evidence set stays fixed.",
+      "declared_fields": [
+        "citations"
+      ],
+      "eligible_case_count": 108,
+      "changed_case_count": 108,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 36,
+      "semantic_assertion_count": 360,
+      "case_score_preserved_count": 108,
+      "semantic_key_preserved_count": 108,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 36,
+      "raw_equality_rejection_count": 108,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "citation_idempotence",
+      "description": "Repeating an existing citation does not create new evidence.",
+      "declared_fields": [
+        "citations"
+      ],
+      "eligible_case_count": 108,
+      "changed_case_count": 108,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 36,
+      "semantic_assertion_count": 360,
+      "case_score_preserved_count": 108,
+      "semantic_key_preserved_count": 108,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 36,
+      "raw_equality_rejection_count": 108,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "operand_permutation",
+      "description": "Named calculation operands are reordered without changing their bindings.",
+      "declared_fields": [
+        "operands"
+      ],
+      "eligible_case_count": 108,
+      "changed_case_count": 108,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 36,
+      "semantic_assertion_count": 360,
+      "case_score_preserved_count": 108,
+      "semantic_key_preserved_count": 108,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 36,
+      "raw_equality_rejection_count": 108,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "answer_surrounding_whitespace",
+      "description": "Whitespace around the human-readable answer display is non-semantic.",
+      "declared_fields": [
+        "answer"
+      ],
+      "eligible_case_count": 108,
+      "changed_case_count": 108,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 36,
+      "semantic_assertion_count": 360,
+      "case_score_preserved_count": 108,
+      "semantic_key_preserved_count": 108,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 36,
+      "raw_equality_rejection_count": 108,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "numeric_string_encoding",
+      "description": "A numeric contract value is rendered as a comma-aware decimal string.",
+      "declared_fields": [
+        "value"
+      ],
+      "eligible_case_count": 108,
+      "changed_case_count": 108,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 36,
+      "semantic_assertion_count": 360,
+      "case_score_preserved_count": 108,
+      "semantic_key_preserved_count": 108,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 36,
+      "raw_equality_rejection_count": 108,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "answer_unit_case",
+      "description": "Canonical unit tokens are compared case-insensitively.",
+      "declared_fields": [
+        "unit"
+      ],
+      "eligible_case_count": 126,
+      "changed_case_count": 126,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 42,
+      "semantic_assertion_count": 402,
+      "case_score_preserved_count": 126,
+      "semantic_key_preserved_count": 126,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 42,
+      "raw_equality_rejection_count": 126,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "operand_unit_case",
+      "description": "Operand unit labels change letter case without changing quantities.",
+      "declared_fields": [
+        "operands"
+      ],
+      "eligible_case_count": 108,
+      "changed_case_count": 108,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 36,
+      "semantic_assertion_count": 360,
+      "case_score_preserved_count": 108,
+      "semantic_key_preserved_count": 108,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 36,
+      "raw_equality_rejection_count": 108,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "retrieval_idempotence",
+      "description": "Repeating a reported retrieval identifier does not retrieve a new document.",
+      "declared_fields": [
+        "retrieved_document_ids"
+      ],
+      "eligible_case_count": 126,
+      "changed_case_count": 126,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 42,
+      "semantic_assertion_count": 402,
+      "case_score_preserved_count": 126,
+      "semantic_key_preserved_count": 126,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 42,
+      "raw_equality_rejection_count": 126,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "missing_requirement_idempotence",
+      "description": "Repeating the same missing requirement leaves the clarification set fixed.",
+      "declared_fields": [
+        "missing_evidence"
+      ],
+      "eligible_case_count": 18,
+      "changed_case_count": 18,
+      "affected_pair_count": 18,
+      "affected_parallel_group_count": 6,
+      "semantic_assertion_count": 60,
+      "case_score_preserved_count": 18,
+      "semantic_key_preserved_count": 18,
+      "pair_result_preserved_count": 18,
+      "parallel_result_preserved_count": 6,
+      "raw_equality_rejection_count": 18,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "relation_id": "irrelevant_telemetry",
+      "description": "Latency, token counts, and metadata vary without affecting quality scores.",
+      "declared_fields": [
+        "latency_ms",
+        "input_tokens",
+        "output_tokens",
+        "metadata"
+      ],
+      "eligible_case_count": 126,
+      "changed_case_count": 126,
+      "affected_pair_count": 108,
+      "affected_parallel_group_count": 42,
+      "semantic_assertion_count": 402,
+      "case_score_preserved_count": 126,
+      "semantic_key_preserved_count": 126,
+      "pair_result_preserved_count": 108,
+      "parallel_result_preserved_count": 42,
+      "raw_equality_rejection_count": 126,
+      "checks": {
+        "eligible_cases_changed": true,
+        "only_declared_fields_changed": true,
+        "case_scores_preserved": true,
+        "semantic_keys_preserved": true,
+        "pair_results_preserved": true,
+        "parallel_results_preserved": true,
+        "raw_equality_control_rejected": true
+      },
+      "passed": true
+    }
+  ],
+  "claim_boundary": "Passing shows invariance only for the declared contract-level relations over this digest-bound dataset. It is not proof of all financial equivalences, formal verification, or production validity."
+}

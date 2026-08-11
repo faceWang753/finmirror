@@ -71,11 +71,14 @@ claim coverage of open-ended trajectories from these mutation checks.
 
 ## Claim boundary and next validation layers
 
-Passing means the declared one-field regression matrix is detected exactly. It does not
-mean the evaluator is formally verified or production-valid. The next assurance layers
-remain:
+Passing means the declared one-field regression matrix is detected exactly. The dual
+[positive equivalence suite](EQUIVALENCE_ASSURANCE.md) now checks ten representation-
+invariance classes and rejects a deliberately brittle raw-equality control. Neither
+suite means the evaluator is formally verified or production-valid. Remaining layers
+include:
 
-- positive equivalence classes for financially equivalent answers and calculations;
+- finance-expert specification of scale, currency, rounding, locale, and equivalent-
+  formula classes beyond the current contract-level allow-list;
 - scorer property tests across generated edge cases;
 - mutation coverage beyond the current public contract;
 - blinded finance-expert review and scorer–expert disagreement analysis;

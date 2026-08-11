@@ -30,12 +30,17 @@ jobs:
       - run: finmirror generate
       - run: finmirror validate
       - run: git diff --exit-code benchmark/v0.1
+      - run: finmirror demo
+      - run: git diff --exit-code artifacts/demo/index.html
       - run: python scripts/build_review_app.py
       - run: git diff --exit-code artifacts/demo/review/data.js
       - run: finmirror trace-demo
       - run: git diff --exit-code artifacts/demo/trace
       - run: finmirror judge-demo
       - run: git diff --exit-code artifacts/demo/judge
+      - run: finmirror assure-equivalence
+      - run: git diff --exit-code artifacts/demo/equivalence
+      - run: git diff --exit-code artifacts/demo
       - run: python -m pytest --cov=finmirror --cov-report=term-missing
       - run: ruff check .
       - run: ruff format --check .

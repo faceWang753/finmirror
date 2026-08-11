@@ -308,6 +308,21 @@ classes. It does not prove evaluator correctness, validate score weights, cover 
 equivalent financial expressions, or replace blinded finance-expert meta-evaluation.
 See [Evaluator assurance](EVALUATOR_ASSURANCE.md) for the complete protocol.
 
+### 11.1 Positive equivalence assurance
+
+The mutation suite tests whether harmful changes are detected; `finmirror
+assure-equivalence` tests whether ten declared representation-only changes preserve the
+entire case signature, canonical semantic key, affected `PairResult`, and parallel-
+language result. It covers citation/operand order, duplicate set members, numeric string
+encoding, unit case, answer-display whitespace, and irrelevant telemetry. A raw-contract
+equality comparator is included as a deliberately brittle negative control and must
+reject every relation.
+
+The output is bound to `schema/equivalence-assurance.schema.json`. The relation list is
+an explicit allow-list, not a claim that all formula, scale, currency, rounding, or
+natural-language variants are financially equivalent. See [Positive equivalence
+assurance](EQUIVALENCE_ASSURANCE.md).
+
 ## 12. Current limitations
 
 - v0.1 is small, templated, text-only, and entirely synthetic.

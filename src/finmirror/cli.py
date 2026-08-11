@@ -20,6 +20,7 @@ from finmirror.assurance import run_evaluator_assurance
 from finmirror.ci import load_report, write_ci_artifacts
 from finmirror.dataset import dataset_digest, load_cases
 from finmirror.eee import EEEModelSpec, export_eee
+from finmirror.equivalence import render_equivalence_report, run_equivalence_assurance
 from finmirror.evaluator import evaluate
 from finmirror.generator import generate_benchmark
 from finmirror.judge_audit import (
@@ -149,6 +150,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     assurance.add_argument("--dataset", default="benchmark/v0.1")
     assurance.add_argument("--out", default="artifacts/evaluator-assurance.json")
+
+    equivalence = subparsers.add_parser(
+        "assure-equivalence",
+        help="Verify invariance under declared semantic-equivalence relations",
+    )
+    equivalence.add_argument("--dataset", default="benchmark/v0.1")
+    equivalence.add_argument("--out", default="artifacts/demo/equivalence")
 
     demo = subparsers.add_parser("demo", help="Run the zero-key oracle and evidence-blind demo")
     demo.add_argument("--dataset", default="benchmark/v0.1")
@@ -372,6 +380,20 @@ def main(argv: list[str] | None = None) -> int:
                 f"one-field mutations detected · wrote {Path(args.out).resolve()}"
             )
             return 0 if assurance_report["passed"] else 2
+
+        if args.command == "assure-equivalence":
+            equivalence_report = run_equivalence_assurance(load_cases(args.dataset))
+            output = Path(args.out)
+            _write_json(equivalence_report, output / "report.json")
+            render_equivalence_report(equivalence_report, output / "index.html")
+            print(
+                f"{'PASS' if equivalence_report['passed'] else 'BLOCKED'} · "
+                f"{equivalence_report['passed_count']}/{equivalence_report['relation_count']} "
+                f"equivalence relations preserved · "
+                f"{equivalence_report['semantic_assertion_count']} assertions · "
+                f"open {(output / 'index.html').resolve()}"
+            )
+            return 0 if equivalence_report["passed"] else 2
 
         if args.command == "demo":
             dataset_path = Path(args.dataset)
