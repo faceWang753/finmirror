@@ -70,4 +70,3 @@ policies, currencies, periods, locale-specific formats, or open-ended prose. Tho
 relations need finance-expert specification and adversarial tests before they enter a
 versioned metric contract. This suite is regression evidence, not formal verification,
 expert validation, or production certification.
-
