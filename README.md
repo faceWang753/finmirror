@@ -307,7 +307,7 @@ Systems that emit the prediction contract can run the strict paired-world gate d
 in GitHub Actions:
 
 ```yaml
-- uses: faceWang753/finmirror@v0.1.1
+- uses: faceWang753/finmirror@v0.2.0
   with:
     predictions: predictions.jsonl
     system: my-finance-agent

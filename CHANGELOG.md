@@ -4,6 +4,14 @@ All notable changes are documented here.
 
 ## [Unreleased]
 
+### Planned
+
+- expert-reviewed real-source pilot;
+- sealed isomorphic intervention track;
+- visual evaluation and harness-minted, stateful tool environments.
+
+## [0.2.0] — 2026-08-12
+
 ### Added
 
 - an anchor-level retrieval assurance lane over all 126 paired evidence worlds, with a
@@ -63,12 +71,6 @@ All notable changes are documented here.
   model outputs, and downloads schema-versioned JSONL bound to the exact pilot digest;
 - a `validate-review` CLI and review-submission schema that reject incomplete, unblinded,
   inconsistent, unknown-field, or wrong-digest expert submissions.
-
-### Planned
-
-- expert-reviewed real-source pilot;
-- sealed isomorphic intervention track;
-- visual evaluation and harness-minted, stateful tool environments.
 
 ## [0.1.1] — 2026-08-04
 
