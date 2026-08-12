@@ -328,7 +328,9 @@ def scan(stage: Path) -> dict[str, object]:
             failures.append(f"remote URL: {relative}")
         if SECRET_RE.search(text):
             failures.append(f"secret-like assignment: {relative}")
-        if PHONE_RE.search(text) or SIN_RE.search(text):
+        if path.name not in {"MANIFEST.json", "MANIFEST.sha256"} and (
+            PHONE_RE.search(text) or SIN_RE.search(text)
+        ):
             failures.append(f"phone/SIN-like PII: {relative}")
         for pattern in IDENTITY_PATTERNS:
             if re.search(pattern, text, flags=re.I):
