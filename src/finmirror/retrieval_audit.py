@@ -191,7 +191,9 @@ def dump_retrieval_packet(cases: list[RetrievalCase], path: str | Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     with destination.open("w", encoding="utf-8", newline="\n") as handle:
         for case in cases:
-            handle.write(json.dumps(case.public_dict(), ensure_ascii=False, sort_keys=True) + "\n")
+            handle.write(
+                json.dumps(case.public_dict(), ensure_ascii=False, sort_keys=True) + "\n"
+            )
 
 
 def save_retrieval_predictions(
@@ -342,21 +344,20 @@ def _score_retrieval_case(
         if candidate_by_id[candidate_id].utility < 0
     ]
     harmful_before_sufficient = (
-        sum(rank < sufficient_rank for rank in harmful_ranks) if sufficient_rank is not None else 0
+        sum(rank < sufficient_rank for rank in harmful_ranks)
+        if sufficient_rank is not None
+        else 0
     )
     recall = len(required.intersection(prefix)) / len(required) if required else None
     harmful_exposure = (
-        sum(candidate_by_id[candidate_id].utility < 0 for candidate_id in prefix)
-        / evaluated_k
+        sum(candidate_by_id[candidate_id].utility < 0 for candidate_id in prefix) / evaluated_k
     )
     utility_dcg = sum(
         candidate_by_id[candidate_id].utility / math.log2(rank + 1)
         for rank, candidate_id in enumerate(prefix, 1)
     )
     clean_completion = (
-        None
-        if not case.answerable
-        else recall == 1.0 and harmful_before_sufficient == 0
+        None if not case.answerable else recall == 1.0 and harmful_before_sufficient == 0
     )
     return RetrievalCaseResult(
         case_id=case.case_id,
@@ -441,9 +442,9 @@ def audit_retrieval_rankings(
         result.clean_completion is True for result in answerable_results
     ) / len(answerable_results)
     pair_reliability = sum(pair.passed is True for pair in scored_pairs) / len(scored_pairs)
-    harmful_exposure = sum(
-        result.harmful_exposure_at_k for result in answerable_results
-    ) / len(answerable_results)
+    harmful_exposure = sum(result.harmful_exposure_at_k for result in answerable_results) / len(
+        answerable_results
+    )
     hard_gate = clean_completion_rate == 1.0 and pair_reliability == 1.0 and not uses_gold
     return {
         "schema_version": "finmirror.retrieval-audit.v1",
@@ -507,7 +508,7 @@ h1{{margin-top:0}} table{{border-collapse:collapse;width:100%;margin:24px 0}} th
 </style><main><div class="card">
 <h1>Can a ranker surface sufficient evidence before harmful distractors?</h1>
 <p>Anchor-level passages come from FinMirror's paired evidence worlds. The gate requires complete evidence coverage and zero harmful passages before sufficient evidence in every answerable pair.</p>
-<table><thead><tr><th>System</th><th>Gate</th><th>Evidence coverage</th><th>Clean completion</th><th>Paired reliability</th><th>Harmful exposure@k</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
+<table><thead><tr><th>System</th><th>Gate</th><th>Evidence coverage</th><th>Clean completion</th><th>Paired reliability</th><th>Harmful exposure@k</th></tr></thead><tbody>{"".join(rows)}</tbody></table>
 <p class="note">The gold-aware oracle is only a harness control. Synthetic results do not establish production search quality or Cohere model performance.</p>
 </div></main></html>"""
     destination = Path(path)

@@ -60,7 +60,9 @@ def test_cohere_rerank_rejects_partial_or_duplicate_results(monkeypatch, cases) 
     with pytest.raises(RuntimeError, match="required rankings"):
         ranker.rank(case)
 
-    duplicate = [(0, float(len(case.candidates) - index)) for index in range(len(case.candidates))]
+    duplicate = [
+        (0, float(len(case.candidates) - index)) for index in range(len(case.candidates))
+    ]
     ranker._client = FakeRerankClient(duplicate)
     with pytest.raises(RuntimeError, match="duplicate"):
         ranker.rank(case)

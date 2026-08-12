@@ -37,8 +37,7 @@ class CohereRetrievalRanker:
         """Rank every candidate so omissions cannot silently improve the audit."""
 
         documents = [
-            {"title": candidate.title, "text": candidate.text}
-            for candidate in case.candidates
+            {"title": candidate.title, "text": candidate.text} for candidate in case.candidates
         ]
         response = self._client.rerank(
             model=self.model,
