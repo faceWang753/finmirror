@@ -37,6 +37,18 @@ FORBIDDEN_TESTS = {
     "test_statcan_pilot.py",
     "test_trace_audit.py",
 }
+SUPPLEMENT_DOCS = (
+    "ADAPTER_GUIDE.md",
+    "AGENT_TRACE_AUDIT.md",
+    "DATA_CARD.md",
+    "EQUIVALENCE_ASSURANCE.md",
+    "EVALUATOR_ASSURANCE.md",
+    "JUDGE_ASSURANCE.md",
+    "METHODOLOGY.md",
+    "RERANK_ASSURANCE.md",
+    "RESULTS.md",
+    "V0.2_PROTOCOL.md",
+)
 IDENTITY_PATTERNS = (
     r"Mingyang(?:\s+\(Ethan\))?\s+Wang",
     r"Mingyang\s+Wang",
@@ -351,8 +363,16 @@ def build(repo: Path, output_dir: Path) -> dict[str, object]:
         add_tree(repo / "benchmark" / "v0.1", stage / "benchmark" / "v0.1")
         add_tree(repo / "schema", stage / "schema")
         add_tree(repo / "tests", stage / "tests", excluded_names=FORBIDDEN_TESTS)
-        for name in ("LICENSE", "DATA_LICENSE.md", "NOTICE"):
+        for name in (
+            "CHANGELOG.md",
+            "CITATION.cff",
+            "LICENSE",
+            "DATA_LICENSE.md",
+            "NOTICE",
+        ):
             copy_scrubbed(repo / name, stage / name)
+        for name in SUPPLEMENT_DOCS:
+            copy_scrubbed(repo / "docs" / name, stage / "docs" / name)
         write_anonymous_metadata(repo, stage)
         baseline_root = repo / "artifacts" / "model-baselines"
         baseline_names: list[str] = []
