@@ -9,6 +9,7 @@ from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
+from finmirror import __version__
 from finmirror.adapters.base import Adapter, run_adapter
 from finmirror.adapters.baselines import (
     EvidenceProgramBaseline,
@@ -147,7 +148,7 @@ def build_parser() -> argparse.ArgumentParser:
         prog="finmirror",
         description="Paired counterfactual evaluation for financial AI agents.",
     )
-    parser.add_argument("--version", action="version", version="finmirror 0.2.0")
+    parser.add_argument("--version", action="version", version=f"finmirror {__version__}")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     generate = subparsers.add_parser("generate", help="Generate the synthetic v0.1 benchmark")

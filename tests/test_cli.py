@@ -5,9 +5,20 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
+from finmirror import __version__
 from finmirror.cli import main
 from finmirror.generator import generate_benchmark
 from finmirror.training import save_predictions
+
+
+def test_cli_version_matches_package_version(capsys) -> None:
+    with pytest.raises(SystemExit) as exc_info:
+        main(["--version"])
+
+    assert exc_info.value.code == 0
+    assert capsys.readouterr().out.strip() == f"finmirror {__version__}"
 
 
 def test_generate_then_validate(tmp_path, capsys) -> None:

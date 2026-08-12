@@ -1,0 +1,52 @@
+name: Reproducible result submission
+description: Share a non-gold FinMirror run for independent verification
+title: "[Result] "
+labels: ["result"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for running FinMirror. Submit only results you are authorized to share.
+        Do not include API keys, private prompts, customer data, hidden chain-of-thought,
+        or claims that exceed the attached evidence.
+  - type: input
+    id: system
+    attributes:
+      label: System and version
+      description: Name the evaluated system, exact model/version, and relevant repository revision.
+      placeholder: "Example Agent at commit abc123; model provider/model-version"
+    validations:
+      required: true
+  - type: input
+    id: artifact
+    attributes:
+      label: Public artifact URL
+      description: Link the report, prediction JSONL, and enough configuration to reproduce the run.
+      placeholder: "https://github.com/..."
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Execution environment
+      description: Include FinMirror version/commit, adapter, parameters, dataset digest, and run date.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Observed result
+      description: Report the gate, audit score, pair reliability, and leading failure modes without interpretation beyond the evidence.
+    validations:
+      required: true
+  - type: checkboxes
+    id: declarations
+    attributes:
+      label: Declarations
+      options:
+        - label: The evaluated adapter did not read hidden gold labels or paired-world metadata.
+          required: true
+        - label: I am authorized to publish these artifacts and have removed secrets and private data.
+          required: true
+        - label: I understand that a submitted result is not a production-safety or regulatory certification.
+          required: true

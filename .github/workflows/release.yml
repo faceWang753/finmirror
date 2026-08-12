@@ -1,0 +1,80 @@
+name: Release Python package
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and verify distribution
+    if: github.repository == 'faceWang753/finmirror'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the released revision
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install isolated build checks
+        run: python -m pip install --upgrade build twine
+      - name: Verify release tag matches the source version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          source = Path("src/finmirror/__init__.py").read_text(encoding="utf-8")
+          match = re.search(r'^__version__\s*=\s*["\x27]([^"\x27]+)["\x27]', source, re.MULTILINE)
+          if match is None:
+              raise SystemExit("Could not read __version__ from src/finmirror/__init__.py")
+          expected = f"v{match.group(1)}"
+          actual = os.environ["RELEASE_TAG"]
+          if actual != expected:
+              raise SystemExit(f"Release tag {actual!r} must exactly equal {expected!r}")
+          PY
+      - name: Build wheel and source distribution
+        run: python -m build
+      - name: Check package metadata and README rendering
+        run: python -m twine check --strict dist/*
+      - name: Smoke-test the built wheel
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          python -m pip install --force-reinstall dist/*.whl
+          test "$(finmirror --version)" = "finmirror ${RELEASE_TAG#v}"
+      - name: Store immutable distribution artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: Publish to PyPI with OIDC
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/finmirror
+    permissions:
+      id-token: write
+    steps:
+      - name: Download verified distributions
+        uses: actions/download-artifact@v6
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish distributions with attestations
+        uses: pypa/gh-action-pypi-publish@release/v1

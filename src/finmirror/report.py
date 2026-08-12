@@ -409,20 +409,41 @@ def render_comparison(
         )
     document = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FinMirror · System comparison</title>
+<title>FinMirror | Financial RAG &amp; Agent Reliability Benchmark</title>
+<meta name="description" content="Open-source paired-world benchmark for testing whether financial RAG systems and AI agents retrieve, cite, calculate, and abstain for the right reasons.">
+<meta name="robots" content="index,follow"><meta name="theme-color" content="#0b1110">
+<link rel="canonical" href="https://facewang753.github.io/finmirror/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="FinMirror">
+<meta property="og:title" content="FinMirror | Financial RAG &amp; Agent Reliability Benchmark">
+<meta property="og:description" content="Paired-world tests expose financial agents that look accurate but retrieve, cite, calculate, or abstain for the wrong reason.">
+<meta property="og:url" content="https://facewang753.github.io/finmirror/">
+<meta property="og:image" content="https://raw.githubusercontent.com/faceWang753/finmirror/main/assets/finmirror-social-card.png">
+<meta property="og:image:alt" content="FinMirror paired-world financial AI reliability benchmark">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FinMirror | Financial RAG &amp; Agent Reliability Benchmark">
+<meta name="twitter:description" content="Test whether financial agents change for the right reason, with replayable paired-world evidence.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/faceWang753/finmirror/main/assets/finmirror-social-card.png">
+<meta name="twitter:image:alt" content="FinMirror paired-world financial AI reliability benchmark">
 <style>
 :root{{--ink:#f4f1e8;--muted:#9da9a5;--bg:#0b1110;--line:#283531;--mint:#8ce7c1;--coral:#ff917c}}
 *{{box-sizing:border-box}} body{{margin:0;background:radial-gradient(circle at 85% 0,rgba(57,185,138,.17),transparent 30rem),var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,sans-serif;font-variant-numeric:tabular-nums}}
 main{{width:min(1120px,calc(100% - 32px));margin:auto;padding:72px 0}} .brand{{color:var(--mint);text-transform:uppercase;letter-spacing:.16em;font-size:11px}}
 h1{{font-size:clamp(42px,7vw,76px);line-height:.98;letter-spacing:-.05em;margin:12px 0 20px}} p{{color:var(--muted);max-width:720px;font-size:17px}}
-  .modules{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px}} .module{{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(255,255,255,.025)}} .module strong{{display:block;margin-bottom:5px}} .module span{{color:var(--muted);font-size:13px}} .table{{margin-top:48px;overflow:auto;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}} table{{width:100%;min-width:900px;border-collapse:collapse}} th,td{{padding:17px 18px;border-bottom:1px solid var(--line);text-align:left}} th{{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}} td:nth-child(2){{font-size:24px;font-weight:800}} a{{color:var(--ink);text-decoration-color:var(--mint);text-underline-offset:4px}} .pass{{color:var(--mint);font-weight:800}} .blocked{{color:var(--coral);font-weight:800}} .note{{margin-top:24px;font-size:12px}} @media(max-width:760px){{.modules{{grid-template-columns:1fr}}}}
+  .actions{{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}} .cta{{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 17px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);font-weight:750;text-decoration:none;transition:transform .16s ease,border-color .16s ease,background .16s ease}} .cta:hover{{transform:translateY(-1px);border-color:var(--mint);background:rgba(140,231,193,.08)}} .cta:focus-visible,.module:focus-visible{{outline:3px solid rgba(140,231,193,.45);outline-offset:3px}} .cta.primary{{color:#07110d;border-color:var(--mint);background:var(--mint)}} .cta.primary:hover{{background:#a7f0d2}}
+  .modules{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:44px}} .module{{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(255,255,255,.025);text-decoration:none;transition:transform .16s ease,border-color .16s ease}} .module:hover{{transform:translateY(-1px);border-color:var(--mint)}} .module strong{{display:block;margin-bottom:5px}} .module span{{color:var(--muted);font-size:13px}} .table{{margin-top:48px;overflow:auto;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}} table{{width:100%;min-width:900px;border-collapse:collapse}} th,td{{padding:17px 18px;border-bottom:1px solid var(--line);text-align:left}} th{{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}} td:nth-child(2){{font-size:24px;font-weight:800}} a{{color:var(--ink);text-decoration-color:var(--mint);text-underline-offset:4px}} .pass{{color:var(--mint);font-weight:800}} .blocked{{color:var(--coral);font-weight:800}} .note{{margin-top:24px;font-size:12px}} @media(max-width:760px){{main{{padding:48px 0}} .modules{{grid-template-columns:1fr}} .actions{{align-items:stretch;flex-direction:column}} .cta{{width:100%}}}}
 </style></head><body><main>
 <div class="brand">FinMirror · paired counterfactual evaluation</div>
 <h1>Does the agent change<br>for the right reason?</h1>
 <p>A zero-key offline comparison. The gold-reading oracle validates the harness; the
 non-gold evidence program validates the public contract; and the evidence-blind baseline
 demonstrates why ordinary accuracy misses groundedness failures.</p>
+<nav class="actions" aria-label="Get started with FinMirror">
+  <a class="cta primary" href="https://github.com/faceWang753/finmirror#quickstart">Run on your system</a>
+  <a class="cta" href="https://github.com/faceWang753/finmirror/issues/new?template=result_submission.yml">Submit a result</a>
+  <a class="cta" href="review/">Review 7 cases</a>
+</nav>
 <nav class="modules" aria-label="FinMirror assurance modules">
+  <a class="module" href="retrieval/"><strong>Retrieval assurance</strong><span>Measure complete evidence coverage before harmful passages enter context.</span></a>
   <a class="module" href="equivalence/"><strong>Equivalence assurance</strong><span>Require stable verdicts under ten declared semantic equivalences.</span></a>
   <a class="module" href="judge/"><strong>Judge assurance</strong><span>Falsify checklist collapse and permissive learned verifiers.</span></a>
   <a class="module" href="trace/"><strong>Agent trace audit</strong><span>Replay observable evidence paths without hidden chain-of-thought.</span></a>

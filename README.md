@@ -211,11 +211,18 @@ See the [EEE interoperability guide](docs/EVERY_EVAL_EVER.md).
 
 Python 3.10–3.12 is supported. The core has zero runtime dependencies.
 
+### Install from source (available now)
+
+FinMirror has not been published to PyPI yet. Clone the repository and install the
+checked-out source so the command and benchmark artifacts come from the same revision:
+
 ```bash
+git clone https://github.com/faceWang753/finmirror.git
+cd finmirror
 python -m venv .venv
 # Windows: .venv\Scripts\activate
 # macOS/Linux: source .venv/bin/activate
-python -m pip install -e ".[dev]"
+python -m pip install -e .
 
 finmirror generate
 finmirror validate
@@ -225,8 +232,27 @@ finmirror trace-demo
 finmirror judge-demo
 ```
 
+Contributors can install the test and packaging tools with
+`python -m pip install -e ".[dev]"`.
+
+### PyPI installation (after the first verified release)
+
+Once a versioned release is visible on the
+[FinMirror PyPI project page](https://pypi.org/project/finmirror/), the supported package
+installation path will be:
+
+```bash
+python -m pip install finmirror
+```
+
+Until that project page contains a release from this repository's Trusted Publishing
+workflow, use the source installation above. No PyPI availability is currently implied.
+
 Open `artifacts/demo/index.html`. The report is a standalone local HTML file with no
 telemetry, CDN, or external assets.
+
+Public, non-gold runs can be shared through the
+[reproducible result form](https://github.com/faceWang753/finmirror/issues/new?template=result_submission.yml).
 
 Run any system that emits the [prediction contract](docs/METHODOLOGY.md#submission-contract):
 

@@ -42,7 +42,7 @@ def test_report_escapes_html_and_script_termination(tmp_path, oracle_report) -> 
     assert "<\\/script>" in document
 
 
-def test_comparison_orders_by_audit_score_and_has_no_external_assets(
+def test_comparison_orders_by_audit_score_and_has_no_external_runtime_assets(
     tmp_path,
     oracle_report,
     memorized_report,
@@ -55,8 +55,16 @@ def test_comparison_orders_by_audit_score_and_has_no_external_assets(
     assert document.index("harness-oracle") < document.index("memorized-evidence-blind")
     assert "PASS" in document
     assert "BLOCKED" in document
+    assert "Financial RAG &amp; Agent Reliability Benchmark" in document
+    assert 'name="description"' in document
+    assert 'property="og:title"' in document
+    assert 'property="og:image"' in document
+    assert 'href="retrieval/"' in document
     assert 'href="judge/"' in document
     assert 'href="trace/"' in document
     assert 'href="review/"' in document
-    assert "http://" not in document
-    assert "https://" not in document
+    assert ">Run on your system</a>" in document
+    assert ">Submit a result</a>" in document
+    assert ">Review 7 cases</a>" in document
+    assert re.search(r"<script[^>]+\bsrc\s*=", document, re.IGNORECASE) is None
+    assert re.search(r"<link[^>]+\brel=[\"']stylesheet", document, re.IGNORECASE) is None
