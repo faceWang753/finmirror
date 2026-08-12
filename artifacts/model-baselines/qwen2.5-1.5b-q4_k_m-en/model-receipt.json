@@ -1,0 +1,67 @@
+{
+  "receipt_schema_version": "1.0",
+  "run_date": "2026-08-12",
+  "model": {
+    "repository": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+    "repository_commit": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+    "filename": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+    "quantization": "Q4_K_M",
+    "bytes": 1117320736,
+    "sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e"
+  },
+  "runtime": {
+    "name": "llama.cpp",
+    "release": "b10375",
+    "git_revision": "ba360efe1",
+    "server": "llama-server",
+    "endpoint_scope": "local-loopback",
+    "context_size": 8192,
+    "threads": 8,
+    "parallel_slots": 4
+  },
+  "evaluation": {
+    "finmirror_version": "0.2.0",
+    "finmirror_git_commit": "9875837ab6db77a29b7a9e32c7397aee8eaa0d2a",
+    "finmirror_code_state_note": "The evaluator and adapter code used for this run are at commit 9875837ab6db77a29b7a9e32c7397aee8eaa0d2a. This evidence bundle was created after the run and is committed separately; its artifact hashes below identify the published bundle contents.",
+    "dataset": "FinMirror Synthetic Paired Worlds v0.1.0, English slice",
+    "dataset_sha256": "39924edf59c9c4e67912fd1ec14ba22d4af782c847b4d679e73e1f5283931f32",
+    "evaluator_file": "src/finmirror/evaluator.py",
+    "evaluator_sha256": "fd67d38860c2c6caaf80fa81c503d55630e567e40f435b579cba01cfbc56aff0",
+    "case_count": 42,
+    "pair_count": 36,
+    "languages": [
+      "en"
+    ],
+    "scenarios": [
+      "cash_runway",
+      "covenant_headroom",
+      "debt_to_equity",
+      "free_cash_flow",
+      "gross_margin",
+      "revenue_growth"
+    ]
+  },
+  "results": {
+    "audit_score": 8.5985,
+    "hard_gate_pass": false,
+    "case_accuracy": 0.11904761904761904,
+    "case_verification": 0.0,
+    "pair_reliability": 0.0,
+    "contract_validity": 1.0
+  },
+  "artifacts": {
+    "predictions.jsonl": {
+      "bytes": 46200,
+      "sha256": "22efc776cc8e5664cad726b30d46fa9ff5a2d410a713fb1e685df1abb3b8b8e2"
+    },
+    "report.json": {
+      "bytes": 82188,
+      "sha256": "8fb3b3d399634f143dd17d6e842201c576e0e55baa0eb5a6b884131233eafc89"
+    },
+    "report.html": {
+      "bytes": 85312,
+      "sha256": "721c10f3316ec27932f15ad3b471cad869006324b04208ef097c8e6fd0aae810"
+    }
+  },
+  "claim_boundary": "This is a local open-weight baseline on a synthetic English benchmark slice. It is not evidence of production, regulatory, or investment performance."
+}
