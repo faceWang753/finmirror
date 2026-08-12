@@ -6,6 +6,13 @@ All notable changes are documented here.
 
 ### Added
 
+- an anchor-level retrieval assurance lane over all 126 paired evidence worlds, with a
+  non-leaky public packet, strict complete-ranking contract, evidence-coverage and
+  harmful-exposure metrics, paired reliability, an external `retrieval-audit` command,
+  and a zero-key three-control HTML demo;
+- a Cohere Rerank production adapter that keeps hidden audit labels local, requests
+  complete rankings, and fails closed on partial or malformed responses;
+
 - a zero-network positive equivalence assurance gate with ten declared relations,
   3,426 case/pair/language assertions, a deliberately brittle raw-equality control,
   strict JSON Schema, standalone public report, and byte-reproducible CI artifacts;

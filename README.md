@@ -8,6 +8,7 @@
   <a href="#quickstart">Quickstart</a> ·
   <a href="docs/EQUIVALENCE_ASSURANCE.md">Equivalence assurance</a> ·
   <a href="docs/AGENT_TRACE_AUDIT.md">Agent trace audit</a> ·
+  <a href="docs/RERANK_ASSURANCE.md">Rerank assurance</a> ·
   <a href="docs/JUDGE_ASSURANCE.md">Judge assurance</a> ·
   <a href="docs/METHODOLOGY.md">Methodology</a> ·
   <a href="docs/EVERY_EVAL_EVER.md">EEE export</a> ·
@@ -79,6 +80,26 @@ See the [trace contract, failure taxonomy, and threat model](docs/AGENT_TRACE_AU
 The audit checks observable replay consistency, not hidden chain-of-thought or causal
 attribution, and its receipts are content-addressed rather than tamper-resistant
 signatures.
+
+## Before generation: did retrieval expose the wrong passage first?
+
+FinMirror derives an anchor-level retrieval packet from all 126 paired evidence worlds
+and audits whether a ranker surfaces the complete minimum evidence set before a wrong-
+entity, stale-period, injected, or other harmful passage.
+
+```bash
+finmirror retrieval-demo
+```
+
+The committed [retrieval assurance report](https://facewang753.github.io/finmirror/retrieval/)
+is deployed with the main zero-key demo, and CI regenerates it before accepting changes.
+
+The zero-key demo includes a gold-aware harness oracle, a lexical baseline, and a
+deliberately brittle input-order control. The oracle is structurally barred from passing
+the public gate; real rankers must return complete, evidence-blind rankings. Read the
+[metrics, JSONL contract, claim boundary, and literature links](docs/RERANK_ASSURANCE.md).
+Synthetic results do not establish production retrieval quality or Cohere model
+performance.
 
 The exact public v0.1 data package is also mirrored on
 [Hugging Face](https://huggingface.co/datasets/mingyang233/FinMirror), including the

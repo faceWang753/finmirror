@@ -1,0 +1,2413 @@
+{
+  "schema_version": "finmirror.retrieval-audit.v1",
+  "system": {
+    "name": "lexical-overlap",
+    "version": "1",
+    "uses_gold": false
+  },
+  "dataset": {
+    "case_count": 126,
+    "answerable_case_count": 108,
+    "unanswerable_case_count": 18,
+    "pair_count": 90,
+    "languages": [
+      "en",
+      "fr",
+      "zh"
+    ],
+    "top_k": 2
+  },
+  "metrics": {
+    "full_evidence_coverage_rate": 0.4351851851851852,
+    "clean_completion_rate": 0.4351851851851852,
+    "paired_reliability": 0.4222222222222222,
+    "mean_harmful_exposure_at_k": 0.3055555555555556,
+    "hard_gate_pass": false
+  },
+  "case_results": [
+    {
+      "case_id": "fm-cash_runway-en-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-en-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-en-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-cash_runway-en-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-en-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-en-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-en-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-fr-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-fr-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-fr-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-cash_runway-fr-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-fr-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-fr-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-cash_runway-fr-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-cash_runway-zh-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-cash_runway-zh-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-cash_runway-zh-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -1.0,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-cash_runway-zh-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.0,
+      "harmful_exposure_at_k": 1.0,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": -1.6309297535714575,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-cash_runway-zh-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-cash_runway-zh-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.0,
+      "harmful_exposure_at_k": 1.0,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": -1.6309297535714575,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-cash_runway-zh-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-covenant_headroom-en-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-covenant_headroom-fr-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-covenant_headroom-zh-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-en-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-debt_to_equity-fr-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -1.0,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.0,
+      "harmful_exposure_at_k": 1.0,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": -1.6309297535714575,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-debt_to_equity-zh-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-en-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-fr-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -1.0,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.0,
+      "harmful_exposure_at_k": 1.0,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": -1.6309297535714575,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-free_cash_flow-zh-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-en-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-en-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-en-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-gross_margin-en-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-en-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-en-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-en-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-fr-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-fr-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-fr-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -1.0,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-gross_margin-fr-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-fr-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-fr-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-fr-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-zh-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-zh-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-zh-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -1.0,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-gross_margin-zh-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.0,
+      "harmful_exposure_at_k": 1.0,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": -1.6309297535714575,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-zh-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-zh-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-gross_margin-zh-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 0.26185950714291506,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-revenue_growth-en-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-en-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-en-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-revenue_growth-en-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-en-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-en-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-revenue_growth-en-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-revenue_growth-fr-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 1.0,
+      "harmful_exposure_at_k": 0.0,
+      "sufficient_evidence_rank": 2,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": 3.261859507142915,
+      "clean_completion": true
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-distractor",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-entity_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-evidence_ablation",
+      "answerable": false,
+      "required_count": 0,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": null,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": null,
+      "harmful_before_sufficient": 0,
+      "utility_dcg_at_k": -0.6309297535714575,
+      "clean_completion": null
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-injection",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-material",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-period_collision",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 4,
+      "harmful_before_sufficient": 2,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    },
+    {
+      "case_id": "fm-revenue_growth-zh-reference",
+      "answerable": true,
+      "required_count": 2,
+      "evaluated_k": 2,
+      "evidence_recall_at_k": 0.5,
+      "harmful_exposure_at_k": 0.5,
+      "sufficient_evidence_rank": 3,
+      "harmful_before_sufficient": 1,
+      "utility_dcg_at_k": 1.3690702464285425,
+      "clean_completion": false
+    }
+  ],
+  "pair_results": [
+    {
+      "reference_case_id": "fm-cash_runway-en-reference",
+      "transformed_case_id": "fm-cash_runway-en-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-en-reference",
+      "transformed_case_id": "fm-cash_runway-en-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-en-reference",
+      "transformed_case_id": "fm-cash_runway-en-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-en-reference",
+      "transformed_case_id": "fm-cash_runway-en-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-en-reference",
+      "transformed_case_id": "fm-cash_runway-en-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-en-reference",
+      "transformed_case_id": "fm-cash_runway-en-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-fr-reference",
+      "transformed_case_id": "fm-cash_runway-fr-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-fr-reference",
+      "transformed_case_id": "fm-cash_runway-fr-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-fr-reference",
+      "transformed_case_id": "fm-cash_runway-fr-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-fr-reference",
+      "transformed_case_id": "fm-cash_runway-fr-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-fr-reference",
+      "transformed_case_id": "fm-cash_runway-fr-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-fr-reference",
+      "transformed_case_id": "fm-cash_runway-fr-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-zh-reference",
+      "transformed_case_id": "fm-cash_runway-zh-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-zh-reference",
+      "transformed_case_id": "fm-cash_runway-zh-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-zh-reference",
+      "transformed_case_id": "fm-cash_runway-zh-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-zh-reference",
+      "transformed_case_id": "fm-cash_runway-zh-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-zh-reference",
+      "transformed_case_id": "fm-cash_runway-zh-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-cash_runway-zh-reference",
+      "transformed_case_id": "fm-cash_runway-zh-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-en-reference",
+      "transformed_case_id": "fm-covenant_headroom-en-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-en-reference",
+      "transformed_case_id": "fm-covenant_headroom-en-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-en-reference",
+      "transformed_case_id": "fm-covenant_headroom-en-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-en-reference",
+      "transformed_case_id": "fm-covenant_headroom-en-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-en-reference",
+      "transformed_case_id": "fm-covenant_headroom-en-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-en-reference",
+      "transformed_case_id": "fm-covenant_headroom-en-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-fr-reference",
+      "transformed_case_id": "fm-covenant_headroom-fr-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-fr-reference",
+      "transformed_case_id": "fm-covenant_headroom-fr-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-fr-reference",
+      "transformed_case_id": "fm-covenant_headroom-fr-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-fr-reference",
+      "transformed_case_id": "fm-covenant_headroom-fr-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-fr-reference",
+      "transformed_case_id": "fm-covenant_headroom-fr-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-fr-reference",
+      "transformed_case_id": "fm-covenant_headroom-fr-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-zh-reference",
+      "transformed_case_id": "fm-covenant_headroom-zh-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-zh-reference",
+      "transformed_case_id": "fm-covenant_headroom-zh-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-zh-reference",
+      "transformed_case_id": "fm-covenant_headroom-zh-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-zh-reference",
+      "transformed_case_id": "fm-covenant_headroom-zh-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-zh-reference",
+      "transformed_case_id": "fm-covenant_headroom-zh-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-covenant_headroom-zh-reference",
+      "transformed_case_id": "fm-covenant_headroom-zh-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-en-reference",
+      "transformed_case_id": "fm-debt_to_equity-en-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-en-reference",
+      "transformed_case_id": "fm-debt_to_equity-en-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-en-reference",
+      "transformed_case_id": "fm-debt_to_equity-en-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-en-reference",
+      "transformed_case_id": "fm-debt_to_equity-en-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-en-reference",
+      "transformed_case_id": "fm-debt_to_equity-en-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-en-reference",
+      "transformed_case_id": "fm-debt_to_equity-en-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-fr-reference",
+      "transformed_case_id": "fm-debt_to_equity-fr-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-fr-reference",
+      "transformed_case_id": "fm-debt_to_equity-fr-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-fr-reference",
+      "transformed_case_id": "fm-debt_to_equity-fr-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-fr-reference",
+      "transformed_case_id": "fm-debt_to_equity-fr-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-fr-reference",
+      "transformed_case_id": "fm-debt_to_equity-fr-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-fr-reference",
+      "transformed_case_id": "fm-debt_to_equity-fr-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-zh-reference",
+      "transformed_case_id": "fm-debt_to_equity-zh-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-zh-reference",
+      "transformed_case_id": "fm-debt_to_equity-zh-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-zh-reference",
+      "transformed_case_id": "fm-debt_to_equity-zh-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-zh-reference",
+      "transformed_case_id": "fm-debt_to_equity-zh-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-zh-reference",
+      "transformed_case_id": "fm-debt_to_equity-zh-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-debt_to_equity-zh-reference",
+      "transformed_case_id": "fm-debt_to_equity-zh-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-en-reference",
+      "transformed_case_id": "fm-free_cash_flow-en-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-en-reference",
+      "transformed_case_id": "fm-free_cash_flow-en-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-en-reference",
+      "transformed_case_id": "fm-free_cash_flow-en-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-en-reference",
+      "transformed_case_id": "fm-free_cash_flow-en-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-en-reference",
+      "transformed_case_id": "fm-free_cash_flow-en-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-en-reference",
+      "transformed_case_id": "fm-free_cash_flow-en-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-fr-reference",
+      "transformed_case_id": "fm-free_cash_flow-fr-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-fr-reference",
+      "transformed_case_id": "fm-free_cash_flow-fr-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-fr-reference",
+      "transformed_case_id": "fm-free_cash_flow-fr-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-fr-reference",
+      "transformed_case_id": "fm-free_cash_flow-fr-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-fr-reference",
+      "transformed_case_id": "fm-free_cash_flow-fr-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-fr-reference",
+      "transformed_case_id": "fm-free_cash_flow-fr-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-zh-reference",
+      "transformed_case_id": "fm-free_cash_flow-zh-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-zh-reference",
+      "transformed_case_id": "fm-free_cash_flow-zh-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-zh-reference",
+      "transformed_case_id": "fm-free_cash_flow-zh-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-zh-reference",
+      "transformed_case_id": "fm-free_cash_flow-zh-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-zh-reference",
+      "transformed_case_id": "fm-free_cash_flow-zh-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-free_cash_flow-zh-reference",
+      "transformed_case_id": "fm-free_cash_flow-zh-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-en-reference",
+      "transformed_case_id": "fm-gross_margin-en-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-en-reference",
+      "transformed_case_id": "fm-gross_margin-en-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-en-reference",
+      "transformed_case_id": "fm-gross_margin-en-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-en-reference",
+      "transformed_case_id": "fm-gross_margin-en-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-en-reference",
+      "transformed_case_id": "fm-gross_margin-en-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-en-reference",
+      "transformed_case_id": "fm-gross_margin-en-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-fr-reference",
+      "transformed_case_id": "fm-gross_margin-fr-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-fr-reference",
+      "transformed_case_id": "fm-gross_margin-fr-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-fr-reference",
+      "transformed_case_id": "fm-gross_margin-fr-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-fr-reference",
+      "transformed_case_id": "fm-gross_margin-fr-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-fr-reference",
+      "transformed_case_id": "fm-gross_margin-fr-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-fr-reference",
+      "transformed_case_id": "fm-gross_margin-fr-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-zh-reference",
+      "transformed_case_id": "fm-gross_margin-zh-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-zh-reference",
+      "transformed_case_id": "fm-gross_margin-zh-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-zh-reference",
+      "transformed_case_id": "fm-gross_margin-zh-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-zh-reference",
+      "transformed_case_id": "fm-gross_margin-zh-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-zh-reference",
+      "transformed_case_id": "fm-gross_margin-zh-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-gross_margin-zh-reference",
+      "transformed_case_id": "fm-gross_margin-zh-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-en-reference",
+      "transformed_case_id": "fm-revenue_growth-en-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-en-reference",
+      "transformed_case_id": "fm-revenue_growth-en-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-en-reference",
+      "transformed_case_id": "fm-revenue_growth-en-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-en-reference",
+      "transformed_case_id": "fm-revenue_growth-en-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-en-reference",
+      "transformed_case_id": "fm-revenue_growth-en-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-en-reference",
+      "transformed_case_id": "fm-revenue_growth-en-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-fr-reference",
+      "transformed_case_id": "fm-revenue_growth-fr-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-fr-reference",
+      "transformed_case_id": "fm-revenue_growth-fr-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-fr-reference",
+      "transformed_case_id": "fm-revenue_growth-fr-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-fr-reference",
+      "transformed_case_id": "fm-revenue_growth-fr-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-fr-reference",
+      "transformed_case_id": "fm-revenue_growth-fr-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": true,
+      "reason": "both worlds surface the complete evidence set before harmful passages"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-fr-reference",
+      "transformed_case_id": "fm-revenue_growth-fr-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-zh-reference",
+      "transformed_case_id": "fm-revenue_growth-zh-distractor",
+      "transform": "distractor",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-zh-reference",
+      "transformed_case_id": "fm-revenue_growth-zh-entity_collision",
+      "transform": "entity_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-zh-reference",
+      "transformed_case_id": "fm-revenue_growth-zh-evidence_ablation",
+      "transform": "evidence_ablation",
+      "expectation": "should_abstain",
+      "passed": null,
+      "reason": "candidate-set ablation is unanswerable; a reranker alone cannot make the downstream abstention decision"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-zh-reference",
+      "transformed_case_id": "fm-revenue_growth-zh-injection",
+      "transform": "injection",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-zh-reference",
+      "transformed_case_id": "fm-revenue_growth-zh-material",
+      "transform": "material_value",
+      "expectation": "should_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    },
+    {
+      "reference_case_id": "fm-revenue_growth-zh-reference",
+      "transformed_case_id": "fm-revenue_growth-zh-period_collision",
+      "transform": "period_collision",
+      "expectation": "should_not_change",
+      "passed": false,
+      "reason": "at least one paired world exposes harmful content before sufficient evidence"
+    }
+  ],
+  "limitations": [
+    "The packet is synthetic and anchor-level; it does not estimate production search quality.",
+    "Utility labels are deterministic audit contracts, not human relevance judgments.",
+    "Unanswerable candidate sets are disclosed but downstream abstention is not scored here.",
+    "The harness oracle uses hidden utility and is a control, never a model result."
+  ]
+}

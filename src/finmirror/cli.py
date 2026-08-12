@@ -37,6 +37,18 @@ from finmirror.lineage import (
     verify_repository_artifacts,
 )
 from finmirror.report import render_comparison, render_report
+from finmirror.retrieval_audit import (
+    InputOrderRanker,
+    LexicalOverlapRanker,
+    RetrievalOracleRanker,
+    audit_retrieval_rankings,
+    build_retrieval_cases,
+    dump_retrieval_packet,
+    load_retrieval_predictions,
+    render_retrieval_comparison,
+    run_retrieval_ranker,
+    save_retrieval_predictions,
+)
 from finmirror.review import load_expert_review_status, require_expert_validated
 from finmirror.review_submission import load_review_submission
 from finmirror.sources import ledger_digest, load_ledger
@@ -190,6 +202,25 @@ def build_parser() -> argparse.ArgumentParser:
     )
     judge_audit.add_argument("--input", required=True)
     judge_audit.add_argument("--out", default="runs/judge-audit")
+
+    retrieval_demo = subparsers.add_parser(
+        "retrieval-demo",
+        help="Audit evidence coverage and harmful-passage exposure before generation",
+    )
+    retrieval_demo.add_argument("--dataset", default="benchmark/v0.1")
+    retrieval_demo.add_argument("--top-k", type=int, default=2)
+    retrieval_demo.add_argument("--out", default="artifacts/demo/retrieval")
+
+    retrieval_audit = subparsers.add_parser(
+        "retrieval-audit",
+        help="Audit complete rankings returned for a public retrieval packet",
+    )
+    retrieval_audit.add_argument("--dataset", default="benchmark/v0.1")
+    retrieval_audit.add_argument("--predictions", required=True)
+    retrieval_audit.add_argument("--system", required=True)
+    retrieval_audit.add_argument("--system-version", default="")
+    retrieval_audit.add_argument("--top-k", type=int, default=2)
+    retrieval_audit.add_argument("--out", default="runs/retrieval-audit")
 
     run = subparsers.add_parser("run", help="Run and score an adapter")
     run.add_argument("--dataset", default="benchmark/v0.1")
@@ -504,6 +535,58 @@ def main(argv: list[str] | None = None) -> int:
                 f"{report_value['system_name']}: {'PASS' if gate else 'BLOCKED'} · "
                 f"{report_value['metrics']['metamorphic_pass_rate']:.0%} paired relations · "
                 f"{report_value['metrics']['false_pass_rate']:.0%} false passes"
+            )
+            return 0 if gate else 2
+
+        if args.command == "retrieval-demo":
+            retrieval_cases = build_retrieval_cases(load_cases(args.dataset))
+            output = Path(args.out)
+            dump_retrieval_packet(retrieval_cases, output / "packet.jsonl")
+            retrieval_reports = []
+            for ranker in (
+                RetrievalOracleRanker(),
+                LexicalOverlapRanker(),
+                InputOrderRanker(),
+            ):
+                retrieval_predictions = run_retrieval_ranker(ranker, retrieval_cases)
+                report_value = audit_retrieval_rankings(
+                    retrieval_cases,
+                    retrieval_predictions,
+                    system_name=ranker.name,
+                    system_version=ranker.version,
+                    top_k=args.top_k,
+                    uses_gold=ranker.uses_gold,
+                )
+                directory = output / ranker.name
+                save_retrieval_predictions(
+                    retrieval_predictions, directory / "predictions.jsonl"
+                )
+                _write_json(report_value, directory / "report.json")
+                retrieval_reports.append(report_value)
+            render_retrieval_comparison(retrieval_reports, output / "index.html")
+            print(
+                f"Retrieval assurance complete · {len(retrieval_cases)} cases · "
+                f"open {(output / 'index.html').resolve()}"
+            )
+            return 0
+
+        if args.command == "retrieval-audit":
+            retrieval_cases = build_retrieval_cases(load_cases(args.dataset))
+            report_value = audit_retrieval_rankings(
+                retrieval_cases,
+                load_retrieval_predictions(args.predictions),
+                system_name=args.system,
+                system_version=args.system_version,
+                top_k=args.top_k,
+            )
+            output = Path(args.out)
+            _write_json(report_value, output / "report.json")
+            render_retrieval_comparison([report_value], output / "report.html")
+            gate = bool(report_value["metrics"]["hard_gate_pass"])
+            print(
+                f"{args.system}: {'PASS' if gate else 'BLOCKED'} · "
+                f"{report_value['metrics']['clean_completion_rate']:.0%} clean completion · "
+                f"{report_value['metrics']['paired_reliability']:.0%} paired reliability"
             )
             return 0 if gate else 2
 
