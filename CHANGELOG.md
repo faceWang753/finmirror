@@ -4,12 +4,6 @@ All notable changes are documented here.
 
 ## [Unreleased]
 
-### Planned
-
-- expert-reviewed real-source pilot;
-- sealed isomorphic intervention track;
-- visual evaluation and harness-minted, stateful tool environments.
-
 ## [0.2.0] — 2026-08-12
 
 ### Added
