@@ -64,7 +64,10 @@ SECRET_RE = re.compile(
     r"(?!local['\"])[^'\"]+",
     re.I,
 )
+PHONE_RE = re.compile(r"(?<!\d)(?:\+?1[ .-]?)?\(?[2-9]\d{2}\)?[ .-]?\d{3}[ .-]?\d{4}(?!\d)")
+SIN_RE = re.compile(r"(?<!\d)\d{3}[ -]\d{3}[ -]\d{3}(?!\d)")
 MODEL_SUFFIXES = {".bin", ".gguf", ".onnx", ".pt", ".pth", ".safetensors"}
+SENSITIVE_NAMES = {".env", "credentials", "id_rsa", "id_rsa.pub", "secrets"}
 
 
 def sha256(path: Path) -> str:
@@ -311,7 +314,12 @@ def scan(stage: Path) -> dict[str, object]:
         file_count += 1
         total_bytes += path.stat().st_size
         relative = path.relative_to(stage).as_posix()
-        if ".git" in path.parts or path.suffix.lower() in MODEL_SUFFIXES:
+        if (
+            ".git" in path.parts
+            or path.suffix.lower() in MODEL_SUFFIXES
+            or path.suffix.lower() in {".key", ".pem"}
+            or path.name.lower() in SENSITIVE_NAMES
+        ):
             failures.append(f"forbidden path: {relative}")
         if path.suffix.lower() not in TEXT_SUFFIXES:
             continue
@@ -320,6 +328,8 @@ def scan(stage: Path) -> dict[str, object]:
             failures.append(f"remote URL: {relative}")
         if SECRET_RE.search(text):
             failures.append(f"secret-like assignment: {relative}")
+        if PHONE_RE.search(text) or SIN_RE.search(text):
+            failures.append(f"phone/SIN-like PII: {relative}")
         for pattern in IDENTITY_PATTERNS:
             if re.search(pattern, text, flags=re.I):
                 failures.append(f"identity token: {relative}")
@@ -332,6 +342,7 @@ def scan(stage: Path) -> dict[str, object]:
         "remote_url_hits": 0,
         "identity_hits": 0,
         "secret_hits": 0,
+        "phone_or_sin_hits": 0,
         "git_metadata_hits": 0,
         "model_weight_files": 0,
     }
