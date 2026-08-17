@@ -29,6 +29,7 @@ TEXT_SUFFIXES = {
     ".yml",
 }
 FORBIDDEN_TESTS = {
+    "test_build_anonymous_supplement.py",
     "test_judge_audit.py",
     "test_lineage.py",
     "test_openai_compatible_adapter.py",
@@ -304,10 +305,41 @@ def write_manifest(stage: Path) -> list[dict[str, object]]:
     return items
 
 
+def declared_model_byte_tokens(stage: Path) -> dict[Path, set[str]]:
+    """Return exact decimal byte counts declared by each baseline receipt."""
+    tokens: dict[Path, set[str]] = {}
+    baseline_root = stage / "artifacts" / "model-baselines"
+    if not baseline_root.exists():
+        return tokens
+    for receipt_path in sorted(baseline_root.glob("*/model-receipt.json")):
+        try:
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+            model = receipt["model"]
+            byte_count = model["bytes"]
+        except (json.JSONDecodeError, KeyError, TypeError):
+            continue
+        if type(byte_count) is int and byte_count > 0:
+            tokens.setdefault(receipt_path.parent, set()).add(str(byte_count))
+    return tokens
+
+
+def is_declared_model_byte_token(
+    match: re.Match[str], *, path: Path, declared_tokens: dict[Path, set[str]]
+) -> bool:
+    """Classify only an unformatted token equal to the sibling receipt's model size."""
+    token = match.group(0)
+    return (
+        token.isascii()
+        and token.isdigit()
+        and token in declared_tokens.get(path.parent, set())
+    )
+
+
 def scan(stage: Path) -> dict[str, object]:
     failures: list[str] = []
     file_count = 0
     total_bytes = 0
+    declared_tokens = declared_model_byte_tokens(stage)
     for path in sorted(stage.rglob("*")):
         if not path.is_file():
             continue
@@ -328,8 +360,15 @@ def scan(stage: Path) -> dict[str, object]:
             failures.append(f"remote URL: {relative}")
         if SECRET_RE.search(text):
             failures.append(f"secret-like assignment: {relative}")
+        phone_matches = [
+            match
+            for match in PHONE_RE.finditer(text)
+            if not is_declared_model_byte_token(
+                match, path=path, declared_tokens=declared_tokens
+            )
+        ]
         if path.name not in {"MANIFEST.json", "MANIFEST.sha256"} and (
-            PHONE_RE.search(text) or SIN_RE.search(text)
+            phone_matches or SIN_RE.search(text)
         ):
             failures.append(f"phone/SIN-like PII: {relative}")
         for pattern in IDENTITY_PATTERNS:
