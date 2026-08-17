@@ -329,9 +329,7 @@ def is_declared_model_byte_token(
     """Classify only an unformatted token equal to the sibling receipt's model size."""
     token = match.group(0)
     return (
-        token.isascii()
-        and token.isdigit()
-        and token in declared_tokens.get(path.parent, set())
+        token.isascii() and token.isdigit() and token in declared_tokens.get(path.parent, set())
     )
 
 
