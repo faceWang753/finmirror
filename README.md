@@ -58,6 +58,25 @@ model. Reproduce them with `finmirror demo`.
 
 **[Explore the zero-key interactive demo →](https://facewang753.github.io/finmirror/)**
 
+### Measured local open-model baselines
+
+The controls above test the evaluator and are deliberately separated from measured
+model runs. The following results come from real, fixed GGUF artifacts running locally
+through the same public contract on the 42-case English slice (36 pairs). Neither model
+saw hidden gold at inference time.
+
+| Measured model | Cases | Case accuracy | Full verification | Strict pair reliability | Audit score | Gate |
+|---|---:|---:|---:|---:|---:|---:|
+| [Qwen2.5 1.5B Instruct Q4_K_M](artifacts/model-baselines/qwen2.5-1.5b-q4_k_m-en/RUN.md) | 42 | 11.9% | 0.0% | 0.0% | 8.6 | Blocked |
+| [Qwen3 4B Q4_K_M](artifacts/model-baselines/qwen3-4b-q4_k_m-en/RUN.md) | 42 | 73.8% | 0.0% | 0.0% | 36.5 | Blocked |
+
+The Qwen3 run gets 31/42 point answers correct and every response parses, but none is
+fully verified and none of 36 paired relations passes. These are single deterministic
+runs on synthetic English data, not model rankings or evidence of production,
+regulatory, multilingual, or investment performance. Each linked bundle includes the
+predictions, canonical JSON/HTML report, model/runtime receipt, hashes, and reproduction
+commands.
+
 ## Agent paths: correct is not yet verifiable
 
 FinMirror v0.2 adds deterministic replay for observable agent evidence paths. A
@@ -384,6 +403,11 @@ FinMirror is informed by—not a relabeling of—recent work:
 | [Soft-SVeRL](https://arxiv.org/abs/2605.28561) (Cohere, 2026) | Soft, checklist-based verifiable rewards | Deterministic hard gates plus exportable reward vectors |
 | [FinRAG-12B](https://aclanthology.org/2026.acl-industry.92/) (ACL 2026) | Production answer/citation/refusal training | Differential tests that pointwise production KPIs can miss |
 | [All Prompts Are Created Equal?](https://aclanthology.org/2026.findings-acl.1929/) (Findings ACL 2026) | Equivalent prompts can expose judge accuracy–robustness gaps | Digest-bound positive equivalence gates for the deterministic finance contract |
+
+The [CIRCLE-to-FinMirror change-contract mapping](docs/CIRCLE_MAPPING.md) separately
+shows how this harness could supply one automated observable inside a construct-centred
+evaluation lifecycle. It is a component-level mapping inference, not an implementation
+of CIRCLE, an endorsement, or evidence of stakeholder, field, or real-world validation.
 
 The complete [literature review](docs/LITERATURE_REVIEW.md) covers 56 papers and marks
 preprints separately from peer-reviewed proceedings. We do **not** claim the first
